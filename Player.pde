@@ -83,12 +83,12 @@ class Player
   {
     fill( col );
     stroke( col );
-    float a = sqrt(dist(x1, y1, x2, y2) / 2 );
-    strokeWeight( sqrt( 4*a ) );
+    float factor = sqrt(dist(x1, y1, x2, y2) / 2 );
+    strokeWeight( sqrt( 4*factor ) );
     pushMatrix();
     translate(x2, y2);
     rotate(atan2(y2 - y1, x2 - x1));
-    triangle(- a * 2 , - a, 0, 0, - a * 2, a);
+    triangle(- factor * 2 , - factor, 0, 0, - factor * 2, factor);
     popMatrix();
     line(x1, y1, x2, y2);  
     fill( 255 );
