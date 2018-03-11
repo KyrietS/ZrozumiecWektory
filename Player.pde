@@ -8,6 +8,7 @@ class Player
   private PVector velocity = new PVector(0, 0);
   private Level.Settings settings;
   private Level level;
+  private PFont vectorFont;
   
 // ------------- KONSTRUKTOR -------------
   Player( Level level )
@@ -15,6 +16,7 @@ class Player
     this.settings = level.settings;
     this.level = level;
     pos = new PVector( settings.startPos.x, settings.startPos.y );
+    vectorFont = createFont("data/fonts/BloggerSans-Bold.ttf", 11);
   }
 // ---------------------------------------
   public void show()
@@ -94,12 +96,29 @@ class Player
 // ---------------------------------------
   private void showVectors()
   {
+    textFont( vectorFont );
     // --- wektory normalne ---
+    if( realVector.x != 0 ){ 
+      fill( 0 );
+      text( Float.toString(realVector.x/10) + " m/s", pos.x + realVector.x + (realVector.x < 0 ? -45 : 5), pos.y + 20 ); 
+    }
     drawArrow( pos.x, pos.y, pos.x + realVector.x, pos.y, #4286f4 );
+    if( realVector.y != 0 ){ 
+      fill( 0 );
+      text( Float.toString(-realVector.y/10) + " m/s", pos.x - 60, pos.y + realVector.y + (realVector.y>0 ? + 10 : -10) ); 
+    }
     drawArrow( pos.x, pos.y, pos.x, pos.y + realVector.y, #4286f4 );
     // TODO: Kolor wektora zależny od rodzaju wektora.
     // --- wektory docelowe ---
+    if( targetVector.x != 0 ){ 
+      fill( 0 );
+      text( Float.toString(targetVector.x/10) + " m/s", pos.x + targetVector.x + (targetVector.x < 0 ? -45 : 5), pos.y - 10 ); 
+    }
     drawArrow( pos.x, pos.y, pos.x + targetVector.x, pos.y, #FF0000 );
+    if( targetVector.y != 0 ){ 
+      fill( 0 );
+      text( Float.toString(-targetVector.y/10) + " m/s", pos.x + 10, pos.y + targetVector.y + (targetVector.y>0 ? + 10 : -10) ); 
+    }
     drawArrow( pos.x, pos.y, pos.x, pos.y + targetVector.y, #FF0000 );
     
   }

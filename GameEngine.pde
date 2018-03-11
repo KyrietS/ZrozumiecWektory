@@ -8,8 +8,8 @@ class GameEngine
     try{ player.move(); player.fillColor = #FFF600; } // TYMCZASOWE
     catch( HitWallException e ) { player.fillColor = #c19e20; } // TYMCZASOWE
     catch( HitFinishException e ) {}
-    player.show();
     level.show();
+    player.show();
   }
 
   private void readKeys()

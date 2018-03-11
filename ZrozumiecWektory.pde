@@ -1,10 +1,11 @@
 import java.awt.event.KeyEvent;
-GameEngine engine = new GameEngine();
+GameEngine engine;
 
 void setup()
 {
   size( 1200, 800 );
   frameRate( 60 );
+  engine = new GameEngine();
 }
 
 void draw()
