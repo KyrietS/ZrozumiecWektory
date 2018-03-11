@@ -1,18 +1,15 @@
-
 class GameEngine
 {
   private final Level level = new Level();
-  private Player player = new Player( level.settings );
+  private final Player player = new Player( level );
   public void update()
   {
     readKeys();
-    player.move();
+    try{ player.move(); }
+    catch( HitWallException e ) {}
+    catch( HitFinishException e ) {}
     player.show();
-  }
-
-  GameEngine()
-  {
-    
+    level.show();
   }
 
   private void readKeys()
@@ -33,5 +30,7 @@ class GameEngine
       ActiveKey.SPACE = false; // Aby wciśnięcie było jednokrotne
     }
   }
-    
+  
+  
+  
 }
