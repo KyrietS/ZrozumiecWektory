@@ -1,14 +1,19 @@
+// Tytuł projektu + autorzy
+
+// Reprezentacja kulki gracza na ekranie gry.
 class Player
 {
-  private PVector pos;
-  private float radius = 25;
-  public color fillColor = #FFF600; // TYMCZASOWO! public
-  private PVector targetVector = new PVector(0, 0);
-  private PVector realVector = new PVector(0, 0);
-  private PVector velocity = new PVector(0, 0);
-  private Level.Settings settings;
-  private Level level;
-  private PFont vectorFont;
+// ------------------- USTAWIENIA PLAYERA ------------------- //
+  private PVector pos;                                        // Pozycja gracza na mapie (w pikselach).
+  private float radius = 3;                                   // Promień kulki gracza (w pikselach). TYMCZASOWO wpisane ręcznie
+  public color fillColor = #FFF600;                           // Kolor wypełnienia kulki. TYMCZASOWO! public
+  private PVector targetVector = new PVector(0, 0);           // Współrzędne wektora docelowego (w piskelach).
+  private PVector realVector = new PVector(0, 0);             // Współrzędne wektora rzeczywistego (w pikselach).
+  private PVector velocity = new PVector(0, 0);               // Współrzędne wektora prędkości wypadkowej (w pikselach).
+  private Level.Settings settings;                            // Referencja do ustawień poziomu.
+  private Level level;                                        // Referencja do poziomu.
+  private PFont vectorFont;                                   // Czcionka użyta do wyświetlania wartości przy wektorach.
+// -----------------------------------------------------------//
   
 // ------------- KONSTRUKTOR -------------
   Player( Level level )
@@ -16,8 +21,11 @@ class Player
     this.settings = level.settings;
     this.level = level;
     pos = new PVector( settings.startPos.x, settings.startPos.y );
-    vectorFont = createFont("data/fonts/BloggerSans-Bold.ttf", 11);
+    vectorFont = createFont("data/fonts/BloggerSans-Bold.ttf", 12);
+    radius = m2p(radius);
   }
+// ---------------------------------------
+// Wyświetlanie gracza na ekranie.
 // ---------------------------------------
   public void show()
   {
@@ -26,7 +34,9 @@ class Player
     fill( 255 ); // przywróć domyślne ustawienie
     showVectors();
   }
-// ---------------------------------------
+// ---------------------------------------------------
+// Wykonanie ruchu zgodnego z wektorem rzeczywistym.
+// ---------------------------------------------------
   public void move()
   {
     // --- HROIZONTALS ---
@@ -64,6 +74,8 @@ class Player
       throw new HitWallException();
   }
 // ---------------------------------------
+// Zmiana wektora docelowego w poziomie.
+// ---------------------------------------
   public void addHorizontal( float vec )
   {
     if( abs(targetVector.x) < settings.horizontalVectorMin )
@@ -75,6 +87,8 @@ class Player
     else targetVector.x += vec;
   }
 // ---------------------------------------
+// Zmiana wektora docelowego w pionie.
+// ---------------------------------------
   public void addVertical( float vec )
   {
     if( abs(targetVector.y) < settings.verticalVectorMin )
@@ -85,7 +99,9 @@ class Player
       targetVector.y = (targetVector.y+vec < 0 ? -settings.verticalVectorMax : settings.verticalVectorMax);
     else targetVector.y += vec;
   }
-// ---------------------------------------
+// -----------------------------------------------
+// Wcielenie w życie zmian z wektora docelowego.
+// -----------------------------------------------
   public void changeVectors()
   {
     realVector.x = targetVector.x;
@@ -93,58 +109,74 @@ class Player
     targetVector.x = 0;
     targetVector.y = 0;
   }
-// ---------------------------------------
+// ---------------------------------------------------------------------
+// Wyświetlenie strzałek na ekranie oraz wartości liczbowych przy nich
+// ---------------------------------------------------------------------
   private void showVectors()
   {
     textFont( vectorFont );
+    textSize( height * 0.01528 );
     // --- wektory normalne ---
     if( realVector.x != 0 ){ 
       fill( 0 );
-      text( Float.toString(realVector.x/10) + " m/s", pos.x + realVector.x + (realVector.x < 0 ? -45 : 5), pos.y + 20 ); 
+      float value = (float)round(p2m(realVector.x) * 10)/10;
+      text( Float.toString(value) + " m/s", pos.x + realVector.x + (realVector.x < 0 ? -45 : 5), pos.y + 20 ); 
     }
     drawArrow( pos.x, pos.y, pos.x + realVector.x, pos.y, #4286f4 );
     if( realVector.y != 0 ){ 
       fill( 0 );
-      text( Float.toString(-realVector.y/10) + " m/s", pos.x - 60, pos.y + realVector.y + (realVector.y>0 ? + 10 : -10) ); 
+      float value = (float)round(-p2m(realVector.y) * 10)/10;
+      text( Float.toString(value) + " m/s", pos.x - 60, pos.y + realVector.y + (realVector.y>0 ? + 10 : -10) ); 
     }
     drawArrow( pos.x, pos.y, pos.x, pos.y + realVector.y, #4286f4 );
     // TODO: Kolor wektora zależny od rodzaju wektora.
     // --- wektory docelowe ---
     if( targetVector.x != 0 ){ 
       fill( 0 );
-      text( Float.toString(targetVector.x/10) + " m/s", pos.x + targetVector.x + (targetVector.x < 0 ? -45 : 5), pos.y - 10 ); 
+      float value = (float)round(p2m(targetVector.x) * 10)/10;
+      text( Float.toString(value) + " m/s", pos.x + targetVector.x + (targetVector.x < 0 ? -45 : 5), pos.y - 10 ); 
     }
     drawArrow( pos.x, pos.y, pos.x + targetVector.x, pos.y, #FF0000 );
     if( targetVector.y != 0 ){ 
       fill( 0 );
-      text( Float.toString(-targetVector.y/10) + " m/s", pos.x + 10, pos.y + targetVector.y + (targetVector.y>0 ? + 10 : -10) ); 
+      float value = (float)round(-p2m(targetVector.y) * 10)/10;
+      text( Float.toString(value) + " m/s", pos.x + 10, pos.y + targetVector.y + (targetVector.y>0 ? + 10 : -10) ); 
     }
     drawArrow( pos.x, pos.y, pos.x, pos.y + targetVector.y, #FF0000 );
-    
   }
-// ---------------------------------------
+// -----------------------------------------------------------
+// Rysowanie strzałki o kolorze 'col' od (x1,y1) do (x2,y2).
+// -----------------------------------------------------------
   private void drawArrow(float x1, float y1, float x2, float y2, color col ) 
   {
     fill( col );
     stroke( col );
     float factor = sqrt(dist(x1, y1, x2, y2) / 2 );
-    strokeWeight( sqrt( 4*factor ) );
     pushMatrix();
     translate(x2, y2);
     rotate(atan2(y2 - y1, x2 - x1));
     triangle(- factor * 2 , - factor, 0, 0, - factor * 2, factor);
     popMatrix();
-    line(x1, y1, x2, y2);  
+
+    strokeWeight( sqrt( 4*factor ) );
+    float d = PVector.dist( new PVector(x1,y1), new PVector(x2,y2) );
+    pushMatrix();
+    translate( x1, y1 );
+    x2 = x2 - x1;
+    y2 = y2 - y1;
+    line(0, 0, x2*(d-2*factor)/d, y2*(d-2*factor)/d);  
+    popMatrix();
     fill( 255 );
     stroke( 0 );
     strokeWeight( 1 );
   }
-// ---------------------------------------
+// ------------------------------------------
+// Sprawdzenie czy gracz koliduje ze ścianą.
+// ------------------------------------------
   public boolean hitWall()
   {
     for( Level.Wall wall : level.walls )
     {
-      //if( collides( wall.vertices ) )
       if( CollisionSystem.isCollision(wall.vertices,pos,radius) )
         return true;
     }
@@ -153,5 +185,6 @@ class Player
   
 } // class Player
 
-class HitWallException extends RuntimeException {}
-class HitFinishException extends RuntimeException {}
+// ----  WYJĄTKI RZUCANE PRZY KOLIZJI --- //
+class HitWallException extends RuntimeException {}                // Uderzenie w ścianę lub wyjście poza mapę.
+class HitFinishException extends RuntimeException {}              // Dotknięcie mety.

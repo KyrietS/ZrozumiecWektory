@@ -1,3 +1,5 @@
+// Tytuł projektu + autorzy
+
 static class CollisionSystem
 {
   public static boolean isCollision( ArrayList<PVector> vertices, PVector pos, float radius )
