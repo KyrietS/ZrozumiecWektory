@@ -2,7 +2,7 @@ class Player
 {
   private PVector pos;
   private float radius = 25;
-  private color fillColor = #FFF600;
+  public color fillColor = #FFF600; // TYMCZASOWO! public
   private PVector targetVector = new PVector(0, 0);
   private PVector realVector = new PVector(0, 0);
   private PVector velocity = new PVector(0, 0);
