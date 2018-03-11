@@ -30,7 +30,7 @@ class Level
   }
   public class Settings
   {
-    public VectorType horizontalVectorType = VectorType.ACCELERATION;
+    public VectorType horizontalVectorType = VectorType.VELOCITY;
     public VectorType verticalVectorType = VectorType.VELOCITY;
     public float horizontalVectorMax = 500;
     public float verticalVectorMax = 500;
