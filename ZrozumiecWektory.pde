@@ -12,6 +12,7 @@ void draw()
 {
   background( 200 );
   engine.update();
+  println( frameRate );
 }
 
 void keyPressed()
