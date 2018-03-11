@@ -1,18 +1,23 @@
+// Tytuł projektu + autorzy
+
 import java.awt.event.KeyEvent;
+
 GameEngine engine;
+
+final float mapSize = 100;   // Rozmiar mapy w metrach 
 
 void setup()
 {
-  size( 1200, 800 );
+  fullScreen();
   frameRate( 60 );
   engine = new GameEngine();
 }
 
 void draw()
 {
-  background( 200 );
+  background( 100 );
+  translate( (width-height)/2, 0 );
   engine.update();
-  println( frameRate );
 }
 
 void keyPressed()
@@ -39,6 +44,9 @@ void keyReleased()
   }
 }
 
+// ---------------------------------------------------
+//  Lista obecnie obsługiwanych przycisków
+// ---------------------------------------------------
 public static class ActiveKey
 {
   static boolean W = false;
@@ -47,3 +55,7 @@ public static class ActiveKey
   static boolean D = false;
   static boolean SPACE = false;
 }
+
+// ------ FUNKCJE POMOCNICZE ------ //
+float p2m( float p ){ return (p*mapSize)/height; }            // Zamienia wielkość w pikselach na przeskalowaną liczbę metrów.
+float m2p( float m ){ return (m*height)/mapSize; }            // Zamienia liczbę metrów na przeskalowaną ilość pikseli.

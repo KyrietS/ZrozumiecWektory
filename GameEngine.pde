@@ -1,3 +1,5 @@
+// Tytuł projektu + autorzy
+
 class GameEngine
 {
   private final Level level = new Level();
