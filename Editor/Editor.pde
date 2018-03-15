@@ -1,9 +1,10 @@
-ArrayList< ArrayList< PVector > > wallsArray = new ArrayList< ArrayList< PVector > >();
+//ArrayList< ArrayList< PVector > > wallsArray = new ArrayList< ArrayList< PVector > >();
+ArrayList< Wall > walls = new ArrayList< Wall > ();
 
 void setup()
 {
   size( 900, 900 );
-  wallsArray.add( new ArrayList< PVector >() );
+  walls.add( new Wall( 0 ) );
   textSize( 32 );
 }
 
@@ -14,19 +15,20 @@ void draw()
   rect( 50, 50, 800, 800 );
   showWalls();
   fill( 255 );
-  text( "Ścian: " + (wallsArray.size()-1), 30, 40 );
+  text( "Ścian: " + (walls.size()-1), 30, 40 );
 }
 
 void mousePressed()
 {
   if( mouseButton == LEFT )
-    addVertex( mouseX, mouseY );
+    //addVertex( mouseX, mouseY );
+    walls.get( walls.size()-1 ).addVertex( mouseX, mouseY );
 }
 
 void keyPressed()
 {
   if( key == ' ' )
-    wallsArray.add( new ArrayList< PVector >() );
+    walls.add( new Wall( walls.size() ) );
   if( key == 's' || key == 'S' )
     saveLevel();
 }
@@ -34,12 +36,12 @@ void keyPressed()
 void saveLevel()
 { 
   JSONObject level = new JSONObject();
-  JSONArray walls = new JSONArray();
+  JSONArray wallsJS = new JSONArray();
   JSONObject wall;
   JSONArray vertices;
   JSONObject vertex;
   
-  for( int i = 0; i < wallsArray.size()-1; i++ )
+  for( int i = 0; i < walls.size()-1; i++ )
   {
     wall = new JSONObject();
     vertices = new JSONArray();
@@ -51,50 +53,32 @@ void saveLevel()
     wallColor.setInt( "b", 30 );
     vertices.setJSONObject(1,wallColor);
     // ------------------------
-    for( int j = 0; j < wallsArray.get( i ).size(); j++ )
+    for( int j = 0; j < walls.get( i ).vertices.size(); j++ )
     {
       vertex = new JSONObject();
-      vertex.setFloat( "x", (wallsArray.get(i).get( j ).x-50)/8 );
-      vertex.setFloat( "y", (wallsArray.get(i).get( j ).y-50)/8 );
+      vertex.setFloat( "x", (walls.get(i).vertices.get( j ).x-50)/8 );
+      vertex.setFloat( "y", (walls.get(i).vertices.get( j ).y-50)/8 );
       vertices.setJSONObject(j+2,vertex);
     }
     wall.setJSONArray("wall", vertices);
-    walls.setJSONObject(i, wall);
+    wallsJS.setJSONObject(i, wall);
   }
  
-  level.setJSONArray("walls", walls);
+  level.setJSONArray("walls", wallsJS);
   saveJSONObject( level, "level.json" );
-}
-
-void addVertex( float x, float y )
-{
-  if( x < 50 ) x = 50;
-  if( x > 850 ) x = 850;
-  if( y < 50 ) y = 50;
-  if( y > 850 ) y = 850;
-  wallsArray.get( wallsArray.size() - 1 ).add( new PVector( x, y ) );
 }
 
 void showWalls()
 {
-  for( int i = 0; i < wallsArray.size(); i++ )
+  // ----- RYSOWANIE ŚCIAN (OSTATNIA CZERWONA) ------
+  for( int i = 0; i < walls.size(); i++ )
   {
-    beginShape();
-    if( i == wallsArray.size() -1 )
-      fill( #FFAFAF );
+    if( i == walls.size() -1 )
+      walls.get( i ).show( #FFAFAF );
     else
-      fill( 120 );
-    for( PVector vertex : wallsArray.get( i ) )
-    {
-      vertex( vertex.x, vertex.y );
-    }
-    endShape( CLOSE );
+      walls.get( i ).show( 120 );
   }
   
-  for( int i = 0; i < wallsArray.size(); i++ )
-  {
-    fill( 0, 0, 255 );
-    if( wallsArray.get( i ).size() > 0 )
-      text( Integer.toString( i+1 ), wallsArray.get( i ).get( 0 ).x, wallsArray.get( i ).get( 0 ).y );
-  }
+  for( Wall wall : walls )
+    wall.showId();
 }
