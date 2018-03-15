@@ -1,5 +1,11 @@
+// ----------------------------------------------- //
+// Klasa obsługująca zapis / odczyt plików JSON
+// ----------------------------------------------- //
 class FileManager
 {
+  // ----------------------------------- //
+  // Zapis poziomu do pliku level.json
+  // ----------------------------------- //
   void saveLevel()
   { 
     JSONObject level = new JSONObject();
@@ -12,6 +18,7 @@ class FileManager
     {
       wall = new JSONObject();
       vertices = new JSONArray();
+      // --------- ID ----------
       vertices.setJSONObject(0, new JSONObject().setInt("id", i+1 ));
       // -------- KOLOR --------
       JSONObject wallColor = new JSONObject();
@@ -20,6 +27,7 @@ class FileManager
       wallColor.setInt( "b", 30 );
       vertices.setJSONObject(1,wallColor);
       // ------------------------
+      // -- WSPÓŁRZĘDNE ŚCIANY --
       for( int j = 0; j < walls.get( i ).vertices.size(); j++ )
       {
         vertex = new JSONObject();
@@ -28,6 +36,8 @@ class FileManager
         vertices.setJSONObject(j+2,vertex);
       }
       wall.setJSONArray("wall", vertices);
+      // ------------------------
+      // -------- ŚCIANA --------
       wallsJS.setJSONObject(i, wall);
     }
    
