@@ -1,6 +1,10 @@
 
+ArrayList<Text> texts= new ArrayList<Text>();
 ArrayList< Wall > walls = new ArrayList< Wall > ();
 FileManager fileManager = new FileManager();
+boolean textIsEntered=false;
+boolean newLetter = true;
+
 
 void setup()
 {
@@ -16,6 +20,7 @@ void draw()
   rect( 50, 50, 800, 800 );
   
   showWalls();
+  showTexts();
   
   fill( 255 );
   text( "Ścian: " + (walls.size()-1), 30, 40 );
@@ -30,14 +35,50 @@ void mousePressed()
 
 void keyPressed()
 {
-  if( key == ' ' )
-    walls.add( new Wall( walls.size() ) );
-  if( key == 's' || key == 'S' )
-    fileManager.saveLevel();
+  if(newLetter==true)
+  {
+    if(textIsEntered == true)
+    {
+      if(keyCode == CONTROL)
+      {
+        textIsEntered = false;
+      }
+      else
+      {
+        texts.get(texts.size() - 1).AddLetter(key);
+      }
+    }
+    else if (textIsEntered == false)
+    {
+      if(keyCode==CONTROL)
+      {
+        texts.add(new Text(mouseX,mouseY,#005555));
+        textIsEntered=true;
+      }
+      if( key == ' ' )
+          walls.add( new Wall( walls.size() ) );
+      if( key == 's' || key == 'S' )
+          fileManager.saveLevel();
+    }
+    newLetter=false;
+  }
+  
+}
+void keyReleased()
+{
+  newLetter = true;
 }
 
-
-
+void showTexts()
+{
+  if(texts.size()>0)
+  {
+    for(Text temp : texts)
+    {
+       temp.show();
+    }
+  }
+}
 void showWalls()
 {
   // ----- RYSOWANIE ŚCIAN (OSTATNIA CZERWONA) ------
