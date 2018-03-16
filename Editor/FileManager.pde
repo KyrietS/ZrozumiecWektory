@@ -9,6 +9,7 @@ class FileManager
   void saveLevel()
   { 
     JSONObject level = new JSONObject();
+    //**************ZAPIS SCIAN*****************
     JSONArray wallsJS = new JSONArray();
     JSONObject wall;
     JSONArray vertices;
@@ -42,6 +43,23 @@ class FileManager
     }
    
     level.setJSONArray("walls", wallsJS);
+    
+    //*************KONIEC ZAPISU SCIAN*************
+    //*************ZAPIS TEKSTU********************
+    JSONArray textsJS=new JSONArray();
+    JSONObject text;
+    for(int k = 0;k<texts.size();k++)
+    {
+      text=new JSONObject();
+      text.setString("content",texts.get(k).text);
+      text.setFloat("rotation",texts.get(k).angle);
+      text.setInt("size",texts.get(k).size);
+      text.setFloat("x",texts.get(k).x/8);
+      text.setFloat("y",texts.get(k).y/8);
+      textsJS.setJSONObject(k,text);
+    }
+    level.setJSONArray("texts",textsJS);
+    //*************KONIEC ZAPISU TEKSTOW***********
     saveJSONObject( level, "level.json" );
   }
 }
