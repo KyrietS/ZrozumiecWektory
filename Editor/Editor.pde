@@ -68,7 +68,9 @@ void keyReleased()
 {
   newLetter = true;
 }
-
+void mouseWheel(MouseEvent event) {
+  texts.get(texts.size()-1).angle = texts.get(texts.size()-1).angle +(event.getCount())/10.0;
+}
 void showTexts()
 {
   if(texts.size()>0)
