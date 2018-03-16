@@ -35,29 +35,34 @@ void mousePressed()
 
 void keyPressed()
 {
-  if(newLetter==true)
+  
+  if(newLetter==true)//SPRAWDZENIE DO POBRANIA KLAWISZA JEDNOKROTNIE
   {
-    if(textIsEntered == true)
+    if(textIsEntered == true)//SPRAWDZENIE CZY JEST AKTYWNE WPISYWANIE TEKSTU
     {
+      //+++++++++++KONIEC WPROWADZANIA TEKSTU++++++++++++++++
       if(keyCode == CONTROL)
       {
         textIsEntered = false;
       }
-      else
+      //+++++++++++++++++++++++++++++++++++++++++++++++++++++
+      else if(texts.get(texts.size()-1).textManagment(keyCode)==false)//SPRAWDZENIE CZY ZOSTAL WPROWADZONY KLAWISZ FUNKCYJNY
       {
-        texts.get(texts.size() - 1).AddLetter(key);
+        //JEZELI NIE ZOSTAL WPROWADZONY KLAWISZ FUNKCYJNY DODAWANA JEST LITERA
+        texts.get(texts.size()-1).addLetter(key);
       }
     }
     else if (textIsEntered == false)
     {
       if(keyCode==CONTROL)
       {
-        texts.add(new Text(mouseX,mouseY,#005555));
+        texts.add(new Text(mouseX,mouseY,#005555));//TWORZENIE NOWEGO TEKSTU
+        //WPISYWANIE TEKSTU JEST AKTYWOWANE
         textIsEntered=true;
       }
-      if( key == ' ' )
+      else if( key == ' ' )
           walls.add( new Wall( walls.size() ) );
-      if( key == 's' || key == 'S' )
+      else if( key == 's' || key == 'S' )
           fileManager.saveLevel();
     }
     newLetter=false;
@@ -68,9 +73,11 @@ void keyReleased()
 {
   newLetter = true;
 }
+//----------OBROT AKTUALNIE WPISYWANEGO TEKSTU---------------
 void mouseWheel(MouseEvent event) {
   texts.get(texts.size()-1).angle = texts.get(texts.size()-1).angle +(event.getCount())/10.0;
 }
+
 void showTexts()
 {
   if(texts.size()>0)
