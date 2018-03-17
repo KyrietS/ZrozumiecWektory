@@ -1,77 +1,65 @@
+import java.awt.event.KeyEvent;
+
 class Text
 {
   public float x;
   public float y;
-  public String text;
-  public color mycolor;
-  public float angle;
-  public int size;
-  public void addLetter(char letter)
-  {
-    this.text=this.text + letter;
-  }
-  public boolean textManagment(int s)
-  {
-      if(s==UP||s==DOWN||s==RIGHT||s==LEFT)
-      {
-        textMove(s);
-        return true;
-      }
-      else if(s==33||s==34)
-      {
-        textResize(s);
-        return true;
-      }
-      return false;
-  }
-  public void textMove(int s)
-  {
-      if(s==UP)
-      {
-        this.y-=2;
-      }
-      else if(s==DOWN)
-      {
-        this.y+=2;
-      }
-      else if(s==LEFT)
-      {
-        this.x-=2;
-      }
-      else if(s==RIGHT)
-      {
-        this.x+=2;
-      }
-  }
-  public void textResize(int s)
-  {
-      if(s==33)
-      {
-        this.size+=1;
-      }
-      else if(s==34)
-      {
-        this.size-=1;
-      }
-  }
+  public color col;
+  public String content = new String();
+  public float rotation = 0;
+  public int size = 32;
+  
   Text(int x,int y,color col)
   {
-    this.mycolor=col;
+    this.col=col;
     this.x = x;
     this.y = y;
-    this.text="";
-    this.angle = 0;
-    this.size = 32;
+  }
+  
+  public void addLetter(char letter)
+  {
+    if( (int)letter == 8 && content.length() > 0 )
+      content = content.substring(0, content.length()-1 );
+    else
+      content += letter;
+  }
+  
+  public void setSize(int pageKey)
+  {
+    switch( pageKey )
+    {
+      case KeyEvent.VK_PAGE_UP:   size += 1; break;
+      case KeyEvent.VK_PAGE_DOWN: size -= 1; break;
+    }
+  }
+  public void move(int arrowKey)
+  {
+    switch( arrowKey )
+    {
+      case UP: this.y -= 2;   break;
+      case DOWN: this.y += 2; break;
+      case LEFT: this.x -= 2; break;
+      case RIGHT: this.x +=2; break;
+    }
+  }
+  public void setRotation( float angle )
+  {
+    this.rotation += angle;
   }
 
   public void show()
   {
-    fill(this.mycolor);  
+    this.show( this.col );
+  }
+
+  public void show( color col )
+  {
+    fill(col);  
     pushMatrix();
     textSize(size);
     translate(this.x,this.y);
-    rotate(this.angle);
-    text(this.text,0,0);
+    rotate(this.rotation);
+    text(this.content,0,0);
     popMatrix();
     textSize(32);
   }
