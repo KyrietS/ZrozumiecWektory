@@ -11,15 +11,13 @@ class Player
   private PVector realVector = new PVector(0, 0);             // Współrzędne wektora rzeczywistego (w pikselach).
   private PVector velocity = new PVector(0, 0);               // Współrzędne wektora prędkości wypadkowej (w pikselach).
   private Level.Settings settings;                            // Referencja do ustawień poziomu.
-  private Level level;                                        // Referencja do poziomu.
   private PFont vectorFont;                                   // Czcionka użyta do wyświetlania wartości przy wektorach.
 // -----------------------------------------------------------//
   
 // ------------- KONSTRUKTOR -------------
-  Player( Level level )
+  Player()
   {
     this.settings = level.settings;
-    this.level = level;
     pos = new PVector( settings.startPos.x, settings.startPos.y );
     vectorFont = createFont("data/fonts/BloggerSans-Bold.ttf", 12);
     radius = m2p(radius);
