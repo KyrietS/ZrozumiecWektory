@@ -2,15 +2,14 @@
 ArrayList<Text> texts= new ArrayList<Text>();
 ArrayList< Wall > walls = new ArrayList< Wall > ();
 FileManager fileManager = new FileManager();
-boolean textIsEntered=false;
-boolean newLetter = true;
-
+boolean textMode = false;
 
 void setup()
 {
   size( 900, 900 );
   walls.add( new Wall( 0 ) );
   textSize( 32 );
+  textFont( createFont( "../data/fonts/BloggerSans.ttf", 32, true ) );
 }
 
 void draw()
@@ -21,76 +20,47 @@ void draw()
   
   showWalls();
   showTexts();
-  
-  fill( 255 );
-  text( "Ścian: " + (walls.size()-1), 30, 40 );
+  showInfo();
 }
 
 void mousePressed()
 {
-  if( mouseButton == LEFT )
-    //addVertex( mouseX, mouseY );
+  if( textMode == true && mouseButton == LEFT )        // LPM w trybie tekstowym dodaje nowy tekst.
+    texts.add( new Text( mouseX, mouseY, 0 ) );
+  else if( mouseButton == LEFT )                       // LPM w trybie ścianowym dodaje nową ścianę.
     walls.get( walls.size()-1 ).addVertex( mouseX, mouseY );
 }
 
 void keyPressed()
 {
-  
-  if(newLetter==true)//SPRAWDZENIE DO POBRANIA KLAWISZA JEDNOKROTNIE
+  if( keyCode == KeyEvent.VK_F1 )                      // Wciśnięcie F1 przełącza w tryb tekstowy.
+    textMode = !textMode;
+  else if( textMode == true && texts.size() > 0 )      // Przechwytywanie Page Up/Down oraz strzałek.
   {
-    if(textIsEntered == true)//SPRAWDZENIE CZY JEST AKTYWNE WPISYWANIE TEKSTU
-    {
-      //+++++++++++KONIEC WPROWADZANIA TEKSTU++++++++++++++++
-      if(keyCode == CONTROL)
-      {
-        textIsEntered = false;
-      }
-      //+++++++++++++++++++++++++++++++++++++++++++++++++++++
-      else if(texts.get(texts.size()-1).textManagment(keyCode)==false)//SPRAWDZENIE CZY ZOSTAL WPROWADZONY KLAWISZ FUNKCYJNY
-      {
-        //JEZELI NIE ZOSTAL WPROWADZONY KLAWISZ FUNKCYJNY DODAWANA JEST LITERA
-        texts.get(texts.size()-1).addLetter(key);
-      }
-    }
-    else if (textIsEntered == false)
-    {
-      if(keyCode==CONTROL)
-      {
-        texts.add(new Text(mouseX,mouseY,#005555));//TWORZENIE NOWEGO TEKSTU
-        //WPISYWANIE TEKSTU JEST AKTYWOWANE
-        textIsEntered=true;
-      }
-      else if( key == ' ' )
-          walls.add( new Wall( walls.size() ) );
-      else if( key == 's' || key == 'S' )
-          fileManager.saveLevel();
-    }
-    newLetter=false;
+    texts.get( texts.size()-1 ).move( keyCode );
+    texts.get( texts.size()-1 ).setSize( keyCode );
   }
+  else if( key == ' ' )                                // Spacja w trybie ścianowym dodaje nową ścianę.
+    walls.add( new Wall( walls.size() ) );
+  else if( key == 's' || key == 'S' )                  // Przycisk 'S' w trybie ścianowym zapisuje plik.
+    fileManager.saveLevel();
   
 }
-void keyReleased()
+void keyTyped()                                        // Przechwytywanie liter w trybie tekstowym.
 {
-  newLetter = true;
+  if( textMode == true && texts.size() > 0 )
+    texts.get( texts.size()-1 ).addLetter( key );
 }
 //----------OBROT AKTUALNIE WPISYWANEGO TEKSTU---------------
-void mouseWheel(MouseEvent event) {
-  texts.get(texts.size()-1).angle = texts.get(texts.size()-1).angle +(event.getCount())/10.0;
+void mouseWheel(MouseEvent event) 
+{
+  if( texts.size() > 0 )
+    texts.get( texts.size()-1 ).setRotation( event.getCount()/60.0 );
 }
 
-void showTexts()
-{
-  if(texts.size()>0)
-  {
-    for(Text temp : texts)
-    {
-       temp.show();
-    }
-  }
-}
+// ----- RYSOWANIE ŚCIAN ----- //
 void showWalls()
 {
-  // ----- RYSOWANIE ŚCIAN (OSTATNIA CZERWONA) ------
   for( int i = 0; i < walls.size(); i++ )
   {
     if( i == walls.size() -1 )
@@ -101,4 +71,25 @@ void showWalls()
   
   for( Wall wall : walls )
     wall.showId();
+}
+
+// ----- RYSOWANIE NAPISÓW ----- //
+void showTexts()
+{
+  for( int i = 0; i < texts.size(); i++ )
+  {
+    if( i == texts.size()-1 && textMode == true )
+      texts.get( i ).show( #0000FF );
+    else
+      texts.get( i ).show();
+  }
+}
+
+// ----- RYSOWANIE INFORMACJI NA BRZEGACH EDYTORA ------ //
+void showInfo()
+{
+  fill( 0 );
+  text( "Ścian: " + (walls.size()-1), 30, 40 );
+  text( "Napisów: " + (texts.size()), 30, 890 );
+  text( "Tryb: " + (textMode ? "tekstowy" : "ścianowy"), 250, 40 );
 }
