@@ -4,6 +4,8 @@ class GameEngine
 {
   private final Level level = new Level();
   private final Player player = new Player( level );
+  private final GUI gui = new GUI();
+  
   public void update()
   {
     readKeys();
@@ -12,6 +14,8 @@ class GameEngine
     catch( HitFinishException e ) {}
     level.show();
     player.show();
+    
+    gui.infoBar();
   }
 
   private void readKeys()
@@ -32,6 +36,7 @@ class GameEngine
       ActiveKey.SPACE = false; // Aby wciśnięcie było jednokrotne
     }
   }
+  
   
   
   
