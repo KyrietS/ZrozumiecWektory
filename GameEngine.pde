@@ -1,11 +1,11 @@
 // Tytuł projektu + autorzy
 
+Level level;
+Player player;
+GUI gui;
+
 class GameEngine
-{
-  private final Level level = new Level();
-  private final Player player = new Player( level );
-  private final GUI gui = new GUI();
-  
+{  
   public void update()
   {
     readKeys();
@@ -16,6 +16,13 @@ class GameEngine
     player.show();
     
     gui.infoBar();
+  }
+
+  GameEngine()
+  {
+    level = new Level();
+    player = new Player();
+    gui = new GUI();
   }
 
   private void readKeys()
