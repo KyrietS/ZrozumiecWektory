@@ -4,30 +4,11 @@
 // Zbiór klas do tworzenia ładnego interfejsu użytkownika :)
 // --------------------------------------------------------------//
 
-
-class GUI
+class ButtonEvent extends RuntimeException
 {
-  Button menuButton = new Button( "  MENU", m2p(0.5), m2p(0.4), m2p(6.5), m2p(3.2), #c1d9ff);
-  Button statsButton = new Button( "  STATYSTYKI", m2p(88), m2p(0.4), m2p(10.5), m2p(3.2), #c1d9ff);
-  
-  private PFont bloggerSans;
-  private PFont bloggerSansBold;
-  
-  void infoBar()
-  {
-    fill( #77abff );
-    rect( 0,0, m2p( mapSize ), m2p(4) );
-    
-    textFont( bloggerSans );
-    menuButton.show();
-    statsButton.show();
-  }
-  
-  GUI()
-  {
-    bloggerSans = createFont("data/fonts/BloggerSans.ttf", 12);
-    bloggerSansBold = createFont("data/fonts/BloggerSans-Bold.ttf", 12);
-  }
+  String buttonID;
+  ButtonEvent( String buttonID ){ this.buttonID = buttonID; }
+  String getMessage(){ return buttonID; }
 }
 
 class Button
@@ -36,17 +17,20 @@ class Button
   PVector size;
   color col;
   String content;
+  final String id;
   private float fontSize;
   
-  Button( String content, float x, float y, float sizeX, float sizeY, color col )
+  Button( String id, String content, float x, float y, float sizeX, float sizeY, color col )
   {
+    this.id = id;
     this.content = content;
-    this.pos = new PVector( x,y );
-    this.size = new PVector( sizeX, sizeY );
+    this.pos = new PVector( m2p(x),m2p(y) );
+    this.size = new PVector( m2p(sizeX), m2p(sizeY) );
     this.col = col;
-    fontSize = 0.5*sizeY;
+    fontSize = 0.5*m2p(sizeY);
   }
   
+  private int delay = 0;
   void show()
   {
     // ---- Sprawdzanie czy kursor jest nad przyciskiem --- //
@@ -73,6 +57,11 @@ class Button
     text( content, pos.x + 0.05*size.x, pos.y + (size.y+0.8*fontSize)/2 );
     stroke( 0 );
     strokeWeight( 1 );
+    if( clicked && (millis()-delay) > 200 )
+    {
+      delay = millis();
+      throw new ButtonEvent( id );
+    }
     clicked = false;
   }
   

@@ -2,49 +2,39 @@
 
 Level level;
 Player player;
-GUI gui;
+
+PFont bloggerSans;
+PFont bloggerSansBold;
 
 class GameEngine
 {  
+  
+  Scene scene;
+  
   public void update()
   {
-    readKeys();
-    try{ player.move(); player.fillColor = #FFF600; } // TYMCZASOWE
-    catch( HitWallException e ) { player.fillColor = #c19e20; } // TYMCZASOWE
-    catch( HitFinishException e ) {}
-    level.show();
-    player.show();
-    
-    gui.infoBar();
+    try
+    {
+      scene.update();
+    }
+    catch( ButtonEvent e )
+    {
+      switch( e.getMessage() )
+      {
+        case "play": scene = new Gameplay("level"); break;
+        case "home": scene = new HomeScene(); break;
+      }
+    }
   }
 
   GameEngine()
   {
     level = new Level();
     player = new Player();
-    gui = new GUI();
+    scene = new HomeScene();
+    
+    bloggerSans = createFont("data/fonts/BloggerSans.ttf", 12);
+    bloggerSansBold = createFont("data/fonts/BloggerSans-Bold.ttf", 12);
   }
 
-  private void readKeys()
-  {
-    float precision = 3.0;
-
-    if( ActiveKey.D )
-      player.addHorizontal( precision );
-    if( ActiveKey.A )
-      player.addHorizontal( -precision );
-    if( ActiveKey.W )
-      player.addVertical( -precision );
-    if( ActiveKey.S )
-      player.addVertical( precision );
-    if( ActiveKey.SPACE )
-    {
-      player.changeVectors();
-      ActiveKey.SPACE = false; // Aby wciśnięcie było jednokrotne
-    }
-  }
-  
-  
-  
-  
 }
