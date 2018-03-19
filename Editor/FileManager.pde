@@ -20,13 +20,11 @@ class FileManager
       wall = new JSONObject();
       vertices = new JSONArray();
       // --------- ID ----------
-      vertices.setJSONObject(0, new JSONObject().setInt("id", i+1 ));
+      wall.setInt("id", i+1);
       // -------- KOLOR --------
-      JSONObject wallColor = new JSONObject();
-      wallColor.setInt( "r", 10 );
-      wallColor.setInt( "g", 20 );
-      wallColor.setInt( "b", 30 );
-      vertices.setJSONObject(1,wallColor);
+      wall.setInt("r", 10);
+      wall.setInt("g", 10);
+      wall.setInt("b", 10);
       // ------------------------
       // -- WSPÓŁRZĘDNE ŚCIANY --
       for( int j = 0; j < walls.get( i ).vertices.size(); j++ )
@@ -34,9 +32,9 @@ class FileManager
         vertex = new JSONObject();
         vertex.setFloat( "x", (walls.get(i).vertices.get( j ).x-50)/8 );
         vertex.setFloat( "y", (walls.get(i).vertices.get( j ).y-50)/8 );
-        vertices.setJSONObject(j+2,vertex);
+        vertices.setJSONObject(j,vertex);
       }
-      wall.setJSONArray("wall", vertices);
+      wall.setJSONArray("vertices", vertices);
       // ------------------------
       // -------- ŚCIANA --------
       wallsJS.setJSONObject(i, wall);
