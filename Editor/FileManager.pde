@@ -51,8 +51,8 @@ class FileManager
       text.setFloat("font-size",texts.get(i).size/8);
       text.setFloat("rotation",texts.get(i).rotation);
       text.setString("color", hex(texts.get(i).col) );
-      text.setFloat("x",texts.get(i).x/8);
-      text.setFloat("y",texts.get(i).y/8);
+      text.setFloat("x",(texts.get(i).x-50)/8);
+      text.setFloat("y",(texts.get(i).y-50)/8);
       textsJS.setJSONObject(i,text);
     }
     level.setJSONArray("texts",textsJS);
