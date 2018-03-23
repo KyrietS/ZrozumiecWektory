@@ -51,7 +51,7 @@ class FileManager
       text=new JSONObject();
       text.setString("content",texts.get(k).content);
       text.setFloat("rotation",texts.get(k).rotation);
-      text.setInt("size",texts.get(k).size);
+      text.setFloat("size",texts.get(k).size/8);
       text.setFloat("x",texts.get(k).x/8);
       text.setFloat("y",texts.get(k).y/8);
       textsJS.setJSONObject(k,text);

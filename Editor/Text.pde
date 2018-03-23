@@ -7,7 +7,7 @@ class Text
   public color col;
   public String content = new String();
   public float rotation = 0;
-  public int size = 32;
+  public float size = 32;
   
   Text(int x,int y,color col)
   {
