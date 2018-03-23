@@ -22,9 +22,7 @@ class FileManager
       // --------- ID ----------
       wall.setInt("id", i+1);
       // -------- KOLOR --------
-      wall.setInt("r", 10);
-      wall.setInt("g", 10);
-      wall.setInt("b", 10);
+      wall.setString("color", hex(walls.get(i).col) );
       // ------------------------
       // -- WSPÓŁRZĘDNE ŚCIANY --
       for( int j = 0; j < walls.get( i ).vertices.size(); j++ )
@@ -46,15 +44,16 @@ class FileManager
     //*************ZAPIS TEKSTU********************
     JSONArray textsJS=new JSONArray();
     JSONObject text;
-    for(int k = 0;k<texts.size();k++)
+    for(int i = 0;i<texts.size();i++)
     {
       text=new JSONObject();
-      text.setString("content",texts.get(k).content);
-      text.setFloat("rotation",texts.get(k).rotation);
-      text.setFloat("size",texts.get(k).size/8);
-      text.setFloat("x",texts.get(k).x/8);
-      text.setFloat("y",texts.get(k).y/8);
-      textsJS.setJSONObject(k,text);
+      text.setString("content",texts.get(i).content);
+      text.setFloat("size",texts.get(i).size/8);
+      text.setFloat("rotation",texts.get(i).rotation);
+      text.setString("color", hex(texts.get(i).col) );
+      text.setFloat("x",texts.get(i).x/8);
+      text.setFloat("y",texts.get(i).y/8);
+      textsJS.setJSONObject(i,text);
     }
     level.setJSONArray("texts",textsJS);
     //*************KONIEC ZAPISU TEKSTOW***********
