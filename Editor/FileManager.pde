@@ -9,7 +9,27 @@ class FileManager
   void saveLevel()
   { 
     JSONObject level = new JSONObject();
-    //**************ZAPIS SCIAN*****************
+    saveWalls( level );
+    saveTexts( level );
+    saveSettings( level );
+    saveFinish( level );
+    saveJSONObject( level, "level.json" );
+  }
+  
+  // -----------------------------------
+  // Odczyt poziomu z pliku level.json
+  // -----------------------------------
+  void loadLevel()
+  {
+    // TODO
+  }
+  
+  
+// -----------------------------------------------------
+//        ZAPISYWANIE ŚCIAN
+// -----------------------------------------------------
+  private void saveWalls( JSONObject level )
+  {
     JSONArray wallsJS = new JSONArray();
     JSONObject wall;
     JSONArray vertices;
@@ -39,9 +59,12 @@ class FileManager
     }
    
     level.setJSONArray("walls", wallsJS);
-    
-    //*************KONIEC ZAPISU SCIAN*************
-    //*************ZAPIS TEKSTU********************
+  }
+// -----------------------------------------------------
+//        ZAPISYWANIE NAPISÓW
+// -----------------------------------------------------
+  private void saveTexts( JSONObject level )
+  {
     JSONArray textsJS=new JSONArray();
     JSONObject text;
     for(int i = 0;i<texts.size();i++)
@@ -56,15 +79,53 @@ class FileManager
       textsJS.setJSONObject(i,text);
     }
     level.setJSONArray("texts",textsJS);
-    //*************KONIEC ZAPISU TEKSTOW***********
-    saveJSONObject( level, "level.json" );
+  }
+// -----------------------------------------------------
+//        ZAPISYWANIE USTAWIEŃ
+// -----------------------------------------------------
+  private void saveSettings( JSONObject level )
+  {
+    JSONObject jSettings = new JSONObject();
+    
+    jSettings.setString("name", settings.name );
+    jSettings.setString("description", settings.description);
+    
+    jSettings.setString("horizontal-vector-type",settings.horizontalVectorType);
+    jSettings.setFloat("horizontal-vector-max", settings.horizontalVectorMax);
+    jSettings.setFloat("horizontal-vector-min", settings.horizontalVectorMin);
+    
+    jSettings.setString("vertical-vector-type", settings.verticalVectorType);
+    jSettings.setFloat("vertical-vector-max", settings.verticalVectorMax);
+    jSettings.setFloat("vertical-vector-min", settings.verticalVectorMin);
+    
+    jSettings.setInt("spaces-limit", settings.spacesLimit);
+    jSettings.setInt("time-limit", settings.timeLimit);
+    
+    JSONObject startPos = new JSONObject();
+    startPos.setFloat("x", settings.startPos.x);
+    startPos.setFloat("y", settings.startPos.y);
+    jSettings.setJSONObject("start-pos", startPos);
+    
+    level.setJSONObject("settings",jSettings);
+  }
+// -----------------------------------------------------
+//        ZAPISYWANIE METY
+// -----------------------------------------------------
+  private void saveFinish( JSONObject level )
+  {
+    JSONObject jFinish = new JSONObject();
+    jFinish.setString("color", hex(finish.col));
+    JSONArray vertices = new JSONArray();
+    for( int i = 0; i < finish.vertices.size(); i++ )
+    {
+      JSONObject vertex = new JSONObject();
+      vertex.setFloat("x", finish.vertices.get(i).x );
+      vertex.setFloat("y", finish.vertices.get(i).y );
+      vertices.setJSONObject( i , vertex );
+    }
+    jFinish.setJSONArray("vertices", vertices);
+    
+    level.setJSONObject("finish", jFinish );
   }
   
-  // -----------------------------------
-  // Odczyt poziomu z pliku level.json
-  // -----------------------------------
-  void loadLevel()
-  {
-    // TODO
-  }
 }
