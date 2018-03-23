@@ -1,6 +1,9 @@
 
 ArrayList<Text> texts= new ArrayList<Text>();
 ArrayList< Wall > walls = new ArrayList< Wall > ();
+Settings settings = new Settings();
+Wall finish = new Wall(0);
+
 FileManager fileManager = new FileManager();
 boolean textMode = false;
 boolean wallUnderConstruction = false;                    // Zmienna jest 'true', gdy jakaś ściana jest w trakcie konstrukcji (czerwona ściana)
