@@ -32,10 +32,11 @@ class Level
   public class Wall
   {
     public ArrayList<PVector> vertices = new ArrayList<PVector>();
+    public color col;
     public void show()
     {
       beginShape();
-      fill( 255 );
+      fill( col );
       for( PVector ver : vertices )
         vertex( ver.x, ver.y );
       endShape( CLOSE );
@@ -120,6 +121,10 @@ class Level
     {
       Wall wall = new Wall();
       JSONObject jWall = jWalls.getJSONObject( i );
+      // ------ KOLOR -------------//
+      wall.col = color( unhex(jWall.getString("color") ) );
+      
+      // ----- WIERZCHOŁKI ------ //
       JSONArray jVertices = jWall.getJSONArray("vertices");
       for( int j = 0; j < jVertices.size(); j++ )
       {
