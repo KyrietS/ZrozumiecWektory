@@ -5,6 +5,9 @@ class Gameplay implements Scene
   Button statsButton = new Button( "stats","  STATYSTYKI", 88, 0.4, 10.5, 3.2, #c1d9ff);
   
   boolean statsActive = false;
+  boolean timerActive = false;
+  float startTime = 0;
+  float stopTime = 0;
   
   Gameplay( String levelID )
   {
@@ -19,12 +22,19 @@ class Gameplay implements Scene
     {
       readKeys();
       try{ player.move(); player.fillColor = #FFF600; } // TYMCZASOWE
-      catch( HitWallException e ) { player.fillColor = #c19e20; } // TYMCZASOWE
+      catch( HitWallException e ) 
+      {
+        player.fillColor = #c19e20;
+        if( timerActive == true )
+        {
+          timerActive = false;
+          stopTime = millis();
+        }
+      }
       catch( HitFinishException e ) {}
       level.show();
       player.show();
-      if( statsActive )
-        showStats();
+      if( statsActive ) showStats();
       showInfoBar();
     }
     catch( ButtonEvent e )
@@ -55,6 +65,12 @@ class Gameplay implements Scene
     {
       player.changeVectors();
       ActiveKey.SPACE = false; // Aby wciśnięcie było jednokrotne
+      
+      if( timerActive == false && startTime == 0 )
+      {
+        timerActive = true;
+        startTime = millis();
+      }
     }
   }
   
@@ -62,10 +78,32 @@ class Gameplay implements Scene
   {
     fill( #77abff );
     rect( 0,0, m2p( mapSize ), m2p(4) );
-    
     textFont( bloggerSans );
+    
+    // ---- PRZYCISKI ---- //
     menuButton.show();
     statsButton.show();
+    
+    // ----- LICZNIK CZASU ------ //
+    float time;
+    if( timerActive == false && stopTime != 0 )
+      time = stopTime - startTime;
+    else
+      time = millis() - startTime;
+    textSize( m2p(4) );
+    fill( 0 );
+    int minutes = (int)(time / 60000);
+    int seconds = (int)(time / 1000 ) - 60 * minutes;
+    int milliseconds = (int)(time) - 1000*seconds - 60000 * minutes;
+    String timeText = minutes < 10 ? "0" + minutes : "" + minutes;
+    timeText += ":" + (seconds < 10 ? "0" + seconds : "" + seconds);
+    timeText += "." + (milliseconds < 100 ? (milliseconds < 10 ? "00" + milliseconds : "0" + milliseconds) : milliseconds);
+    
+    if( timerActive == true || startTime != 0 )
+      text( timeText, m2p(42), m2p(3.6) );
+    else
+      text( "00:00.000", m2p(42), m2p(3.6) );
+
   }
   
   void showStats()
