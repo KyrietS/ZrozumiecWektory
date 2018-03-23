@@ -48,7 +48,7 @@ class FileManager
     {
       text=new JSONObject();
       text.setString("content",texts.get(i).content);
-      text.setFloat("size",texts.get(i).size/8);
+      text.setFloat("font-size",texts.get(i).size/8);
       text.setFloat("rotation",texts.get(i).rotation);
       text.setString("color", hex(texts.get(i).col) );
       text.setFloat("x",texts.get(i).x/8);
