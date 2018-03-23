@@ -2,20 +2,16 @@
 
 class Level
 {
-  public Settings settings;                                          // Ustawienia poziomu.
+  public String name;                                                // Nazwa poziomu
+  public String description;                                         // Opis poziomu
+  public Settings settings = new Settings();                         // Ustawienia poziomu.
   public ArrayList<Wall> walls = new ArrayList<Wall>();              // Tablica wszystkich ścian poziomu.
   
 // --------- KONSTRUKCJA POZIOMU --------- //
   
-  Level()
+  Level( String levelPath )
   {
-    settings = new Settings();
-    walls.add( new Wall() );
-    walls.get( 0 ).vertices.add( new PVector(height*0.57,height*0.2857) );
-    walls.get( 0 ).vertices.add( new PVector(height*0.7619,height*0.2857) );
-    walls.get( 0 ).vertices.add( new PVector(height*0.7619,height*0.52381) );
-    walls.get( 0 ).vertices.add( new PVector(height*0.57,height*0.52381) );
-    walls.get( 0 ).vertices.add( new PVector(height*0.52381,height*0.381) );
+    loadLevel( levelPath );                                          // Wczytanie poziomu z pliku
   }
   
 // ----- WYŚWEITLANIE PLANSZY ----- //
@@ -63,6 +59,59 @@ class Level
       startPos.x = m2p( startPos.x );
       startPos.y = m2p( startPos.y );
     }
+  }
+// ------------------------------------------------------//
+// Wczytywanie poziomu (ścian, tekstów i ustawień) z pliku
+// ------------------------------------------------------//  
+  private void loadLevel( String levelPath )
+  {
+    JSONObject level;
+    try
+    {
+      level = loadJSONObject( levelPath );
+    }
+    catch( NullPointerException e )
+    {
+      println( "Nie udało się wczytać poziomu o podanej ścieżce: " + levelPath );
+      return;
+    }
+    name = level.getString( "name" );
+    description = level.getString( "description" );
+    
+    loadSettings( level.getJSONObject("settings") );
+    loadWalls( level.getJSONArray("walls") );
+    loadFinish( level.getJSONObject("finish") );
+    loadTexts( level.getJSONArray("texts") );
+    
+  }
+  private void loadSettings( JSONObject jSettings )
+  {
+    // TODO
+  }
+  private void loadWalls( JSONArray jWalls )
+  {
+    for( int i = 0; i < jWalls.size(); i++ )
+    {
+      Wall wall = new Wall();
+      JSONObject jWall = jWalls.getJSONObject( i );
+      JSONArray jVertices = jWall.getJSONArray("vertices");
+      for( int j = 0; j < jVertices.size(); j++ )
+      {
+        JSONObject vertex = jVertices.getJSONObject(j);
+        float x = m2p( vertex.getFloat("x") );
+        float y = m2p( vertex.getFloat("y") );
+        wall.vertices.add( new PVector(x, y ) );
+      }
+      walls.add( wall );
+    }
+  }
+  private void loadFinish( JSONObject jFinish )
+  {
+    // TODO
+  }
+  private void loadTexts( JSONArray jTexts )
+  {
+    // TODO
   }
  
 }
