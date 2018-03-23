@@ -6,6 +6,7 @@ class Level
   public String description;                                         // Opis poziomu
   public Settings settings = new Settings();                         // Ustawienia poziomu.
   public ArrayList<Wall> walls = new ArrayList<Wall>();              // Tablica wszystkich ścian poziomu.
+  public ArrayList<Text> texts = new ArrayList<Text>();              // Tablica wszystkich napisów poziomu.
   
 // --------- KONSTRUKCJA POZIOMU --------- //
   
@@ -22,6 +23,8 @@ class Level
     rect( 0, 0, height, height );
     for( Wall wall : walls )
       wall.show();
+    for( Text text : texts )
+      text.show();
   }
   
 // ------- KLASA WALL ------- //
@@ -36,6 +39,29 @@ class Level
       for( PVector ver : vertices )
         vertex( ver.x, ver.y );
       endShape( CLOSE );
+    }
+  }
+  
+// ------- KLASA TEXT ------- //
+
+  public class Text
+  {
+    public String content = "...";
+    public float x;
+    public float y;
+    public float rotation;
+    public float fontSize;
+    public  color col;
+
+    public void show()
+    {
+      fill(col);  
+      pushMatrix();
+      textSize(fontSize);
+      translate(this.x,this.y);
+      rotate(this.rotation);
+      text(this.content,0,0);
+      popMatrix();
     }
   }
   
@@ -111,7 +137,18 @@ class Level
   }
   private void loadTexts( JSONArray jTexts )
   {
-    // TODO
+    for( int i = 0; i < jTexts.size(); i++ )
+    {
+      Text text = new Text();
+      JSONObject jText = jTexts.getJSONObject(i);
+      text.content = jText.getString( "content" );
+      text.fontSize = m2p( jText.getFloat( "font-size" ) );
+      text.rotation = jText.getFloat( "rotation" );
+      text.x = m2p( jText.getFloat("x") );
+      text.y = m2p( jText.getFloat("y") );
+      text.col = color( unhex(jText.getString("color") ) );
+      texts.add( text );
+    }
   }
  
 }
