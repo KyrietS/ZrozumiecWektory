@@ -8,15 +8,15 @@ class Level
   public ArrayList<Wall> walls = new ArrayList<Wall>();              // Tablica wszystkich ścian poziomu.
   public ArrayList<Text> texts = new ArrayList<Text>();              // Tablica wszystkich napisów poziomu.
   
-// --------- KONSTRUKCJA POZIOMU --------- //
-  
+// --------------- KONTRUKTOR ---------------
+
   Level( String levelPath )
   {
     loadLevel( levelPath );                                          // Wczytanie poziomu z pliku
   }
-  
-// ----- WYŚWEITLANIE PLANSZY ----- //
-  
+// ------------------------------------------
+// Wyświetlanie elementów planszy.
+// ------------------------------------------
   public void show()
   {
     fill(#e8e8e8);
@@ -26,9 +26,9 @@ class Level
     for( Text text : texts )
       text.show();
   }
-  
-// ------- KLASA WALL ------- //
-
+// ------------------------------------------
+//               Klasa Wall
+// ------------------------------------------
   public class Wall
   {
     public ArrayList<PVector> vertices = new ArrayList<PVector>();
@@ -42,9 +42,9 @@ class Level
       endShape( CLOSE );
     }
   }
-  
-// ------- KLASA TEXT ------- //
-
+// ------------------------------------------
+//               Klasa Text
+// ------------------------------------------
   public class Text
   {
     public String content = "...";
@@ -65,31 +65,31 @@ class Level
       popMatrix();
     }
   }
-  
-// ------- USTAWIENIA LEVELA ------- //
-  
+// ------------------------------------------
+//              Klasa Settings
+// ------------------------------------------
   public class Settings
   {
-    public VectorType horizontalVectorType = VectorType.VELOCITY;
-    public VectorType verticalVectorType = VectorType.VELOCITY;
-    public float horizontalVectorMax = 100;
-    public float verticalVectorMax = 50;
-    public float horizontalVectorMin = 0;
-    public float verticalVectorMin = 0;
-    public float timeLimit = 60;
-    public PVector startPos = new PVector(10, 50);
+    public VectorType horizontalVectorType = VectorType.VELOCITY;    // Rodzaj wektora w poziomie.
+    public VectorType verticalVectorType = VectorType.VELOCITY;      // Rodzaj wektora w pionie.
+    public float horizontalVectorMax = 100;                          // Max długość wektora w poziomie.
+    public float verticalVectorMax = 50;                             // Max długość wektora w pionie.
+    public float horizontalVectorMin = 0;                            // Min długość wektora w poziomie.
+    public float verticalVectorMin = 0;                              // Min długość wektora w pionie.
+    public float timeLimit = 60;                                     // Limit czasu w przejście poziomu.
+    public PVector startPos = new PVector(10, 50);                   // Początkowa pozycja gracza.
     public Settings()
     {
-      // TODO: Wczytywanie ustawień z pliku zamiast ustalać to ręcznie.
+      // Ustawianie tymczasowych ustawień domyślnych.
       verticalVectorMax = m2p( verticalVectorMax );
       horizontalVectorMax = m2p( horizontalVectorMax );
       startPos.x = m2p( startPos.x );
       startPos.y = m2p( startPos.y );
     }
   }
-// ------------------------------------------------------//
-// Wczytywanie poziomu (ścian, tekstów i ustawień) z pliku
-// ------------------------------------------------------//  
+// -----------------------------------------------------------
+// Wczytywanie poziomu (ścian, tekstów i ustawień) z pliku    
+// ----------------------------------------------------------- 
   private void loadLevel( String levelPath )
   {
     JSONObject level;
@@ -111,10 +111,17 @@ class Level
     loadTexts( level.getJSONArray("texts") );
     
   }
+// ------------------------------------------
+// Wczytywanie ustawień poziomu.
+// ------------------------------------------
   private void loadSettings( JSONObject jSettings )
   {
-    // TODO
+    
   }
+  
+// ------------------------------------------
+// Wczytywanie ścian.
+// ------------------------------------------
   private void loadWalls( JSONArray jWalls )
   {
     for( int i = 0; i < jWalls.size(); i++ )
@@ -136,10 +143,18 @@ class Level
       walls.add( wall );
     }
   }
+  
+// ------------------------------------------
+// Wczytywanie mety.
+// ------------------------------------------
   private void loadFinish( JSONObject jFinish )
   {
     // TODO
   }
+  
+// ------------------------------------------
+// Wczytywanie napisów.
+// ------------------------------------------
   private void loadTexts( JSONArray jTexts )
   {
     for( int i = 0; i < jTexts.size(); i++ )
@@ -158,6 +173,9 @@ class Level
  
 }
 
+// ------------------------------------------
+// Rodzaje dostępnych w grze wektorów.
+// ------------------------------------------
 public enum VectorType
 {
   DISPLACEMENT, VELOCITY, ACCELERATION;
