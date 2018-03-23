@@ -26,7 +26,7 @@ void draw()
 void mousePressed()
 {
   if( textMode == true && mouseButton == LEFT )        // LPM w trybie tekstowym dodaje nowy tekst.
-    texts.add( new Text( mouseX, mouseY, 0 ) );
+    texts.add( new Text( mouseX, mouseY, #000000 ) );
   else if( mouseButton == LEFT )                       // LPM w trybie ścianowym dodaje nową ścianę.
     walls.get( walls.size()-1 ).addVertex( mouseX, mouseY );
 }
