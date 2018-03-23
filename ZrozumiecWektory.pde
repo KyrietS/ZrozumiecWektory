@@ -18,6 +18,7 @@ void draw()
   background( 100 );
   translate( (width-height)/2, 0 );
   engine.update();
+  printDebugInfo();
 }
 
 void keyPressed()
@@ -59,3 +60,22 @@ public static class ActiveKey
 // ------ FUNKCJE POMOCNICZE ------ //
 float p2m( float p ){ return (p*mapSize)/height; }            // Zamienia wielkość w pikselach na przeskalowaną liczbę metrów.
 float m2p( float m ){ return (m*height)/mapSize; }            // Zamienia liczbę metrów na przeskalowaną ilość pikseli.
+
+// ---------------------------------------------------
+//  Informacje pomocnicze (Debug Info)
+// ---------------------------------------------------
+float _frameRate = 0;
+float _debugTimer = 0;
+void printDebugInfo()
+{
+  
+  if( millis() - _debugTimer > 500 ) // Odświeżaj co sekundę, nie częściej.
+  {
+    _frameRate = frameRate;
+    _debugTimer = millis();
+  }
+  textSize( m2p(1) );
+  fill( 0 );
+  text( "FPS: " + _frameRate, m2p(45), m2p(99) );
+  
+}
