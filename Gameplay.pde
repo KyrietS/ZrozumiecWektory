@@ -80,10 +80,6 @@ class Gameplay implements Scene
     rect( 0,0, m2p( mapSize ), m2p(4) );
     textFont( bloggerSans );
     
-    // ---- PRZYCISKI ---- //
-    menuButton.show();
-    statsButton.show();
-    
     // ----- LICZNIK CZASU ------ //
     float time;
     if( timerActive == false && stopTime != 0 )
@@ -103,6 +99,10 @@ class Gameplay implements Scene
       text( timeText, m2p(42), m2p(3.6) );
     else
       text( "00:00.000", m2p(42), m2p(3.6) );
+
+    // ---- PRZYCISKI ---- //
+    menuButton.show();
+    statsButton.show();
 
   }
   
