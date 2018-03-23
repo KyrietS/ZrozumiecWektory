@@ -3,9 +3,9 @@
 // ----------------------------------------------- //
 class FileManager
 {
-  // ----------------------------------- //
+  // -----------------------------------
   // Zapis poziomu do pliku level.json
-  // ----------------------------------- //
+  // -----------------------------------
   void saveLevel()
   { 
     JSONObject level = new JSONObject();
@@ -15,7 +15,7 @@ class FileManager
     JSONArray vertices;
     JSONObject vertex;
     
-    for( int i = 0; i < walls.size()-1; i++ )
+    for( int i = 0; i < walls.size(); i++ )
     {
       wall = new JSONObject();
       vertices = new JSONArray();
@@ -58,5 +58,13 @@ class FileManager
     level.setJSONArray("texts",textsJS);
     //*************KONIEC ZAPISU TEKSTOW***********
     saveJSONObject( level, "level.json" );
+  }
+  
+  // -----------------------------------
+  // Odczyt poziomu z pliku level.json
+  // -----------------------------------
+  void loadLevel()
+  {
+    // TODO
   }
 }
