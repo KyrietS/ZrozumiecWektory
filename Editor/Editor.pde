@@ -35,7 +35,7 @@ void mousePressed()
       walls.get( walls.size()-1 ).addVertex( mouseX, mouseY );     // Jeśli ściana w trakcie konstrukcji, to dodaj nowy wierzchołek.
     else
     {
-      walls.add( new Wall( walls.size() ) );
+      walls.add( new Wall( walls.size()+1 ) );
       walls.get( walls.size()-1 ).addVertex( mouseX, mouseY );      // Jeśli żadna ściana nie jest budowana, to stwórz nową.
       wallUnderConstruction = true;
     }
@@ -51,13 +51,15 @@ void keyPressed()
       break;
       
     case KeyEvent.VK_F5:                                // Przycisk F5 zapisuje plik.
-      fileManager.saveLevel();
       showVanishingInfo( "Zapisano plik" );
+      fileManager.saveLevel();
       break;
       
     case KeyEvent.VK_F8:
-      fileManager.loadLevel();
       showVanishingInfo( "Wczytano plik" );
+      fileManager.loadLevel();
+      break;
+      
       
     case KeyEvent.VK_DELETE:                            // Przycisk DELETE usuwa ostatnio dodany element. (Trzeba być w odpowiednim trybie)
       if( textMode == true && texts.size() > 0)         // DELETE w trybie tekstowym usuwa ostatnio dodany napis
@@ -104,7 +106,7 @@ void showWalls()
     if( i == walls.size() -1 && wallUnderConstruction == true )
       walls.get( i ).show( #FFAFAF );
     else
-      walls.get( i ).show( 120 );
+      walls.get( i ).show();
   }
   
   for( Wall wall : walls )

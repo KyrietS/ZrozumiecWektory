@@ -25,6 +25,10 @@ class Wall
   // --------------------------------------------------- //
   // Wyświetla ścianę na ekranie z wypełnieniem col      //
   // --------------------------------------------------- //
+  public void show()
+  {
+    show( this.col );
+  }
   public void show( color col )
   {
     beginShape();
@@ -54,6 +58,6 @@ class Wall
     idCoord.x /= vertices.size();
     idCoord.y /= vertices.size();
   
-    text( Integer.toString( id+1 ), idCoord.x, idCoord.y );
+    text( Integer.toString( id ), idCoord.x, idCoord.y );
   }
 }

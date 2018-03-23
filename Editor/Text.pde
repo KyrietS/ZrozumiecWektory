@@ -9,7 +9,7 @@ class Text
   public float rotation = 0;
   public float size = 32;
   
-  Text(int x,int y,color col)
+  Text(float x,float y,color col)
   {
     this.col=col;
     this.x = x;

@@ -21,7 +21,19 @@ class FileManager
   // -----------------------------------
   void loadLevel()
   {
-    // TODO
+    try
+    {
+      JSONObject level = loadJSONObject( "level.json" );
+      loadWalls( level );
+      loadTexts( level );
+      loadSettings( level );
+      loadFinish( level );
+    }
+    catch( Exception e )
+    {
+      showVanishingInfo( "Błąd odczytu!" );
+    }
+    
   }
   
   
@@ -40,7 +52,7 @@ class FileManager
       wall = new JSONObject();
       vertices = new JSONArray();
       // --------- ID ----------
-      wall.setInt("id", i+1);
+      wall.setInt("id", walls.get(walls.size()-1).id );
       // -------- KOLOR --------
       wall.setString("color", hex(walls.get(i).col) );
       // ------------------------
@@ -126,6 +138,85 @@ class FileManager
     jFinish.setJSONArray("vertices", vertices);
     
     level.setJSONObject("finish", jFinish );
+  }
+  
+// -----------------------------------------------------
+//        WCZYTYWANIE ŚCIAN
+// -----------------------------------------------------
+  private void loadWalls( JSONObject level )
+  {
+    walls.clear();
+    JSONArray jWalls = level.getJSONArray("walls");
+    for( int i = 0; i < jWalls.size(); i++ )
+    {
+      JSONObject wall = jWalls.getJSONObject( i );
+      walls.add( new Wall( wall.getInt("id") ) );
+      walls.get( i ).col =  unhex( wall.getString("color") );
+      JSONArray vertices = wall.getJSONArray("vertices");
+      for( int j = 0; j < vertices.size(); j++ )
+      {
+        JSONObject vertex = vertices.getJSONObject( j );
+        float x = vertex.getFloat("x")*8 + 50;
+        float y = vertex.getFloat("y")*8 + 50;
+        walls.get( i ).vertices.add( new PVector( x, y ) );
+      }
+    }
+  }
+// -----------------------------------------------------
+//        WCZYTYWANIE NAPISÓW
+// -----------------------------------------------------
+  private void loadTexts( JSONObject level )
+  {
+    texts.clear();
+    JSONArray jTexts = level.getJSONArray("texts");
+    for( int i = 0; i < jTexts.size(); i++ )
+    {
+      JSONObject text = jTexts.getJSONObject( i );
+      color col = unhex( text.getString("color") );
+      float x = text.getFloat("x")*8 + 50;
+      float y = text.getFloat("y")*8 + 50;
+      texts.add( new Text( x, y, col ) );
+      texts.get( i ).content = text.getString("content");
+      texts.get( i ).size = text.getFloat( "font-size" )*8;
+      texts.get( i ).rotation = text.getFloat( "rotation" );
+    }
+  }
+// -----------------------------------------------------
+//        WCZYTYWANIE USTAWIEŃ
+// -----------------------------------------------------
+  private void loadSettings( JSONObject level )
+  {
+    JSONObject jSettings = level.getJSONObject("settings");
+    settings.name = jSettings.getString("name");
+    settings.description = jSettings.getString("description");
+    settings.horizontalVectorType = jSettings.getString("horizontal-vector-type");
+    settings.horizontalVectorMax = jSettings.getFloat("horizontal-vector-max");
+    settings.horizontalVectorMin = jSettings.getFloat("horizontal-vector-min");
+    settings.verticalVectorType = jSettings.getString("vertical-vector-type");
+    settings.verticalVectorMax = jSettings.getFloat("vertical-vector-max");
+    settings.verticalVectorMin = jSettings.getFloat("vertical-vector-min");
+    settings.spacesLimit = jSettings.getInt("spaces-limit");
+    settings.timeLimit = jSettings.getInt("time-limit");
+    JSONObject startPos = jSettings.getJSONObject("start-pos");
+    settings.startPos.x = startPos.getFloat("x");
+    settings.startPos.y = startPos.getFloat("y");
+  }
+// -----------------------------------------------------
+//        WCZYTYWANIE METY
+// -----------------------------------------------------
+  private void loadFinish( JSONObject level )
+  {
+    finish = new Wall( 0 );
+    JSONObject jFinish = level.getJSONObject("finish");
+    finish.col = unhex(jFinish.getString("color"));
+    JSONArray vertices = jFinish.getJSONArray("vertices");
+    for( int i = 0; i < vertices.size(); i++ )
+    {
+      JSONObject vertex = vertices.getJSONObject( i );
+      float x = vertex.getFloat("x")*8 + 50;
+      float y = vertex.getFloat("y")*8 + 50;
+      finish.vertices.add( new PVector( x, y ) );
+    }
   }
   
 }
