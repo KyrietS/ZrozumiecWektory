@@ -9,6 +9,8 @@ class Gameplay implements Scene
   Gameplay( String levelID )
   {
     this.levelID = levelID;
+    level = new Level( "levels/" + this.levelID + ".json" );
+    player = new Player();
   }
   
   void update()

@@ -29,8 +29,6 @@ class GameEngine
 
   GameEngine()
   {
-    level = new Level();
-    player = new Player();
     scene = new HomeScene();
     
     bloggerSans = createFont("data/fonts/BloggerSans.ttf", 12);
