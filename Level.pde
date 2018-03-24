@@ -2,11 +2,10 @@
 
 class Level
 {
-  public String name;                                                // Nazwa poziomu
-  public String description;                                         // Opis poziomu
   public Settings settings = new Settings();                         // Ustawienia poziomu.
   public ArrayList<Wall> walls = new ArrayList<Wall>();              // Tablica wszystkich ścian poziomu.
   public ArrayList<Text> texts = new ArrayList<Text>();              // Tablica wszystkich napisów poziomu.
+  public Wall finish = new Wall();
   
 // --------------- KONTRUKTOR ---------------
 
@@ -23,6 +22,7 @@ class Level
     rect( 0, 0, height, height );
     for( Wall wall : walls )
       wall.show();
+    finish.show();
     for( Text text : texts )
       text.show();
   }
@@ -97,8 +97,6 @@ class Level
       println( "Nie udało się wczytać poziomu o podanej ścieżce: " + levelPath );
       return;
     }
-    name = level.getString( "name" );
-    description = level.getString( "description" );
     
     loadSettings( level.getJSONObject("settings") );
     loadWalls( level.getJSONArray("walls") );
@@ -169,7 +167,15 @@ class Level
 // ------------------------------------------
   private void loadFinish( JSONObject jFinish )
   {
-    // TODO
+    finish.col = unhex(jFinish.getString("color"));
+    JSONArray vertices = jFinish.getJSONArray("vertices");
+    for( int i = 0; i < vertices.size(); i++ )
+    {
+      JSONObject vertex = vertices.getJSONObject( i );
+      float x = m2p( vertex.getFloat("x") );
+      float y = m2p( vertex.getFloat("y") );
+      finish.vertices.add( new PVector( x, y ) );
+    }
   }
   
 // ------------------------------------------
