@@ -56,6 +56,7 @@ class Level
 
     public void show()
     {
+      textFont( bloggerSans );
       fill(col);  
       pushMatrix();
       textSize(fontSize);
