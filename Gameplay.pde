@@ -31,7 +31,10 @@ class Gameplay implements Scene
           stopTime = millis();
         }
       }
-      catch( HitFinishException e ) {}
+      catch( HitFinishException e )
+      {
+        level.finish.col = #FF0000;
+      }
       level.show();
       player.show();
       if( statsActive ) showStats();
