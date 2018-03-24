@@ -12,6 +12,7 @@ class Player
   private PVector velocity = new PVector(0, 0);               // Współrzędne wektora prędkości wypadkowej (w pikselach).
   private Level.Settings settings;                            // Referencja do ustawień poziomu.
   private PFont vectorFont;                                   // Czcionka użyta do wyświetlania wartości przy wektorach.
+  private int spaceHitCounter = 0;                            // Zlicza liczbę wciśniętych spacji.
 // -----------------------------------------------------------//
   
 // ------------- KONSTRUKTOR -------------
@@ -104,10 +105,22 @@ class Player
 // -----------------------------------------------
   public void changeVectors()
   {
-    realVector.x = targetVector.x;
-    realVector.y = targetVector.y;
-    targetVector.x = 0;
-    targetVector.y = 0;
+    if( settings.spacesLimit == 0 || spaceHitCounter < settings.spacesLimit )
+    {
+      realVector.x = targetVector.x;
+      realVector.y = targetVector.y;
+      targetVector.x = 0;
+      targetVector.y = 0;
+      spaceHitCounter++;
+    }
+    
+    if( settings.spacesLimit != 0 && spaceHitCounter >= settings.spacesLimit )
+    {
+      settings.horizontalVectorMax = 0;
+      settings.verticalVectorMax = 0;
+      settings.horizontalVectorMin = 0;
+      settings.verticalVectorMin = 0;
+    }
   }
 // ---------------------------------------------------------------------
 // Wyświetlenie strzałek na ekranie oraz wartości liczbowych przy nich
