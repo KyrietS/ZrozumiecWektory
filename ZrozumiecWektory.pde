@@ -29,7 +29,12 @@ void keyPressed()
     case KeyEvent.VK_A: ActiveKey.A = true; break;
     case KeyEvent.VK_S: ActiveKey.S = true; break;
     case KeyEvent.VK_D: ActiveKey.D = true; break;
+    case KeyEvent.VK_UP: ActiveKey.UP = true; break;
+    case KeyEvent.VK_DOWN: ActiveKey.DOWN = true; break;
+    case KeyEvent.VK_LEFT: ActiveKey.LEFT = true; break;
+    case KeyEvent.VK_RIGHT: ActiveKey.RIGHT = true; break;
     case KeyEvent.VK_SPACE: ActiveKey.SPACE = true; break;
+    case KeyEvent.VK_CONTROL: ActiveKey.CTRL = true; break;
   }
 }
 
@@ -41,7 +46,12 @@ void keyReleased()
     case KeyEvent.VK_A: ActiveKey.A = false; break;
     case KeyEvent.VK_S: ActiveKey.S = false; break;
     case KeyEvent.VK_D: ActiveKey.D = false; break;
+    case KeyEvent.VK_UP: ActiveKey.UP = false; break;
+    case KeyEvent.VK_DOWN: ActiveKey.DOWN = false; break;
+    case KeyEvent.VK_LEFT: ActiveKey.LEFT = false; break;
+    case KeyEvent.VK_RIGHT: ActiveKey.RIGHT = false; break;
     case KeyEvent.VK_SPACE: ActiveKey.SPACE = false; break;
+    case KeyEvent.VK_CONTROL: ActiveKey.CTRL = false; break;
   }
 }
 
@@ -54,7 +64,12 @@ public static class ActiveKey
   static boolean A = false;
   static boolean S = false;
   static boolean D = false;
+  static boolean UP = false;
+  static boolean DOWN = false;
+  static boolean LEFT = false;
+  static boolean RIGHT = false;
   static boolean SPACE = false;
+  static boolean CTRL = false;
 }
 
 // ------ FUNKCJE POMOCNICZE ------ //
