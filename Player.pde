@@ -70,6 +70,8 @@ class Player
     
     if( hitWall() )
       throw new HitWallException();
+    if( hitFinish() )
+      throw new HitFinishException();
   }
 // ---------------------------------------
 // Zmiana wektora docelowego w poziomie.
@@ -179,6 +181,16 @@ class Player
         return true;
     }
     return false;
+  }
+// ------------------------------------------
+// Sprawdzenie czy gracz koliduje z metą.
+// ------------------------------------------
+  public boolean hitFinish()
+  {
+    if( CollisionSystem.isCollision(level.finish.vertices,pos,radius) )
+      return true;
+    else
+      return false;
   }
   
 } // class Player
