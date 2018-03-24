@@ -13,6 +13,6 @@ class Settings
   
   int spacesLimit = 0;                                    // 0 = bez limitu
   int timeLimit = 0;                                      // 0 = bez limitu (czas w milisekundach)
-  PVector startPos = new PVector( 50, 50 );
+  PVector startPos = new PVector( 3, 50 );
   
 }

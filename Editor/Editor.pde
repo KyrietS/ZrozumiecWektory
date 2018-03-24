@@ -108,6 +108,7 @@ void showWalls()
     else
       walls.get( i ).show();
   }
+  finish.show();
   
   for( Wall wall : walls )
     wall.showId();
