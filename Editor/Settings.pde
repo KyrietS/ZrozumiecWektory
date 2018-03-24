@@ -4,11 +4,11 @@ class Settings
   String description = "Opis poziomu";
   
   String horizontalVectorType = "velocity";
-  float horizontalVectorMax = 0;
+  float horizontalVectorMax = 100;
   float horizontalVectorMin = 0;
   
   String verticalVectorType = "displacement";
-  float verticalVectorMax = 0;
+  float verticalVectorMax = 50;
   float verticalVectorMin = 0;
   
   int spacesLimit = 0;                                    // 0 = bez limitu
