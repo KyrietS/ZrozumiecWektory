@@ -70,22 +70,17 @@ class Level
 // ------------------------------------------
   public class Settings
   {
+    public String name = "";                                         // Nazwa poziomu.
+    public String description = "";                                  // Opis poziomu.
     public VectorType horizontalVectorType = VectorType.VELOCITY;    // Rodzaj wektora w poziomie.
     public VectorType verticalVectorType = VectorType.VELOCITY;      // Rodzaj wektora w pionie.
-    public float horizontalVectorMax = 100;                          // Max długość wektora w poziomie.
-    public float verticalVectorMax = 50;                             // Max długość wektora w pionie.
+    public float horizontalVectorMax = 999;                          // Max długość wektora w poziomie.
+    public float verticalVectorMax = 999;                            // Max długość wektora w pionie.
     public float horizontalVectorMin = 0;                            // Min długość wektora w poziomie.
     public float verticalVectorMin = 0;                              // Min długość wektora w pionie.
-    public float timeLimit = 60;                                     // Limit czasu w przejście poziomu.
-    public PVector startPos = new PVector(10, 50);                   // Początkowa pozycja gracza.
-    public Settings()
-    {
-      // Ustawianie tymczasowych ustawień domyślnych.
-      verticalVectorMax = m2p( verticalVectorMax );
-      horizontalVectorMax = m2p( horizontalVectorMax );
-      startPos.x = m2p( startPos.x );
-      startPos.y = m2p( startPos.y );
-    }
+    public int spacesLimit = 0;                                      // Ile razy można wcisnąć spację. (0 = bez limitu).
+    public int timeLimit = 60;                                       // Limit czasu w przejście poziomu (0 = bez limitu, w milisekudnach).
+    public PVector startPos = new PVector(0, 0);                     // Początkowa pozycja gracza.
   }
 // -----------------------------------------------------------
 // Wczytywanie poziomu (ścian, tekstów i ustawień) z pliku    
@@ -116,7 +111,32 @@ class Level
 // ------------------------------------------
   private void loadSettings( JSONObject jSettings )
   {
+    settings.name = jSettings.getString("name");
+    settings.description = jSettings.getString("description");
+    settings.horizontalVectorMax = m2p( jSettings.getFloat("horizontal-vector-max") );
+    settings.horizontalVectorMin = m2p( jSettings.getFloat("horizontal-vector-min") );
+    settings.verticalVectorMax = m2p( jSettings.getFloat("vertical-vector-max") );
+    settings.verticalVectorMin = m2p( jSettings.getFloat("vertical-vector-min") );
+    settings.spacesLimit = jSettings.getInt("spaces-limit");
+    settings.timeLimit = jSettings.getInt("time-limit");
+    JSONObject startPos = jSettings.getJSONObject("start-pos");
+    settings.startPos.x = m2p( startPos.getFloat("x") );
+    settings.startPos.y = m2p( startPos.getFloat("y") );
     
+    switch( jSettings.getString("vertical-vector-type") )
+    {
+      case "displacement": settings.verticalVectorType = VectorType.DISPLACEMENT; break;
+      case "velocity": settings.verticalVectorType = VectorType.VELOCITY; break;
+      case "acceleration": settings.verticalVectorType = VectorType.ACCELERATION; break;
+      default: throw new RuntimeException( "Nieznany rodzaj wektora [vertical]" );
+    }
+    switch( jSettings.getString("horizontal-vector-type") )
+    {
+      case "displacement": settings.horizontalVectorType = VectorType.DISPLACEMENT; break;
+      case "velocity": settings.horizontalVectorType = VectorType.VELOCITY; break;
+      case "acceleration": settings.horizontalVectorType = VectorType.ACCELERATION; break;
+      default: throw new RuntimeException( "Nieznany rodzaj wektora [horizontal]" );
+    }
   }
   
 // ------------------------------------------
