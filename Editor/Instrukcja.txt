@@ -1,0 +1,16 @@
+============================================
+   Instrukcja obsługi edytora poziomów.
+============================================
+
+Klawiszologia:
+
+F1          - Przełączanie pomiędzy trybem ścianowym a tekstowym
+F5          - Zapisanie poziomu
+F8          - Wczytanie poziomu
+DELETE      - Usunięcie ostatnio dodanego wierzchołka, ściany, napisu
+PAGE UP     - Powiększenie czcionki w aktywnym napisie
+PAGE DOWN   - Pomniejszenie czcionki w aktywnym napisie
+STRZAŁKI    - Przemieszczanie aktywnego napisu
+KÓŁKO MYSZY - Obrót aktywnego napisu
+
+Nie zapomnij regularnie zapisywać (F5)!
