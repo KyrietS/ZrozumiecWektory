@@ -54,15 +54,18 @@ class Gameplay implements Scene
   
   private void readKeys()
   {
-    float precision = 3.0;
+    float precision = 3.0 * 60 / frameRate;
 
-    if( ActiveKey.D )
+    if( ActiveKey.CTRL )
+      precision = precision / 15;
+
+    if( ActiveKey.D || ActiveKey.RIGHT )
       player.addHorizontal( precision );
-    if( ActiveKey.A )
+    if( ActiveKey.A || ActiveKey.LEFT )
       player.addHorizontal( -precision );
-    if( ActiveKey.W )
+    if( ActiveKey.W || ActiveKey.UP )
       player.addVertical( -precision );
-    if( ActiveKey.S )
+    if( ActiveKey.S || ActiveKey.DOWN )
       player.addVertical( precision );
     if( ActiveKey.SPACE )
     {
