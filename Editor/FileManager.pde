@@ -52,7 +52,7 @@ class FileManager
       wall = new JSONObject();
       vertices = new JSONArray();
       // --------- ID ----------
-      wall.setInt("id", walls.get(walls.size()-1).id );
+      wall.setInt("id", walls.get(i).id );
       // -------- KOLOR --------
       wall.setString("color", hex(walls.get(i).col) );
       // ------------------------
@@ -131,8 +131,8 @@ class FileManager
     for( int i = 0; i < finish.vertices.size(); i++ )
     {
       JSONObject vertex = new JSONObject();
-      vertex.setFloat("x", finish.vertices.get(i).x );
-      vertex.setFloat("y", finish.vertices.get(i).y );
+      vertex.setFloat("x", (finish.vertices.get(i).x-50)/8 );
+      vertex.setFloat("y", (finish.vertices.get(i).y-50)/8 );
       vertices.setJSONObject( i , vertex );
     }
     jFinish.setJSONArray("vertices", vertices);
