@@ -5,6 +5,9 @@ class Gameplay implements Scene
   Button statsButton = new Button( "stats","  STATYSTYKI", 88, 0.4, 10.5, 3.2, #c1d9ff);
   Button startButton = new Button( "start", " Rozpocznij", 40, 80, 21.5, 8, #FFFFFF );
   Button backButton = new Button( "back", "Powrót do MENU", 5, 95, 12, 3, #FFFFFF ); 
+  Button restartButton = new Button( "play", " RESTART", 7.8, 0.4, 7.5, 3.2, #c1d9ff);
+  Button changeLevelButton = new Button( "levels", "Następny poziom", 40, 80, 30, 8, #c1d9ff );
+  private Button collisionTextBox = new Button("", "  KOLIZJA", 60, 0.4, 8, 3.2, #FF0000);
   
   boolean statsActive = false;
   boolean timerActive = false;
@@ -17,6 +20,10 @@ class Gameplay implements Scene
     this.levelID = levelID;
     level = new Level( "data/levels/" + this.levelID + ".json" );
     player = new Player();
+    
+    collisionTextBox.setFontColor(255,255);
+    collisionTextBox.isBold = true;
+    collisionTextBox.isActive = false;
   }
   
   void update()
@@ -25,6 +32,8 @@ class Gameplay implements Scene
     {
       case INTRO: showIntro(); break;
       case GAMEPLAY: readKeys(); showGameplay(); break;
+      case COLLISION: showGameplay(); showCollision(); break;
+      case WIN: showGameplay(); showWin(); break;
     }
     
     
@@ -62,19 +71,19 @@ class Gameplay implements Scene
   {
     try
     {
-      try{ player.move(); player.fillColor = #FFF600; } // TYMCZASOWE
+      try
+      { 
+        player.move();
+      }
       catch( HitWallException e ) 
       {
-        player.fillColor = #c19e20;
-        if( timerActive == true )
-        {
-          timerActive = false;
-          stopTime = millis();
-        }
+        currentFrame = Frame.COLLISION;
+        stopTimer();
       }
       catch( HitFinishException e )
       {
-        level.finish.col = #FF0000;
+        currentFrame = Frame.WIN;
+        stopTimer();
       }
       level.show();
       player.show();
@@ -87,6 +96,46 @@ class Gameplay implements Scene
       {
         case "stats": statsActive = !statsActive; break;
         default: throw e;
+      }
+    }
+  }
+  
+  private void showCollision()
+  {
+    collisionTextBox.show();
+    player.setPulse( #FF0000, 500 );
+  }
+  
+  private int winFrameOpacity = 0;
+  private void showWin()
+  {
+    statsButton.isActive = false;
+    player.setPulse( #29A500, 500 );
+    fill( #42f4b0, winFrameOpacity );
+    rect( 0, m2p(4), height, height );
+    
+    if( winFrameOpacity < 235 )
+      winFrameOpacity += 255/(2.5*frameRate);
+    else
+    {
+      textFont( bloggerSansBold );
+      textSize( m2p( 5 ) );
+      fill( 0 );
+      text( "Podsumowanie:", m2p(5), m2p(10) );
+      textFont( bloggerSans );
+      textSize( m2p( 4 ) );
+      String summary = new String();
+      summary += "Nazwa poziomu: " + level.settings.name + "\n";
+      summary += "Całkowita droga: " + "\n";
+      summary += "Czas ruchu: " + (stopTime - startTime)/1000 + " s\n";
+      summary += "Prędkość średnia: " + "\n";
+      summary += "Wciśniętych spacji: " + player.spaceHitCounter + "\n\n";
+      summary += "Gratulacje!";
+      text( summary, m2p(5), m2p(16) );
+      try{ changeLevelButton.show(); }
+      catch( ButtonEvent e )
+      {
+        throw new ButtonEvent("home");
       }
     }
   }
@@ -147,8 +196,18 @@ class Gameplay implements Scene
 
     // ---- PRZYCISKI ---- //
     menuButton.show();
+    restartButton.show();
     statsButton.show();
 
+  }
+  
+  private void stopTimer()
+  {
+    if( timerActive == true )
+    {
+      timerActive = false;
+      stopTime = millis();
+    }
   }
   
   void showStats()
@@ -160,5 +219,5 @@ class Gameplay implements Scene
 
 public enum Frame 
 { 
-  INTRO, GAMEPLAY, FAIL, WIN; 
+  INTRO, GAMEPLAY, COLLISION, FAIL, WIN; 
 }
