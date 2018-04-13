@@ -31,7 +31,7 @@ class Button
   }
   
   private int delay = 0;
-  void show()
+  void show() throws ButtonEvent
   {
     // ---- Sprawdzanie czy kursor jest nad przyciskiem --- //
     boolean hover = false;
