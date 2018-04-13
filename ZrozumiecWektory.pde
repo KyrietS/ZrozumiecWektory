@@ -92,5 +92,9 @@ void printDebugInfo()
   textSize( m2p(1) );
   fill( 0 );
   text( "FPS: " + _frameRate, m2p(45), m2p(99) );
-  
+}
+
+void mouseReleased()
+{
+  buttonPressed = false;
 }

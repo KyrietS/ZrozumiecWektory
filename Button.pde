@@ -4,6 +4,8 @@
 // Zbiór klas do tworzenia ładnego interfejsu użytkownika :)
 // --------------------------------------------------------------//
 
+static private boolean buttonPressed = false;
+
 class ButtonEvent extends RuntimeException
 {
   String buttonID;
@@ -28,10 +30,10 @@ class Button
   {
     this.id = id;
     this.content = content;
-    this.pos = new PVector( m2p(x),m2p(y) );
-    this.size = new PVector( m2p(sizeX), m2p(sizeY) );
+    this.pos = new PVector( x , y );
+    this.size = new PVector( sizeX, sizeY );
     this.col = col;
-    fontSize = 0.5*m2p(sizeY);
+    fontSize = 0.5*sizeY;
   }
   
   private int delay = 0;
@@ -41,8 +43,11 @@ class Button
     boolean hover = false;
     boolean clicked = false;
     if( mouseHover() && isActive )
-      if( mousePressed )
+      if( mousePressed && buttonPressed == false )
+      {
         clicked = true;
+        buttonPressed = true;
+      }
       else
         hover = true;
     

@@ -1,0 +1,24 @@
+{
+  "settings": {
+    "horizontal-vector-min": 0,
+    "time-limit": 0,
+    "horizontal-vector-type": "velocity",
+    "horizontal-vector-max": 100,
+    "vertical-vector-type": "velocity",
+    "vertical-vector-min": 0,
+    "name": "12. Nazwa poziomu",
+    "description": "Opis poziomu",
+    "start-pos": {
+      "x": 50,
+      "y": 50
+    },
+    "vertical-vector-max": 50,
+    "spaces-limit": 0
+  },
+  "walls": [],
+  "texts": [],
+  "finish": {
+    "color": "FF787878",
+    "vertices": []
+  }
+}

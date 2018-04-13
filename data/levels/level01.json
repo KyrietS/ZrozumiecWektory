@@ -6,8 +6,8 @@
     "horizontal-vector-max": 100,
     "vertical-vector-type": "displacement",
     "vertical-vector-min": 0,
-    "name": "Nazwa poziomu",
-    "description": "Opis poziomu",
+    "name": "1. Poziom testowy",
+    "description": "Tutaj będzie się pojawiał opis poziomu",
     "start-pos": {
       "x": 3,
       "y": 50
