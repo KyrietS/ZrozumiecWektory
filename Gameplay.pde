@@ -3,13 +3,13 @@ class Gameplay implements Scene
   String levelID;
   
   // --------------------- PRZYCISKI -------------------------------------------------------------------- //
-  private Button menuButton = new Button( "home","  MENU", 0.5, 0.4, 6.5, 3.2, #c1d9ff);
-  private Button statsButton = new Button( "stats","  STATYSTYKI", 88, 0.4, 10.5, 3.2, #c1d9ff);
-  private Button startButton = new Button( "start", " Rozpocznij", 40, 80, 21.5, 8, #FFFFFF );
-  private Button backButton = new Button( "back", "Powrót do MENU", 5, 95, 12, 3, #FFFFFF ); 
-  private Button restartButton = new Button( "play", " RESTART", 7.8, 0.4, 7.5, 3.2, #c1d9ff);
-  private Button changeLevelButton = new Button( "levels", "Następny poziom", 40, 80, 30, 8, #c1d9ff );
-  private Button collisionTextBox = new Button("", "  KOLIZJA", 60, 0.4, 8, 3.2, #FF0000);
+  private Button menuButton = new Button( "home","  MENU", m2p(0.5), m2p(0.4), m2p(6.5), m2p(3.2), #c1d9ff);
+  private Button statsButton = new Button( "stats","  STATYSTYKI", m2p(88), m2p(0.4), m2p(10.5), m2p(3.2), #c1d9ff);
+  private Button startButton = new Button( "start", " Rozpocznij", m2p(40), m2p(80), m2p(21.5), m2p(8), #FFFFFF );
+  private Button backButton = new Button( "levels", "   Powrót", m2p(5), m2p(93), m2p(12), m2p(4.5), #FFFFFF ); 
+  private Button restartButton = new Button( "play", " RESTART", m2p(7.8), m2p(0.4), m2p(7.5), m2p(3.2), #c1d9ff);
+  private Button changeLevelButton = new Button( "levels", "Następny poziom", m2p(40), m2p(80), m2p(30), m2p(8), #c1d9ff );
+  private Button collisionTextBox = new Button("", "  KOLIZJA", m2p(60), m2p(0.4), m2p(8), m2p(3.2), #FF0000);
   // ---------------------------------------------------------------------------------------------------- //
   
   private Frame currentFrame = Frame.INTRO;          // Jakie informacje mają być wyświetlane na ekranie.
@@ -34,6 +34,7 @@ class Gameplay implements Scene
 // -----------------------------------------------------------------
   void update()
   {
+    
     switch( currentFrame )
     {
       case INTRO: showIntro(); break;
@@ -41,7 +42,6 @@ class Gameplay implements Scene
       case COLLISION: showGameplay(); showCollision(); break;
       case WIN: showGameplay(); showWin(); break;
     }
-    
     
   }
 
@@ -70,7 +70,7 @@ class Gameplay implements Scene
       switch( e.buttonID )
       {
         case "start": currentFrame = Frame.GAMEPLAY; break;
-        case "back": throw new ButtonEvent("home");
+        case "levels": throw new ButtonEvent("levels");
       }
     }
     

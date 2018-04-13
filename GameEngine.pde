@@ -21,7 +21,8 @@ class GameEngine
     {
       switch( e.getMessage() )
       {
-        case "play": scene = new Gameplay("level"); break;
+        case "play": scene = new Gameplay("level01"); break;
+        case "levels": scene = new LevelsScene(); break;
         case "home": scene = new HomeScene(); break;
       }
     }
@@ -34,6 +35,11 @@ class GameEngine
     bloggerSans = createFont("data/fonts/BloggerSans.ttf", 12);
     bloggerSansBold = createFont("data/fonts/BloggerSans-Bold.ttf", 12);
     textFont( bloggerSans );
+  }
+
+  public void startLevel( String levelID )
+  {
+    scene = new Gameplay( levelID );
   }
 
 }

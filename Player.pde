@@ -21,9 +21,9 @@ class Player
 // ------------- KONSTRUKTOR -------------
   Player()
   {
-    this.settings = level.settings;
-    pos = new PVector( settings.startPos.x, settings.startPos.y );
-    vectorFont = createFont("data/fonts/BloggerSans-Bold.ttf", 12);
+      this.settings = level.settings;
+      pos = new PVector( settings.startPos.x, settings.startPos.y );
+      vectorFont = createFont("data/fonts/BloggerSans-Bold.ttf", 12);
     radius = m2p(radius);
   }
 // ---------------------------------------

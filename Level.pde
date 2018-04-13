@@ -2,7 +2,7 @@
 
 class Level
 {
-  public Settings settings = new Settings();                         // Ustawienia poziomu.
+  public Settings settings;                                          // Ustawienia poziomu.
   public ArrayList<Wall> walls = new ArrayList<Wall>();              // Tablica wszystkich ścian poziomu.
   public ArrayList<Text> texts = new ArrayList<Text>();              // Tablica wszystkich napisów poziomu.
   public Wall finish = new Wall();
@@ -110,6 +110,7 @@ class Level
 // ------------------------------------------
   private void loadSettings( JSONObject jSettings )
   {
+    this.settings = new Settings();
     settings.name = jSettings.getString("name");
     settings.description = jSettings.getString("description");
     settings.horizontalVectorMax = m2p( jSettings.getFloat("horizontal-vector-max") );
