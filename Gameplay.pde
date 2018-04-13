@@ -1,19 +1,22 @@
 class Gameplay implements Scene
 {
   String levelID;
-  Button menuButton = new Button( "home","  MENU", 0.5, 0.4, 6.5, 3.2, #c1d9ff);
-  Button statsButton = new Button( "stats","  STATYSTYKI", 88, 0.4, 10.5, 3.2, #c1d9ff);
-  Button startButton = new Button( "start", " Rozpocznij", 40, 80, 21.5, 8, #FFFFFF );
-  Button backButton = new Button( "back", "Powrót do MENU", 5, 95, 12, 3, #FFFFFF ); 
-  Button restartButton = new Button( "play", " RESTART", 7.8, 0.4, 7.5, 3.2, #c1d9ff);
-  Button changeLevelButton = new Button( "levels", "Następny poziom", 40, 80, 30, 8, #c1d9ff );
-  private Button collisionTextBox = new Button("", "  KOLIZJA", 60, 0.4, 8, 3.2, #FF0000);
   
-  boolean statsActive = false;
-  boolean timerActive = false;
-  Frame currentFrame = Frame.INTRO;
-  float startTime = 0;
-  float stopTime = 0;
+  // --------------------- PRZYCISKI -------------------------------------------------------------------- //
+  private Button menuButton = new Button( "home","  MENU", 0.5, 0.4, 6.5, 3.2, #c1d9ff);
+  private Button statsButton = new Button( "stats","  STATYSTYKI", 88, 0.4, 10.5, 3.2, #c1d9ff);
+  private Button startButton = new Button( "start", " Rozpocznij", 40, 80, 21.5, 8, #FFFFFF );
+  private Button backButton = new Button( "back", "Powrót do MENU", 5, 95, 12, 3, #FFFFFF ); 
+  private Button restartButton = new Button( "play", " RESTART", 7.8, 0.4, 7.5, 3.2, #c1d9ff);
+  private Button changeLevelButton = new Button( "levels", "Następny poziom", 40, 80, 30, 8, #c1d9ff );
+  private Button collisionTextBox = new Button("", "  KOLIZJA", 60, 0.4, 8, 3.2, #FF0000);
+  // ---------------------------------------------------------------------------------------------------- //
+  
+  private Frame currentFrame = Frame.INTRO;          // Jakie informacje mają być wyświetlane na ekranie.
+  private boolean statsActive = false;               // Czy otwarte jest okienko ze statystykami.
+  private boolean timerActive = false;               // Czy licznik odlicza czas, czy stoi.
+  private float startTime = 0;                       // Czas początkowy odliczania.
+  private float stopTime = 0;                        // Czas końcowy odliczania.
   
   Gameplay( String levelID )
   {
@@ -26,6 +29,9 @@ class Gameplay implements Scene
     collisionTextBox.isActive = false;
   }
   
+// -----------------------------------------------------------------
+// Wyświetlanie pojedynczej klatki gry
+// -----------------------------------------------------------------
   void update()
   {
     switch( currentFrame )
@@ -38,7 +44,10 @@ class Gameplay implements Scene
     
     
   }
-  
+
+// -----------------------------------------------------------------
+// Wyświetlanie wstępu do poziomu
+// -----------------------------------------------------------------
   private void showIntro()
   {
     fill(#42f4b0);
@@ -67,6 +76,9 @@ class Gameplay implements Scene
     
   }
   
+// -----------------------------------------------------------------
+// Wyświetlanie klatki właściwej rozgrywki
+// -----------------------------------------------------------------
   private void showGameplay()
   {
     try
@@ -99,13 +111,19 @@ class Gameplay implements Scene
       }
     }
   }
-  
+
+// -----------------------------------------------------------------
+// Wyświetlanie informacji o wystąpieniu kolizji
+// -----------------------------------------------------------------
   private void showCollision()
   {
     collisionTextBox.show();
     player.setPulse( #FF0000, 500 );
   }
   
+// -----------------------------------------------------------------
+// Wyświetlanie podsumowania poziomu
+// -----------------------------------------------------------------
   private int winFrameOpacity = 0;
   private void showWin()
   {
@@ -140,6 +158,9 @@ class Gameplay implements Scene
     }
   }
   
+// -----------------------------------------------------------------
+// Odczytanie i reagowanie na zdarzenia z klawiatury
+// -----------------------------------------------------------------
   private void readKeys()
   {
     float precision = 3.0 * 60 / frameRate;
@@ -168,6 +189,9 @@ class Gameplay implements Scene
     }
   }
   
+// -----------------------------------------------------------------
+// Wyświetlanie paska z informacjami
+// -----------------------------------------------------------------
   void showInfoBar()
   {
     fill( #77abff );
@@ -201,6 +225,9 @@ class Gameplay implements Scene
 
   }
   
+// -----------------------------------------------------------------
+// Zatrzymanie licznika
+// -----------------------------------------------------------------
   private void stopTimer()
   {
     if( timerActive == true )
@@ -217,6 +244,9 @@ class Gameplay implements Scene
   }
 }
 
+// -----------------------------------------------------------------
+// Elementy aktualnie wyświetlane w oknie rozgrywki
+// -----------------------------------------------------------------
 public enum Frame 
 { 
   INTRO, GAMEPLAY, COLLISION, FAIL, WIN; 
