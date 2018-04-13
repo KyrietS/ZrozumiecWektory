@@ -24,7 +24,7 @@ class Gameplay implements Scene
     switch( currentFrame )
     {
       case INTRO: showIntro(); break;
-      case GAMEPLAY: showGameplay(); break;
+      case GAMEPLAY: readKeys(); showGameplay(); break;
     }
     
     
@@ -62,7 +62,6 @@ class Gameplay implements Scene
   {
     try
     {
-      readKeys();
       try{ player.move(); player.fillColor = #FFF600; } // TYMCZASOWE
       catch( HitWallException e ) 
       {

@@ -13,6 +13,7 @@ class Player
   private Level.Settings settings;                            // Referencja do ustawień poziomu.
   private PFont vectorFont;                                   // Czcionka użyta do wyświetlania wartości przy wektorach.
   private int spaceHitCounter = 0;                            // Zlicza liczbę wciśniętych spacji.
+  private boolean isFrozen = false;                           // Czy gracz ma przestać się poruszać (zamrożony).
 // -----------------------------------------------------------//
   
 // ------------- KONSTRUKTOR -------------
@@ -38,6 +39,9 @@ class Player
 // ---------------------------------------------------
   public void move()
   {
+    if( isFrozen )  // Zamrożony gracz się nie porusza.
+      return;
+      
     // --- HROIZONTALS ---
     if( settings.horizontalVectorType == VectorType.DISPLACEMENT )
     {
@@ -70,7 +74,10 @@ class Player
     }
     
     if( hitWall() )
+    {
+      isFrozen = true;
       throw new HitWallException();
+    }
     if( hitFinish() )
       throw new HitFinishException();
   }
