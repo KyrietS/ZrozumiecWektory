@@ -6,14 +6,16 @@ class Player
 // ------------------- USTAWIENIA PLAYERA ------------------- //
   private PVector pos;                                        // Pozycja gracza na mapie (w pikselach).
   private float radius = 3;                                   // Promień kulki gracza (w pikselach). TYMCZASOWO wpisane ręcznie
-  public color fillColor = #FFF600;                           // Kolor wypełnienia kulki. TYMCZASOWO! public
+  private color fillColor = #FFF600;                          // Kolor wypełnienia kulki.
   private PVector targetVector = new PVector(0, 0);           // Współrzędne wektora docelowego (w piskelach).
   private PVector realVector = new PVector(0, 0);             // Współrzędne wektora rzeczywistego (w pikselach).
   private PVector velocity = new PVector(0, 0);               // Współrzędne wektora prędkości wypadkowej (w pikselach).
   private Level.Settings settings;                            // Referencja do ustawień poziomu.
   private PFont vectorFont;                                   // Czcionka użyta do wyświetlania wartości przy wektorach.
-  private int spaceHitCounter = 0;                            // Zlicza liczbę wciśniętych spacji.
+  public  int spaceHitCounter = 0;                             // Zlicza liczbę wciśniętych spacji.
   private boolean isFrozen = false;                           // Czy gracz ma przestać się poruszać (zamrożony).
+  private color pulseColor;                                   // Kolor pulsującego obramowania.
+  private int pulseInterval;                                  // Odstęp pomiędzy pulsami obramowania.
 // -----------------------------------------------------------//
   
 // ------------- KONSTRUKTOR -------------
@@ -29,9 +31,14 @@ class Player
 // ---------------------------------------
   public void show()
   {
+    pulse();
     fill( fillColor );
     ellipse( pos.x, pos.y, 2*radius, 2*radius );
-    fill( 255 ); // przywróć domyślne ustawienie
+    
+    // Przywrócenie ustawień domyślnych.
+    fill( 255 );
+    strokeWeight( 1 );
+    
     showVectors();
   }
 // ---------------------------------------------------
@@ -79,7 +86,10 @@ class Player
       throw new HitWallException();
     }
     if( hitFinish() )
+    {
+      isFrozen = true;
       throw new HitFinishException();
+    }
   }
 // ---------------------------------------
 // Zmiana wektora docelowego w poziomie.
@@ -127,6 +137,61 @@ class Player
       settings.verticalVectorMax = 0;
       settings.horizontalVectorMin = 0;
       settings.verticalVectorMin = 0;
+    }
+  }
+  
+// ------------------------------------------
+// Ustawia pulsowanie obramowania playera
+// ------------------------------------------
+  public void setPulse( color col, int interval )
+  {
+    pulseColor = col;
+    pulseInterval = interval;
+  }
+  
+// ------------------------------------------
+// Zmienia stroke w odstępach czasu
+// ------------------------------------------
+  private int pulseDelay = 0;
+  private boolean pulseActive = false;
+  private void pulse()
+  {
+    float pulseStrokeWeight = m2p(0.4);
+    if( pulseInterval > 0 )
+    {
+      if( millis() - pulseDelay > pulseInterval )
+      {
+        if( pulseActive )
+        {
+          strokeWeight( pulseStrokeWeight );
+          stroke( pulseColor );
+        }
+        else
+        {
+          strokeWeight( 1 );
+          stroke( 0 );
+        }
+        pulseActive = !pulseActive;
+        pulseDelay = millis();
+      }
+      else
+      {
+        if( pulseActive )
+        {
+          strokeWeight( 1 );
+          stroke( 0 );
+        }
+        else
+        {
+          strokeWeight( pulseStrokeWeight );
+          stroke( pulseColor );
+        }
+      }
+    }
+    else  // Ustawienia domyślne
+    {
+      strokeWeight( 1 );
+      stroke( 0 );
     }
   }
 // ---------------------------------------------------------------------
