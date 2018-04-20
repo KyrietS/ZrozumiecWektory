@@ -250,8 +250,13 @@ class Gameplay implements Scene
 
     // ---- PRZYCISKI ---- //
     menuButton.show();
-    restartButton.show();
     statsButton.show();
+    try{ restartButton.show(); }
+    catch( ButtonEvent e )
+    {
+      if( e.buttonID == "restart" )
+        engine.startLevel( levelID );
+    }
 
   }
   
