@@ -24,8 +24,8 @@ class Gameplay implements Scene
   {
     this.levelID = levelID;
     level = new Level( "data/levels/" + this.levelID + ".json" );
-    player = new Player();
     
+    player = new Player();
     collisionTextBox.setFontColor(255,255);
     collisionTextBox.isBold = true;
     collisionTextBox.isActive = false;
@@ -45,6 +45,11 @@ class Gameplay implements Scene
       case WIN: showGameplay(); showWin(); break;
     }
     
+  }
+
+  public int getTime()
+  {
+    return (int)(stopTime - startTime);
   }
 
 // -----------------------------------------------------------------
@@ -123,10 +128,15 @@ class Gameplay implements Scene
 // -----------------------------------------------------------------
 // Wyświetlanie informacji o wystąpieniu kolizji
 // -----------------------------------------------------------------
+boolean _pulseActivated = false;
   private void showCollision()
   {
     collisionTextBox.show();
-    player.setPulse( #FF0000, 500 );
+    if( _pulseActivated == false )
+    {
+      player.setPulse( #FF0000, 500 );
+      _pulseActivated = true;
+    }
   }
   
 // -----------------------------------------------------------------
@@ -138,7 +148,11 @@ class Gameplay implements Scene
   {
     unlockNextLevel();
     statsButton.isActive = false;
-    player.setPulse( #29A500, 500 );
+    if( _pulseActivated == false )
+    {
+      player.setPulse( #29A500, 500 );
+      _pulseActivated = true;
+    }
     fill( #42f4b0, winFrameOpacity );
     rect( 0, m2p(4), height, height );
     
@@ -155,13 +169,12 @@ class Gameplay implements Scene
       String summary = new String();
       summary += "Nazwa poziomu: \n  " + level.settings.name.replace("\n", "") + "\n";
       summary += "Całkowita droga: " + "\n";
-      summary += "Czas ruchu: " + (stopTime - startTime)/1000 + " s\n";
+      summary += "Czas ruchu: " + (float)getTime()/1000 + " s\n";
       summary += "Prędkość średnia: " + "\n";
-      summary += "Wciśniętych spacji: " + player.spaceHitCounter + "\n\n";
-      summary += "Gratulacje!";
+      summary += "Wciśniętych spacji: " + player.spaceHitCounter;
       text( summary, m2p(5), m2p(16) );
       
-      script.runWinScript( levelID );
+      script.runWinScript( levelID, this );
       
       changeLevelButton.show();
     }

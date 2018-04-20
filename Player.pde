@@ -15,16 +15,17 @@ class Player
   public  int spaceHitCounter = 0;                            // Zlicza liczbę wciśniętych spacji.
   private boolean isFrozen = false;                           // Czy gracz ma przestać się poruszać (zamrożony).
   private color pulseColor;                                   // Kolor pulsującego obramowania.
-  private int pulseInterval;                                  // Odstęp pomiędzy pulsami obramowania.
+  public int pulseInterval;                                   // Odstęp pomiędzy pulsami obramowania.
 // -----------------------------------------------------------//
   
 // ------------- KONSTRUKTOR -------------
   Player()
   {
-      this.settings = level.settings;
-      pos = new PVector( settings.startPos.x, settings.startPos.y );
-      vectorFont = createFont("data/fonts/BloggerSans-Bold.ttf", 12);
+    this.settings = level.settings;
+    pos = new PVector( settings.startPos.x, settings.startPos.y );
+    vectorFont = createFont("data/fonts/BloggerSans-Bold.ttf", 12);
     radius = m2p(radius);
+    pulseInterval = 0;
   }
 // ---------------------------------------
 // Wyświetlanie gracza na ekranie.
