@@ -1,24 +1,129 @@
 {
   "settings": {
     "horizontal-vector-min": 0,
-    "time-limit": 0,
+    "time-limit": 2600,
     "horizontal-vector-type": "velocity",
-    "horizontal-vector-max": 100,
+    "horizontal-vector-max": 50,
     "vertical-vector-type": "velocity",
     "vertical-vector-min": 0,
-    "name": "4. Nazwa poziomu",
-    "description": "Opis poziomu",
+    "name": "4. Nie zgaduj, proszę",
+    "description": "W tej grze nauczymy Cię przewidywać przyszłość.\nUżywając matematyki i kinematyki dokładnie planuj\nkażdy ruch.\n\nMy, informatycy, liczymy, bo musimy. W tej grze nic\nnie musisz. Nie wygłupiaj się jednak i nie zgaduj.\n\nTo NIE JEST gra zręcznościowa.",
     "start-pos": {
-      "x": 50,
-      "y": 50
+      "x": 3,
+      "y": 73.26795196533203
     },
-    "vertical-vector-max": 50,
-    "spaces-limit": 0
+    "vertical-vector-max": 20,
+    "spaces-limit": 1
   },
-  "walls": [],
-  "texts": [],
+  "walls": [
+    {
+      "color": "FF646464",
+      "vertices": [
+        {
+          "x": 0,
+          "y": 80
+        },
+        {
+          "x": 100,
+          "y": 80
+        },
+        {
+          "x": 100,
+          "y": 100
+        },
+        {
+          "x": 0,
+          "y": 100
+        }
+      ],
+      "id": 1
+    },
+    {
+      "color": "FF646464",
+      "vertices": [
+        {
+          "x": 0,
+          "y": 80
+        },
+        {
+          "x": 100,
+          "y": 80
+        },
+        {
+          "x": 100,
+          "y": 22.264972686767578
+        }
+      ],
+      "id": 2
+    },
+    {
+      "color": "FF646464",
+      "vertices": [
+        {
+          "x": 0,
+          "y": 70
+        },
+        {
+          "x": 100,
+          "y": 12.264972686767578
+        },
+        {
+          "x": 100,
+          "y": 0
+        },
+        {
+          "x": 0,
+          "y": 0
+        }
+      ],
+      "id": 3
+    }
+  ],
+  "texts": [
+    {
+      "color": "FFFFFFFF",
+      "rotation": 0,
+      "x": 3.5,
+      "font-size": 4,
+      "y": 8.875,
+      "content": "Dotrzyj do mety w najkrótszym możliwym czasie"
+    },
+    {
+      "color": "FFFFFFFF",
+      "rotation": -0.5266668200492859,
+      "x": 8.625,
+      "font-size": 2.5,
+      "y": 79.75,
+      "content": "Wskazówka: nachylenie tunelu do poziomu wynosi 30 stopni"
+    },
+    {
+      "color": "FFFFFFFF",
+      "rotation": 0,
+      "x": 3.875,
+      "font-size": 2.125,
+      "y": 13.375,
+      "content": "Aby nieco utrudnić, długości wektorów zostały ograniczone :-)"
+    }
+  ],
   "finish": {
-    "color": "FF787878",
-    "vertices": []
+    "color": "FF3BAA3D",
+    "vertices": [
+      {
+        "x": 100,
+        "y": 12.264972686767578
+      },
+      {
+        "x": 97,
+        "y": 13.997024536132812
+      },
+      {
+        "x": 97,
+        "y": 23.99702262878418
+      },
+      {
+        "x": 100,
+        "y": 22.264972686767578
+      }
+    ]
   }
 }
