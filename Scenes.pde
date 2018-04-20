@@ -31,6 +31,7 @@ class LevelsScene implements Scene
   {
     for( int i = 0; i < levels.length; i++ )
     {
+      Button levelButton;
       try
       {
         Level level;
@@ -46,15 +47,22 @@ class LevelsScene implements Scene
           levelID = "level" + (i+1);
         }
         String levelName = level.settings.name;
-        Button levelButton = new Button(levelID, levelName, m2p(5), (int)m2p(10) + i*(int)m2p(4.4), m2p(90), m2p(4), #26ad96 );
-        levels[ i ] = levelButton;
+        
+        if( i+1 <= engine.settings.levelUnlocked )
+          levelButton = new Button(levelID, levelName, m2p(5), (int)m2p(10) + i*(int)m2p(4.4), m2p(90), m2p(4), #26ad96 );
+        else
+        {
+          levelButton = new Button("", levelName, m2p(5), (int)m2p(10) + i*(int)m2p(4.4), m2p(90), m2p(4), #c4c4c4 );
+          levelButton.isActive = false;
+        }
       }
       catch( Exception e)
       {
-        Button levelButton = new Button("", "", m2p(5), (int)m2p(10) + i*(int)m2p(4.4), m2p(90), m2p(4), #c4c4c4 );
+        levelButton = new Button("", "", m2p(5), (int)m2p(10) + i*(int)m2p(4.4), m2p(90), m2p(4), #c4c4c4 );
         levelButton.isActive = false;
-        levels[ i ] = levelButton;
       }
+
+      levels[ i ] = levelButton;
     }
   }
   
