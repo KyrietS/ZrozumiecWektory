@@ -48,7 +48,7 @@ class LevelsScene implements Scene
         }
         String levelName = level.settings.name.replace("\n", "");
         
-        if( i+1 <= engine.settings.levelUnlocked )
+        if( i+1 <= engine.settings.levelUnlocked || engine.settings.getDeveloperMode() == true )
           levelButton = new Button(levelID, levelName, m2p(5), (int)m2p(10) + i*(int)m2p(4.4), m2p(90), m2p(4), #26ad96 );
         else
         {
