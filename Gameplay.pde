@@ -7,7 +7,7 @@ class Gameplay implements Scene
   private Button statsButton = new Button( "stats","  STATYSTYKI", m2p(88), m2p(0.4), m2p(10.5), m2p(3.2), #c1d9ff);
   private Button startButton = new Button( "start", " Rozpocznij", m2p(40), m2p(80), m2p(21.5), m2p(8), #FFFFFF );
   private Button backButton = new Button( "levels", "   Powrót", m2p(5), m2p(93), m2p(12), m2p(4.5), #FFFFFF ); 
-  private Button restartButton = new Button( "play", " RESTART", m2p(7.8), m2p(0.4), m2p(7.5), m2p(3.2), #c1d9ff);
+  private Button restartButton = new Button( "restart", " RESTART", m2p(7.8), m2p(0.4), m2p(7.5), m2p(3.2), #c1d9ff);
   private Button changeLevelButton = new Button( "levels", "Następny poziom", m2p(35), m2p(80), m2p(30), m2p(8), #c1d9ff );
   private Button collisionTextBox = new Button("", "  KOLIZJA", m2p(60), m2p(0.4), m2p(8), m2p(3.2), #FF0000);
   // ---------------------------------------------------------------------------------------------------- //
