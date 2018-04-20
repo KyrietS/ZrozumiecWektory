@@ -9,6 +9,7 @@ class Gameplay implements Scene
   private Button backButton = new Button( "levels", "   Powrót", m2p(5), m2p(93), m2p(12), m2p(4.5), #FFFFFF ); 
   private Button restartButton = new Button( "restart", " RESTART", m2p(7.8), m2p(0.4), m2p(7.5), m2p(3.2), #c1d9ff);
   private Button changeLevelButton = new Button( "levels", "Następny poziom", m2p(35), m2p(80), m2p(30), m2p(8), #c1d9ff );
+  private Button restartLevelButton = new Button( "restart", "      Restart", m2p(35), m2p(80), m2p(30), m2p(8), #c1d9ff );
   private Button collisionTextBox = new Button("", "  KOLIZJA", m2p(60), m2p(0.4), m2p(8), m2p(3.2), #FF0000);
   // ---------------------------------------------------------------------------------------------------- //
   
@@ -146,7 +147,6 @@ boolean _pulseActivated = false;
   
   private void showWin()
   {
-    unlockNextLevel();
     statsButton.isActive = false;
     if( _pulseActivated == false )
     {
@@ -157,7 +157,7 @@ boolean _pulseActivated = false;
     rect( 0, m2p(4), height, height );
     
     if( winFrameOpacity < 235 )
-      winFrameOpacity += 255/(2.5*frameRate);
+      winFrameOpacity += 255/(2.2*frameRate);
     else
     {
       textFont( bloggerSansBold );
@@ -174,9 +174,24 @@ boolean _pulseActivated = false;
       summary += "Wciśniętych spacji: " + player.spaceHitCounter;
       text( summary, m2p(5), m2p(16) );
       
-      script.runWinScript( levelID, this );
-      
-      changeLevelButton.show();
+      boolean isWin = script.runWinScript( levelID, this );
+      if( isWin )
+      {
+        changeLevelButton.show();
+        unlockNextLevel();
+      }
+      else
+      {
+        try
+        { 
+          restartLevelButton.show(); 
+        }
+        catch( ButtonEvent e )
+        {
+          if( e.buttonID == "restart" )
+            engine.startLevel( levelID );
+        }
+      }
     }
   }
   
