@@ -56,21 +56,21 @@ class GameEngine
       loadLevel( settingsPath );
     }
     
-    public getLevelUnlocked(){ return levelUnlocked; }
-    public getDeveloperMode(){ return developerMode; }
-    public getHeroPicture(){   return heroPicture;   }
+    public int getLevelUnlocked(){ return levelUnlocked; }
+    public boolean getDeveloperMode(){ return developerMode; }
+    public String getHeroPicture(){   return heroPicture;   }
     
-    public setLevelUnlocked( int n )
+    public void setLevelUnlocked( int n )
     {
       levelUnlocked = n;
       saveToFile();
     }
-    public setDeveloperMode( boolean b )
+    public void setDeveloperMode( boolean b )
     {
       developerMode = b;
-      saveToFIle();
+      saveToFile();
     }
-    public setHeroPicture( String s )
+    public void setHeroPicture( String s )
     {
       heroPicture = s;
       saveToFile();
@@ -85,21 +85,21 @@ class GameEngine
       saveJSONObject( settings, settingsPath );
     }    
     
-    private void loadLevel( settingsPath )
+    private void loadLevel( String settingsPath )
     {
-      JSONObject settings;
       try
       {
-        settings = loadJSONObject( settingsPath );
+        JSONObject settings = loadJSONObject( settingsPath );
+        levelUnlocked = settings.getInt("level-unlocked");
+        developerMode = settings.getBoolean("developer-mode");
+        heroPicture   = settings.getString("hero-picture");
       }
       catch( Exception e )
       {
-        println("Błąd przy odczytywaniu ustawień: " + stringPath);
+        println("Błąd przy odczytywaniu ustawień: " + settingsPath);
       }
       
-      levelUnlocked = settings.getInt("level-unlocked");
-      developerMode = settings.getBoolean("developer-mode");
-      heroPicture   = settings.getString("hero-picture");
+      
     }
   }
 }
