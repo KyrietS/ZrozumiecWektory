@@ -17,6 +17,7 @@ class Gameplay implements Scene
   private boolean timerActive = false;               // Czy licznik odlicza czas, czy stoi.
   private float startTime = 0;                       // Czas początkowy odliczania.
   private float stopTime = 0;                        // Czas końcowy odliczania.
+  private boolean isSaved = false;                   // Czy stan gry został zapisany (po wygranej, aby nie zapisywać go co klatkę).
   
   Gameplay( String levelID )
   {
@@ -50,6 +51,7 @@ class Gameplay implements Scene
 // -----------------------------------------------------------------
   private void showIntro()
   {
+    isSaved = false;
     fill(#42f4b0);
     rect( 0, 0, height, height );
     textFont( bloggerSansBold );
@@ -128,8 +130,10 @@ class Gameplay implements Scene
 // Wyświetlanie podsumowania poziomu
 // -----------------------------------------------------------------
   private int winFrameOpacity = 0;
+  
   private void showWin()
   {
+    unlockNextLevel();
     statsButton.isActive = false;
     player.setPulse( #29A500, 500 );
     fill( #42f4b0, winFrameOpacity );
@@ -184,6 +188,27 @@ class Gameplay implements Scene
       {
         timerActive = true;
         startTime = millis();
+      }
+    }
+  }
+  
+// -----------------------------------------------------------------
+// Zapisanie stanu gry po wygranej (odblokowanie nowego poziomu)
+// -----------------------------------------------------------------
+  void unlockNextLevel()
+  {
+    if( isSaved == false )
+    {
+      try
+      {
+        isSaved = true;
+        int levelNumber = Integer.parseInt( levelID.substring( levelID.length() - 2, levelID.length() ) );
+        if( engine.settings.getLevelUnlocked() == levelNumber )
+          engine.settings.setLevelUnlocked( engine.settings.getLevelUnlocked() + 1 );
+      }
+      catch( Exception e )
+      {
+        println("Błąd przy zapisie stanu gry!");
       }
     }
   }
