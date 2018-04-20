@@ -3,13 +3,13 @@
     "horizontal-vector-min": 0,
     "time-limit": 0,
     "horizontal-vector-type": "velocity",
-    "horizontal-vector-max": 100,
-    "vertical-vector-type": "displacement",
+    "horizontal-vector-max": 50,
+    "vertical-vector-type": "velocity",
     "vertical-vector-min": 0,
-    "name": "1. Poziom testowy",
-    "description": "Tutaj będzie się pojawiał opis poziomu",
+    "name": "1. Samouczek — pierwszy wektor,\n poznaj sterowanie",
+    "description": "\n\nCelem gry jest dotarcie do zielonej mety unikając\nzetknięcia ze ścianą.\n\nPrzypisz do piłeczki odpowiedni wektor prędkości,\naby dotarła ona do mety.",
     "start-pos": {
-      "x": 3,
+      "x": 5,
       "y": 50
     },
     "vertical-vector-max": 50,
@@ -17,55 +17,45 @@
   },
   "walls": [
     {
-      "color": "FF787878",
+      "color": "FF646464",
       "vertices": [
         {
-          "x": 57.75,
-          "y": 73
+          "x": 0,
+          "y": 20
         },
         {
-          "x": 87.75,
-          "y": 72.875
+          "x": 100,
+          "y": 20
         },
         {
-          "x": 87,
-          "y": 28.125
+          "x": 100,
+          "y": 0
         },
         {
-          "x": 56.375,
-          "y": 27.875
+          "x": 0,
+          "y": 0
+        }
+      ],
+      "id": 1
+    },
+    {
+      "color": "FF646464",
+      "vertices": [
+        {
+          "x": 0,
+          "y": 80
         },
         {
-          "x": 56.75,
-          "y": 36
+          "x": 100,
+          "y": 80
         },
         {
-          "x": 78.375,
-          "y": 36.25
+          "x": 100,
+          "y": 100
         },
         {
-          "x": 78.375,
-          "y": 46.5
-        },
-        {
-          "x": 57.25,
-          "y": 47.125
-        },
-        {
-          "x": 57.375,
-          "y": 56
-        },
-        {
-          "x": 78.75,
-          "y": 55.75
-        },
-        {
-          "x": 78.75,
-          "y": 64.875
-        },
-        {
-          "x": 58.125,
-          "y": 65.75
+          "x": 0,
+          "y": 100
         }
       ],
       "id": 2
@@ -73,41 +63,49 @@
   ],
   "texts": [
     {
-      "color": "FF000000",
+      "color": "FFFFFFFF",
       "rotation": 0,
-      "x": 57.625,
+      "x": 8.125,
       "font-size": 4,
-      "y": 26.875,
-      "content": "Zażółć gęślą jaźń"
+      "y": 18,
+      "content": "Zmiana wektora [W][A][S][D] lub strzałki kierunkowe "
+    },
+    {
+      "color": "FFFFFFFF",
+      "rotation": 0,
+      "x": 52.875,
+      "font-size": 4,
+      "y": 85,
+      "content": "Zatwierdź zmianę: [SPACJA]"
     },
     {
       "color": "FF000000",
       "rotation": 0,
-      "x": 57.5,
-      "font-size": 5.25,
-      "y": 90.75,
-      "content": "META"
+      "x": 81.375,
+      "font-size": 3.5,
+      "y": 34.125,
+      "content": "Dotrzyj"
     }
   ],
   "finish": {
     "color": "FF3BAA3D",
     "vertices": [
-        {
-          "x": 48,
-          "y": 83.625
-        },
-        {
-          "x": 48.625,
-          "y": 94.125
-        },
-        {
-          "x": 79.375,
-          "y": 93.625
-        },
-        {
-          "x": 80,
-          "y": 82.875
-        }
-      ],
+      {
+        "x": 85,
+        "y": 35
+      },
+      {
+        "x": 85,
+        "y": 65
+      },
+      {
+        "x": 88,
+        "y": 65
+      },
+      {
+        "x": 88,
+        "y": 35
+      }
+    ]
   }
 }
