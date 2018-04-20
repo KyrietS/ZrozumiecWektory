@@ -278,6 +278,11 @@ class Player
 // ------------------------------------------
   public boolean hitWall()
   {
+    if( pos.x + radius > m2p(100) || pos.x - radius < m2p(0) ) // Zderzenie z krańcem mapy
+      return true;
+    if( pos.y + radius > m2p(100) || pos.y - radius < m2p(4) ) // Zderzenie z krańcem mapy
+      return true;
+      
     for( Level.Wall wall : level.walls )
     {
       if( CollisionSystem.isCollision(wall.vertices,pos,radius) )
