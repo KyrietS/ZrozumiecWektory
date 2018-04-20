@@ -42,4 +42,64 @@ class GameEngine
     scene = new Gameplay( levelID );
   }
 
+  public class Settings
+  {
+    private int levelUnlocked = 99;
+    private boolean developerMode = false;
+    private String heroPicture = "default";
+    
+    private String settingsPath;
+    
+    Settings( String settingsPath )
+    {
+      this.settingsPath = settingsPath;
+      loadLevel( settingsPath );
+    }
+    
+    public getLevelUnlocked(){ return levelUnlocked; }
+    public getDeveloperMode(){ return developerMode; }
+    public getHeroPicture(){   return heroPicture;   }
+    
+    public setLevelUnlocked( int n )
+    {
+      levelUnlocked = n;
+      saveToFile();
+    }
+    public setDeveloperMode( boolean b )
+    {
+      developerMode = b;
+      saveToFIle();
+    }
+    public setHeroPicture( String s )
+    {
+      heroPicture = s;
+      saveToFile();
+    }
+    
+    private void saveToFile()
+    {
+      JSONObject settings = new JSONObject();
+      settings.setInt("level-unlocked", levelUnlocked);
+      settings.setBoolean("developer-mode", developerMode);
+      settings.setString("hero-picture", heroPicture);
+      saveJSONObject( settings, settingsPath );
+    }    
+    
+    private void loadLevel( settingsPath )
+    {
+      JSONObject settings;
+      try
+      {
+        settings = loadJSONObject( settingsPath );
+      }
+      catch( Exception e )
+      {
+        println("Błąd przy odczytywaniu ustawień: " + stringPath);
+      }
+      
+      levelUnlocked = settings.getInt("level-unlocked");
+      developerMode = settings.getBoolean("developer-mode");
+      heroPicture   = settings.getString("hero-picture");
+    }
+  }
 }
