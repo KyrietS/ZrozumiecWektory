@@ -20,7 +20,9 @@ void draw()
   noFill();
   
   engine.update();
-  printDebugInfo();
+  
+  if( engine.settings.getDeveloperMode() )
+    printDebugInfo();
 }
 
 void keyPressed()
