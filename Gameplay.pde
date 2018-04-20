@@ -153,7 +153,7 @@ class Gameplay implements Scene
       textFont( bloggerSans );
       textSize( m2p( 4 ) );
       String summary = new String();
-      summary += "Nazwa poziomu: " + level.settings.name + "\n";
+      summary += "Nazwa poziomu: \n  " + level.settings.name.replace("\n", "") + "\n";
       summary += "Całkowita droga: " + "\n";
       summary += "Czas ruchu: " + (stopTime - startTime)/1000 + " s\n";
       summary += "Prędkość średnia: " + "\n";
