@@ -1,5 +1,5 @@
 {
-	"level-unlocked": 5,
-	"developer-mode": true,
-	"hero-picture": "default"
+  "hero-picture": "default",
+  "developer-mode": true,
+  "level-unlocked": 1
 }

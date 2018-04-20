@@ -18,6 +18,7 @@ class Gameplay implements Scene
   private float startTime = 0;                       // Czas początkowy odliczania.
   private float stopTime = 0;                        // Czas końcowy odliczania.
   private boolean isSaved = false;                   // Czy stan gry został zapisany (po wygranej, aby nie zapisywać go co klatkę).
+  Script script = new Script();                      // Obiekt obsługujący skrypty na poszczególnych poziomach.
   
   Gameplay( String levelID )
   {
@@ -99,7 +100,9 @@ class Gameplay implements Scene
         currentFrame = Frame.WIN;
         stopTimer();
       }
+      
       level.show();
+      script.runGameplayScript( levelID );
       player.show();
       
       if( statsActive ) 
@@ -157,6 +160,9 @@ class Gameplay implements Scene
       summary += "Wciśniętych spacji: " + player.spaceHitCounter + "\n\n";
       summary += "Gratulacje!";
       text( summary, m2p(5), m2p(16) );
+      
+      script.runWinScript( levelID );
+      
       changeLevelButton.show();
     }
   }
