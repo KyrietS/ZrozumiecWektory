@@ -55,7 +55,7 @@ void keyPressed()
       fileManager.saveLevel();
       break;
       
-    case KeyEvent.VK_F8:
+    case KeyEvent.VK_F8:                                // Przycisk F8 wczytuje plik.
       showVanishingInfo( "Wczytano plik" );
       fileManager.loadLevel();
       break;
