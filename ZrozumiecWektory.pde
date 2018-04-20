@@ -15,8 +15,10 @@ void setup()
 
 void draw()
 {
-  background( 100 );
+  background( #808080 );
   translate( (width-height)/2, 0 );
+  noFill();
+  
   engine.update();
   printDebugInfo();
 }

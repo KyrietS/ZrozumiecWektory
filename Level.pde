@@ -19,9 +19,11 @@ class Level
   public void show()
   {
     fill(#e8e8e8);
+    noStroke();
     rect( 0, 0, height, height );
     for( Wall wall : walls )
       wall.show();
+    stroke( 0 );      // Przywrócenie czarnego stroke.
     finish.show();
     for( Text text : texts )
       text.show();

@@ -46,7 +46,7 @@ class LevelsScene implements Scene
           level = new Level("data/levels/level" + (i+1) + ".json");
           levelID = "level" + (i+1);
         }
-        String levelName = level.settings.name;
+        String levelName = level.settings.name.replace("\n", "");
         
         if( i+1 <= engine.settings.levelUnlocked )
           levelButton = new Button(levelID, levelName, m2p(5), (int)m2p(10) + i*(int)m2p(4.4), m2p(90), m2p(4), #26ad96 );
