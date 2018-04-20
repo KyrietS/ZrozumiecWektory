@@ -1,7 +1,7 @@
 class Wall
 {
   public ArrayList< PVector > vertices = new ArrayList< PVector > ();    // Tablica wierzchołków ściany
-  public color col = color(120);                                         // Kolor wypełnienia ściany
+  public color col = #646464;                                            // Kolor wypełnienia ściany
   public int id;                                                         // Unikalny numer ID ściany
   
   // ----- KONSTRUKTOR ----- //
