@@ -12,7 +12,7 @@ class Player
   private PVector velocity = new PVector(0, 0);               // Współrzędne wektora prędkości wypadkowej (w pikselach).
   private Level.Settings settings;                            // Referencja do ustawień poziomu.
   private PFont vectorFont;                                   // Czcionka użyta do wyświetlania wartości przy wektorach.
-  public  int spaceHitCounter = 0;                             // Zlicza liczbę wciśniętych spacji.
+  public  int spaceHitCounter = 0;                            // Zlicza liczbę wciśniętych spacji.
   private boolean isFrozen = false;                           // Czy gracz ma przestać się poruszać (zamrożony).
   private color pulseColor;                                   // Kolor pulsującego obramowania.
   private int pulseInterval;                                  // Odstęp pomiędzy pulsami obramowania.

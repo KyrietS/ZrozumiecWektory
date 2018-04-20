@@ -9,6 +9,7 @@ PFont bloggerSansBold;
 class GameEngine
 {  
   
+  public Settings settings;
   Scene scene;
   
   public void update()
@@ -30,6 +31,7 @@ class GameEngine
 
   GameEngine()
   {
+    settings = new Settings("data/settings.json");
     scene = new HomeScene();
     
     bloggerSans = createFont("data/fonts/BloggerSans.ttf", 12);
@@ -98,8 +100,6 @@ class GameEngine
       {
         println("Błąd przy odczytywaniu ustawień: " + settingsPath);
       }
-      
-      
-    }
-  }
-}
+    } // loadLevel
+  } // Settings
+} // GameEngine

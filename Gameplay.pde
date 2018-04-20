@@ -99,7 +99,10 @@ class Gameplay implements Scene
       }
       level.show();
       player.show();
-      if( statsActive ) showStats();
+      
+      if( statsActive ) 
+        showStats();
+        
       showInfoBar();
     }
     catch( ButtonEvent e )
@@ -245,5 +248,5 @@ class Gameplay implements Scene
 // -----------------------------------------------------------------
 public enum Frame 
 { 
-  INTRO, GAMEPLAY, COLLISION, FAIL, WIN; 
+  INTRO, GAMEPLAY, COLLISION, WIN; 
 }
