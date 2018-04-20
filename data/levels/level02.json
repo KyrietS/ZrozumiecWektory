@@ -6,19 +6,106 @@
     "horizontal-vector-max": 100,
     "vertical-vector-type": "velocity",
     "vertical-vector-min": 0,
-    "name": "2. Nazwa poziomu",
-    "description": "Opis poziomu",
+    "name": "2. Samouczek — precyzyjny ruch",
+    "description": "Podobnie jak w poprzednim poziomie,\nTwoim zadaniem jest dotrzeć do mety.\n\nTym razem jednak, zetknięcie z metąma nastąpić\npo około 1 sekundzie od rozpoczęcia ruchu.\n(Maksymalny błąd może wynieść 100 ms).\n\nWskazówka: wektor prędkości o wartości 5 m/s ma\ndługość dokładnie 5 m.",
     "start-pos": {
-      "x": 50,
+      "x": 5,
       "y": 50
     },
-    "vertical-vector-max": 50,
-    "spaces-limit": 0
+    "vertical-vector-max": 0,
+    "spaces-limit": 1
   },
-  "walls": [],
-  "texts": [],
+  "walls": [
+    {
+      "color": "FF646464",
+      "vertices": [
+        {
+          "x": 0,
+          "y": 20
+        },
+        {
+          "x": 100,
+          "y": 20
+        },
+        {
+          "x": 100,
+          "y": 0
+        },
+        {
+          "x": 0,
+          "y": 0
+        }
+      ],
+      "id": 1
+    },
+    {
+      "color": "FF646464",
+      "vertices": [
+        {
+          "x": 0,
+          "y": 80
+        },
+        {
+          "x": 100,
+          "y": 80
+        },
+        {
+          "x": 100,
+          "y": 100
+        },
+        {
+          "x": 0,
+          "y": 100
+        }
+      ],
+      "id": 2
+    }
+  ],
+  "texts": [
+    {
+      "color": "FFFFFFFF",
+      "rotation": 0,
+      "x": 8.125,
+      "font-size": 4,
+      "y": 13,
+      "content": "Przytrzymanie [Ctrl] i użycie [W][A][S][D] lub strzałek\n                  zwiększa precyzję wektora"
+    },
+    {
+      "color": "FF000000",
+      "rotation": 0,
+      "x": 79,
+      "font-size": 3.5,
+      "y": 29,
+      "content": "Dotrzyj po\n ok. 1 sek."
+    },
+    {
+      "color": "FFFFFFFF",
+      "rotation": 0,
+      "x": 12.5,
+      "font-size": 4,
+      "y": 84.875,
+      "content": "Wektory pionowe są w tym poziomie wyłączone"
+    }
+  ],
   "finish": {
-    "color": "FF787878",
-    "vertices": []
+    "color": "FF3BAA3D",
+    "vertices": [
+      {
+        "x": 85,
+        "y": 35
+      },
+      {
+        "x": 85,
+        "y": 65
+      },
+      {
+        "x": 88,
+        "y": 65
+      },
+      {
+        "x": 88,
+        "y": 35
+      }
+    ]
   }
 }
