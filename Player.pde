@@ -9,11 +9,11 @@ class Player
   private color fillColor = #FFF600;                          // Kolor wypełnienia kulki.
   private PVector targetVector = new PVector(0, 0);           // Współrzędne wektora docelowego (w piskelach).
   private PVector realVector = new PVector(0, 0);             // Współrzędne wektora rzeczywistego (w pikselach).
-  private PVector velocity = new PVector(0, 0);               // Współrzędne wektora prędkości wypadkowej (w pikselach).
+  public PVector velocity = new PVector(0, 0);                // Współrzędne wektora prędkości wypadkowej (w pikselach).
   private Level.Settings settings;                            // Referencja do ustawień poziomu.
   private PFont vectorFont;                                   // Czcionka użyta do wyświetlania wartości przy wektorach.
   public  int spaceHitCounter = 0;                            // Zlicza liczbę wciśniętych spacji.
-  private boolean isFrozen = false;                           // Czy gracz ma przestać się poruszać (zamrożony).
+  private boolean isFrozen = true;                            // Czy gracz ma przestać się poruszać (zamrożony).
   private color pulseColor;                                   // Kolor pulsującego obramowania.
   public int pulseInterval;                                   // Odstęp pomiędzy pulsami obramowania.
 // -----------------------------------------------------------//
@@ -123,6 +123,7 @@ class Player
 // -----------------------------------------------
   public void changeVectors()
   {
+    isFrozen = false;
     if( settings.spacesLimit == 0 || spaceHitCounter < settings.spacesLimit )
     {
       realVector.x = targetVector.x;
