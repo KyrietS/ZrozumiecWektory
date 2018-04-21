@@ -93,7 +93,8 @@ public class Script
     if( player.spaceHitCounter == 1 )
     {
       fill( successColor );
-      text("Gratulacje!\n\nRozumiesz działanie wektora przesunięcia", m2p(5), m2p(50) );
+      text("Gratulacje!\nDokładnie tak należało rozwiązać to zadanie.\n\nPS. Czas takiego ruchu wynosi oczywiście 0 sekund, ale to,"
+        + "\nco jest napisane wyżej, to czas renderowania pojedynczej\nklatki gry, w której nastąpił \"przeskok\".", m2p(5), m2p(50) );
       return true;
     }
     else
