@@ -93,6 +93,7 @@ void printDebugInfo()
     _frameRate = frameRate;
     _debugTimer = millis();
   }
+  textFont( bloggerSans );
   textSize( m2p(1.5) );
   fill( 0 );
   text( "FPS: " + _frameRate, m2p(45), m2p(99) );
