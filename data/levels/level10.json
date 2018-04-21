@@ -2,23 +2,173 @@
   "settings": {
     "horizontal-vector-min": 0,
     "time-limit": 0,
-    "horizontal-vector-type": "velocity",
+    "horizontal-vector-type": "displacement",
     "horizontal-vector-max": 100,
-    "vertical-vector-type": "velocity",
+    "vertical-vector-type": "displacement",
     "vertical-vector-min": 0,
-    "name": "10. Nazwa poziomu",
-    "description": "Opis poziomu",
+    "name": "10. Czy zrozumiałeś wektor przesunięcia?",
+    "description": "\nDotrzyj do mety wykonując jak najmniejszą\nliczbę ruchów.",
     "start-pos": {
-      "x": 50,
-      "y": 50
+      "x": 13.1,
+      "y": 55
     },
-    "vertical-vector-max": 50,
+    "vertical-vector-max": 100,
     "spaces-limit": 0
   },
-  "walls": [],
+  "walls": [
+    {
+      "color": "FF646464",
+      "vertices": [
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 0,
+          "y": 50
+        },
+        {
+          "x": 45,
+          "y": 50
+        },
+        {
+          "x": 45,
+          "y": 0
+        }
+      ],
+      "id": 1
+    },
+    {
+      "color": "FF646464",
+      "vertices": [
+        {
+          "x": 0,
+          "y": 60
+        },
+        {
+          "x": 100,
+          "y": 60
+        },
+        {
+          "x": 100,
+          "y": 100
+        },
+        {
+          "x": 0,
+          "y": 100
+        }
+      ],
+      "id": 2
+    },
+    {
+      "color": "FF646464",
+      "vertices": [
+        {
+          "x": 55,
+          "y": 61
+        },
+        {
+          "x": 55.125,
+          "y": 50
+        },
+        {
+          "x": 100,
+          "y": 50
+        },
+        {
+          "x": 100,
+          "y": 61
+        }
+      ],
+      "id": 3
+    },
+    {
+      "color": "FF646464",
+      "vertices": [
+        {
+          "x": 44,
+          "y": 40
+        },
+        {
+          "x": 100,
+          "y": 40
+        },
+        {
+          "x": 100,
+          "y": 0
+        },
+        {
+          "x": 44,
+          "y": 0
+        }
+      ],
+      "id": 4
+    },
+    {
+      "color": "FF646464",
+      "vertices": [
+        {
+          "x": 10,
+          "y": 61
+        },
+        {
+          "x": 10,
+          "y": 49
+        },
+        {
+          "x": 0,
+          "y": 49
+        },
+        {
+          "x": 0,
+          "y": 61
+        }
+      ],
+      "id": 5
+    },
+    {
+      "color": "FF646464",
+      "vertices": [
+        {
+          "x": 90,
+          "y": 51
+        },
+        {
+          "x": 90,
+          "y": 39
+        },
+        {
+          "x": 100,
+          "y": 39
+        },
+        {
+          "x": 100,
+          "y": 51
+        }
+      ],
+      "id": 6
+    }
+  ],
   "texts": [],
   "finish": {
-    "color": "FF787878",
-    "vertices": []
+    "color": "FF3BAA3D",
+    "vertices": [
+	{
+          "x": 90,
+          "y": 50
+        },
+        {
+          "x": 85,
+          "y": 50
+        },
+        {
+          "x": 85,
+          "y": 40
+        },
+        {
+          "x": 90,
+          "y": 40
+        }
+	]
   }
 }
