@@ -38,7 +38,8 @@ void keyPressed()
     case KeyEvent.VK_LEFT: ActiveKey.LEFT = true; break;
     case KeyEvent.VK_RIGHT: ActiveKey.RIGHT = true; break;
     case KeyEvent.VK_SPACE: ActiveKey.SPACE = true; break;
-    case KeyEvent.VK_CONTROL: ActiveKey.CTRL = true; break;
+    case KeyEvent.VK_SHIFT: ActiveKey.SHIFT = true; break;
+    //case KeyEvent.VK_ESCAPE: key = 0; break;
   }
 }
 
@@ -55,7 +56,7 @@ void keyReleased()
     case KeyEvent.VK_LEFT: ActiveKey.LEFT = false; break;
     case KeyEvent.VK_RIGHT: ActiveKey.RIGHT = false; break;
     case KeyEvent.VK_SPACE: ActiveKey.SPACE = false; break;
-    case KeyEvent.VK_CONTROL: ActiveKey.CTRL = false; break;
+    case KeyEvent.VK_SHIFT: ActiveKey.SHIFT = false; break;
   }
 }
 
@@ -73,7 +74,7 @@ public static class ActiveKey
   static boolean LEFT = false;
   static boolean RIGHT = false;
   static boolean SPACE = false;
-  static boolean CTRL = false;
+  static boolean SHIFT = false;
 }
 
 // ------ FUNKCJE POMOCNICZE ------ //

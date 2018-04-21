@@ -202,7 +202,7 @@ boolean _pulseActivated = false;
   {
     float precision = 3.0 * 60 / frameRate;
 
-    if( ActiveKey.CTRL )
+    if( ActiveKey.SHIFT )
       precision = precision / 15;
 
     if( ActiveKey.D || ActiveKey.RIGHT )
