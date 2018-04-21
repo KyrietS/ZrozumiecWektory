@@ -9,7 +9,7 @@
     "name": "6. Wygląda znajomo, prawda?",
     "description": "Połączmy ze sobą prędkość i przyspieszenie.\nW pionie będziesz teraz nadawać przyspieszenie,\nw poziomie natomiast - prędkość.\n\nDodatkowe utrudnienie: do mety dotrzyj w najkrótszym\nmożliwym czasie (poniżej 2 sekund).\n\n*Rozwiąż to zadanie w pamięci, bez pisemnych obliczeń.",
     "start-pos": {
-      "x": 3,
+      "x": 3.01,
       "y": 43
     },
     "vertical-vector-max": 25,
