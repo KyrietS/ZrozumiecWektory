@@ -21,6 +21,7 @@ public class Script
       case "level02": return level02WinScript( gameplay );
       case "level03": return level03WinScript();
       case "level07": return level07WinScript( gameplay );
+      case "level10": return level10WinScript();
       default:        return defaultWinScript( gameplay );
     }
   }
@@ -83,6 +84,30 @@ public class Script
     {
       fill( failColor );
       text("Lot był zbyt krótki. Powinien trwać ponad 7 sekund.", m2p(5), m2p(50) );
+      return false;
+    }
+  }
+  
+  private boolean level10WinScript()
+  {
+    if( player.spaceHitCounter == 1 )
+    {
+      fill( successColor );
+      text("Gratulacje!\n\nRozumiesz działanie wektora przesunięcia", m2p(5), m2p(50) );
+      return true;
+    }
+    else
+    {
+      // -------- Odmiana polskiego wyrazu <3 ----------
+      String word1;
+      String word2;
+      if( player.spaceHitCounter == 2 ){ word1 = "ruchy"; word2 = "ruch"; }
+      else if( player.spaceHitCounter == 3 || player.spaceHitCounter == 4){ word1 = "ruchy"; word2 = "ruchy"; }
+      else if( player.spaceHitCounter == 5 ){ word1 = "ruchów"; word2 = "ruchy"; }
+      else{ word1 = "ruchów"; word2 = "ruchów"; }
+      // -----------------------------------------------
+      fill( failColor );
+      text("Wykonałeś aż " + player.spaceHitCounter + " " + word1 + ".\nTo o " + (player.spaceHitCounter-1) + " " + word2 + " za dużo :)\n\nSpróbuj jeszcze raz", m2p(5), m2p(50) );
       return false;
     }
   }
