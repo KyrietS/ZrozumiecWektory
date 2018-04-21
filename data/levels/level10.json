@@ -7,7 +7,7 @@
     "vertical-vector-type": "displacement",
     "vertical-vector-min": 0,
     "name": "10. Czy zrozumiałeś wektor przesunięcia?",
-    "description": "\nDotrzyj do mety wykonując jak najmniejszą\nliczbę ruchów.",
+    "description": "\nDotrzyj do mety wykonując jak najmniejszą\nliczbę ruchów.\n\n\nPS. Pamiętaj, że wektory, którymi sterujesz,\nto wektory \"składowe\", a nie \"wypadkowe\".",
     "start-pos": {
       "x": 13.1,
       "y": 55
