@@ -2,23 +2,114 @@
   "settings": {
     "horizontal-vector-min": 0,
     "time-limit": 0,
-    "horizontal-vector-type": "velocity",
-    "horizontal-vector-max": 100,
-    "vertical-vector-type": "velocity",
+    "horizontal-vector-type": "acceleration",
+    "horizontal-vector-max": 25,
+    "vertical-vector-type": "acceleration",
     "vertical-vector-min": 0,
-    "name": "5. Nazwa poziomu",
-    "description": "Opis poziomu",
+    "name": "5. Poznaj wektor przyspieszenia",
+    "description": "Tutaj matematyki nie będzie w zasadzie w ogóle.\nZapoznamy Cię jednak z nowym wektorem:\nwektorem przyspieszenia.\n\nZasada działania tego wektora będzie zupełnie inna\nniż wektora prędkości.\n\nZwróć uwagę, że brak przyspieszenia nie idzie w parze\nz zerową prędkością.",
     "start-pos": {
-      "x": 50,
-      "y": 50
+      "x": 7.5,
+      "y": 15
     },
-    "vertical-vector-max": 50,
+    "vertical-vector-max": 25,
     "spaces-limit": 0
   },
-  "walls": [],
-  "texts": [],
+  "walls": [
+    {
+      "color": "FF646464",
+      "vertices": [
+        {
+          "x": 0,
+          "y": 90
+        },
+        {
+          "x": 100,
+          "y": 90
+        },
+        {
+          "x": 100,
+          "y": 100
+        },
+        {
+          "x": 0,
+          "y": 100
+        }
+      ],
+      "id": 1
+    },
+    {
+      "color": "FF646464",
+      "vertices": [
+        {
+          "x": 0,
+          "y": 10
+        },
+        {
+          "x": 100,
+          "y": 10
+        },
+        {
+          "x": 100,
+          "y": 0
+        },
+        {
+          "x": 0,
+          "y": 0
+        }
+      ],
+      "id": 2
+    },
+    {
+      "color": "FF646464",
+      "vertices": [
+        {
+          "x": 15,
+          "y": 7
+        },
+        {
+          "x": 15,
+          "y": 75
+        },
+        {
+          "x": 100,
+          "y": 75
+        },
+        {
+          "x": 100,
+          "y": 7
+        }
+      ],
+      "id": 3
+    }
+  ],
+  "texts": [{
+    "color": "FFFFFFFF",
+    "rotation": 0,
+    "x": 73.5,
+    "font-size": 4,
+    "y": 72.625,
+    "content": "Dotrzyj do mety"
+  }],
   "finish": {
-    "color": "FF787878",
-    "vertices": []
+    "color": "FF3BAA3D",
+    "vertices": [
+      {
+        "x": 100,
+        "y": 90
+      },
+      {
+        "x": 97,
+        "y": 90
+      },
+      {
+        "x": 97,
+        "y": 75
+      },
+      {
+        "x": 100,
+        "y": 75
+      }
+    ]
   }
 }
