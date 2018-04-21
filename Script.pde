@@ -8,7 +8,10 @@ public class Script
   
   public void runGameplayScript( String levelID )
   {
-   
+    switch( levelID )
+    {
+      case "level07": level07Script(); break;
+    }
   }
   
   public boolean runWinScript( String levelID, Gameplay gameplay )
@@ -17,8 +20,15 @@ public class Script
     {
       case "level02": return level02WinScript( gameplay );
       case "level03": return level03WinScript();
+      case "level07": return level07WinScript( gameplay );
       default:        return defaultWinScript( gameplay );
     }
+  }
+  
+  private void level07Script()
+  {
+    if( player.isFrozen )
+      player.velocity = new PVector(0, -m2p(40) );
   }
   
   private boolean defaultWinScript(Gameplay gameplay )
@@ -60,5 +70,20 @@ public class Script
     fill(successColor);
     text("Podstawy działania gry już znasz.\nNdszedł czas, by Zrozumieć Wektory!", m2p(5), m2p(50) );
     return true;
+  }
+  private boolean level07WinScript( Gameplay gameplay )
+  {
+    if( gameplay.getTime() > 7000 )
+    {
+      fill( successColor );
+      text("Gratulacje!\n\nVp = 40 m/s   tyle Ci wyszło?", m2p(5), m2p(50) );
+      return true;
+    }
+    else
+    {
+      fill( failColor );
+      text("Lot był zbyt krótki. Powinien trwać ponad 7 sekund.", m2p(5), m2p(50) );
+      return false;
+    }
   }
 }
