@@ -4,21 +4,193 @@
     "time-limit": 0,
     "horizontal-vector-type": "velocity",
     "horizontal-vector-max": 100,
-    "vertical-vector-type": "velocity",
+    "vertical-vector-type": "displacement",
     "vertical-vector-min": 0,
-    "name": "11. Nazwa poziomu",
-    "description": "Opis poziomu",
+    "name": "11. Przemieszczenie = teleportacja",
+    "description": "Wykorzystaj własności wektora przemieszczenia i\ndotrzyj do mety.\n\nMożesz użyć spacji co najwyżej 2 razy.",
     "start-pos": {
-      "x": 50,
-      "y": 50
+      "x": 5.1,
+      "y": 55.5
     },
     "vertical-vector-max": 50,
-    "spaces-limit": 0
+    "spaces-limit": 2
   },
-  "walls": [],
+  "walls": [
+    {
+      "color": "FF646464",
+      "vertices": [
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 0,
+          "y": 50.5
+        },
+        {
+          "x": 45,
+          "y": 50.5
+        },
+        {
+          "x": 45,
+          "y": 0
+        }
+      ],
+      "id": 1
+    },
+    {
+      "color": "FF646464",
+      "vertices": [
+        {
+          "x": 0,
+          "y": 60.5
+        },
+        {
+          "x": 100,
+          "y": 60.5
+        },
+        {
+          "x": 100,
+          "y": 100
+        },
+        {
+          "x": 0,
+          "y": 100
+        }
+      ],
+      "id": 2
+    },
+    {
+      "color": "FF646464",
+      "vertices": [
+        {
+          "x": 55,
+          "y": 61
+        },
+        {
+          "x": 55.125,
+          "y": 49.5
+        },
+        {
+          "x": 100,
+          "y": 49.5
+        },
+        {
+          "x": 100,
+          "y": 61
+        }
+      ],
+      "id": 3
+    },
+    {
+      "color": "FF646464",
+      "vertices": [
+        {
+          "x": 44,
+          "y": 39.5
+        },
+        {
+          "x": 100,
+          "y": 39.5
+        },
+        {
+          "x": 100,
+          "y": 0
+        },
+        {
+          "x": 44,
+          "y": 0
+        }
+      ],
+      "id": 4
+    },
+    {
+      "color": "FF646464",
+      "vertices": [
+        {
+          "x": 2,
+          "y": 61
+        },
+        {
+          "x": 2,
+          "y": 49
+        },
+        {
+          "x": 0,
+          "y": 49
+        },
+        {
+          "x": 0,
+          "y": 61
+        }
+      ],
+      "id": 5
+    },
+    {
+      "color": "FF646464",
+      "vertices": [
+        {
+          "x": 98,
+          "y": 51
+        },
+        {
+          "x": 98,
+          "y": 39
+        },
+        {
+          "x": 100,
+          "y": 39
+        },
+        {
+          "x": 100,
+          "y": 51
+        }
+      ],
+      "id": 6
+    },
+    {
+      "color": "FF646464",
+      "vertices": [
+        {
+          "x": 44,
+          "y": 50.5
+        },
+        {
+          "x": 56,
+          "y": 50.5
+        },
+        {
+          "x": 56,
+          "y": 49.5
+        },
+        {
+          "x": 44,
+          "y": 49.5
+        }
+      ],
+      "id": 7
+    }
+  ],
   "texts": [],
   "finish": {
-    "color": "FF787878",
-    "vertices": []
+    "color": "FF3BAA3D",
+    "vertices": [
+      {
+        "x": 98,
+        "y": 49.5
+      },
+      {
+        "x": 95,
+        "y": 49.5
+      },
+      {
+        "x": 95,
+        "y": 39.5
+      },
+      {
+        "x": 98,
+        "y": 39.5
+      }
+    ]
   }
 }
