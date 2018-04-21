@@ -1,24 +1,163 @@
 {
   "settings": {
-    "horizontal-vector-min": 0,
+    "horizontal-vector-min": 20,
     "time-limit": 0,
     "horizontal-vector-type": "velocity",
-    "horizontal-vector-max": 100,
+    "horizontal-vector-max": 20,
     "vertical-vector-type": "velocity",
-    "vertical-vector-min": 0,
-    "name": "8. Nazwa poziomu",
-    "description": "Opis poziomu",
+    "vertical-vector-min": 20,
+    "name": "8. Zyg-Zag-Zyg",
+    "description": "Dynamiczne sterowanie przy pomocy wektorów\npotrafi być czasami nieintuicyjne.\n\nNie ma ograniczenia czasowego, ale minimalna\nprędkość, to 20 m/s.",
     "start-pos": {
-      "x": 50,
-      "y": 50
+      "x": 8.303299903869629,
+      "y": 72.30329895019531
     },
-    "vertical-vector-max": 50,
+    "vertical-vector-max": 20,
     "spaces-limit": 0
   },
-  "walls": [],
-  "texts": [],
+  "walls": [
+    {
+      "color": "FF646464",
+      "vertices": [
+        {
+          "x": 0,
+          "y": 70
+        },
+        {
+          "x": 70,
+          "y": 0
+        },
+        {
+          "x": 0,
+          "y": 0
+        }
+      ],
+      "id": 1
+    },
+    {
+      "color": "FF646464",
+      "vertices": [
+        {
+          "x": 0,
+          "y": 70
+        },
+        {
+          "x": 30,
+          "y": 100
+        },
+        {
+          "x": 0,
+          "y": 100
+        }
+      ],
+      "id": 2
+    },
+    {
+      "color": "FF646464",
+      "vertices": [
+        {
+          "x": 10.606599807739258,
+          "y": 80.60659790039062
+        },
+        {
+          "x": 34,
+          "y": 57.213199615478516
+        },
+        {
+          "x": 57.39339828491211,
+          "y": 80.60659790039062
+        },
+        {
+          "x": 75,
+          "y": 80.60659790039062
+        },
+        {
+          "x": 100,
+          "y": 55.606597900390625
+        },
+        {
+          "x": 100,
+          "y": 100
+        },
+        {
+          "x": 10.606599807739258,
+          "y": 100
+        }
+      ],
+      "id": 3
+    },
+    {
+      "color": "FF646464",
+      "vertices": [
+        {
+          "x": 65.60659790039062,
+          "y": 65.60659790039062
+        },
+        {
+          "x": 34,
+          "y": 34
+        },
+        {
+          "x": 100,
+          "y": 34.393394470214844
+        },
+        {
+          "x": 65.60659790039062,
+          "y": 65.60659790039062
+        }
+      ],
+      "id": 4
+    },
+    {
+      "color": "FF646464",
+      "vertices": [
+        {
+          "x": 34.25,
+          "y": 34.393394470214844
+        },
+        {
+          "x": 100,
+          "y": 34.393394470214844
+        },
+        {
+          "x": 100,
+          "y": 0
+        },
+        {
+          "x": 66.5,
+          "y": 0
+        }
+      ],
+      "id": 5
+    }
+  ],
+  "texts": [{
+    "color": "FFFFFFFF",
+    "rotation": 0,
+    "x": 2.625,
+    "font-size": 2.5,
+    "y": 9,
+    "content": "Korytarze nachylone są pod kątem 45 lub 135 stopni"
+  }],
   "finish": {
-    "color": "FF787878",
-    "vertices": []
+    "color": "FF3BAA3D",
+    "vertices": [
+      {
+        "x": 100,
+        "y": 34.393394470214844
+      },
+      {
+        "x": 100,
+        "y": 55.606597900390625
+      },
+      {
+        "x": 99,
+        "y": 56.606597900390625
+      },
+      {
+        "x": 99,
+        "y": 35.393394470214844
+      }
+    ]
   }
 }
