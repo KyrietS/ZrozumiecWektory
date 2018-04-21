@@ -203,21 +203,23 @@ class Player
   {
     textFont( vectorFont );
     textSize( height * 0.01528 );
+    color horizontalVectorColor = #0000FF;
+    color verticalVectorColor = #4286f4;
 
     // ----- UWZGLĘDNIANIE RÓŻNYCH JEDNOSTEK ------
     String horizontalVectorUnit = "";
     switch( settings.horizontalVectorType )
     {
-      case DISPLACEMENT: horizontalVectorUnit = "m"; break;
-      case VELOCITY: horizontalVectorUnit = "m/s"; break;
-      case ACCELERATION: horizontalVectorUnit = "m/s²"; break;
+      case DISPLACEMENT: horizontalVectorUnit = "m"; horizontalVectorColor = #00DD00; break;
+      case VELOCITY: horizontalVectorUnit = "m/s"; horizontalVectorColor = #0000FF; break;
+      case ACCELERATION: horizontalVectorUnit = "m/s²"; horizontalVectorColor = #FF0000; break;
     }
     String verticalVectorUnit = "";
     switch( settings.verticalVectorType )
     {
-      case DISPLACEMENT: verticalVectorUnit = "m"; break;
-      case VELOCITY: verticalVectorUnit = "m/s"; break;
-      case ACCELERATION: verticalVectorUnit = "m/s²"; break;
+      case DISPLACEMENT: verticalVectorUnit = "m"; verticalVectorColor = #00DD00; break;
+      case VELOCITY: verticalVectorUnit = "m/s"; verticalVectorColor = #0000FF; break;
+      case ACCELERATION: verticalVectorUnit = "m/s²"; verticalVectorColor = #FF0000; break;
     }
     
     // --- wektory normalne ---
@@ -226,13 +228,13 @@ class Player
       float value = (float)round(p2m(realVector.x) * 10)/10;
       text( Float.toString(value) + " " + horizontalVectorUnit, pos.x + realVector.x + (realVector.x < 0 ? -45 : 5), pos.y + 20 ); 
     }
-    drawArrow( pos.x, pos.y, pos.x + realVector.x, pos.y, #4286f4 );
+    drawArrow( pos.x, pos.y, pos.x + realVector.x, pos.y, lerpColor(horizontalVectorColor, #a8a8a8, 0.6) );
     if( realVector.y != 0 ){ 
       fill( 0 );
       float value = (float)round(-p2m(realVector.y) * 10)/10;
       text( Float.toString(value) + " " + verticalVectorUnit, pos.x - 60, pos.y + realVector.y + (realVector.y>0 ? + 10 : -10) ); 
     }
-    drawArrow( pos.x, pos.y, pos.x, pos.y + realVector.y, #4286f4 );
+    drawArrow( pos.x, pos.y, pos.x, pos.y + realVector.y, lerpColor(verticalVectorColor, #a8a8a8, 0.6) );
     
     // TODO: Kolor wektora zależny od rodzaju wektora.
     // --- wektory docelowe ---
@@ -241,13 +243,13 @@ class Player
       float value = (float)round(p2m(targetVector.x) * 10)/10;
       text( Float.toString(value) + " " + horizontalVectorUnit, pos.x + targetVector.x + (targetVector.x < 0 ? -45 : 5), pos.y - 10 ); 
     }
-    drawArrow( pos.x, pos.y, pos.x + targetVector.x, pos.y, #FF0000 );
+    drawArrow( pos.x, pos.y, pos.x + targetVector.x, pos.y, horizontalVectorColor );
     if( targetVector.y != 0 ){ 
       fill( 0 );
       float value = (float)round(-p2m(targetVector.y) * 10)/10;
       text( Float.toString(value) + " " + verticalVectorUnit, pos.x + 10, pos.y + targetVector.y + (targetVector.y>0 ? + 10 : -10) ); 
     }
-    drawArrow( pos.x, pos.y, pos.x, pos.y + targetVector.y, #FF0000 );
+    drawArrow( pos.x, pos.y, pos.x, pos.y + targetVector.y, verticalVectorColor );
   }
 // -----------------------------------------------------------
 // Rysowanie strzałki o kolorze 'col' od (x1,y1) do (x2,y2).
