@@ -2,23 +2,102 @@
   "settings": {
     "horizontal-vector-min": 0,
     "time-limit": 0,
-    "horizontal-vector-type": "velocity",
-    "horizontal-vector-max": 100,
-    "vertical-vector-type": "velocity",
+    "horizontal-vector-type": "displacement",
+    "horizontal-vector-max": 17,
+    "vertical-vector-type": "displacement",
     "vertical-vector-min": 0,
-    "name": "9. Nazwa poziomu",
-    "description": "Opis poziomu",
+    "name": "9. Poznaj wektor przesunięcia",
+    "description": "Kolejny i ostatni już wektor, który poznasz w tej grze.\n\nPobaw się nim trochę",
     "start-pos": {
-      "x": 50,
+      "x": 10,
       "y": 50
     },
-    "vertical-vector-max": 50,
+    "vertical-vector-max": 17,
     "spaces-limit": 0
   },
-  "walls": [],
-  "texts": [],
+  "walls": [{
+    "color": "FF646464",
+    "vertices": [
+      {
+        "x": 60,
+        "y": 55
+      },
+      {
+        "x": 60,
+        "y": 60
+      },
+      {
+        "x": 80,
+        "y": 60
+      },
+      {
+        "x": 80,
+        "y": 40
+      },
+      {
+        "x": 60,
+        "y": 40
+      },
+      {
+        "x": 60,
+        "y": 56
+      },
+      {
+        "x": 65,
+        "y": 56
+      },
+      {
+        "x": 65,
+        "y": 45
+      },
+      {
+        "x": 75,
+        "y": 45
+      },
+      {
+        "x": 75,
+        "y": 55
+      }
+    ],
+    "id": 1
+  }],
+  "texts": [
+    {
+      "color": "FFFFFFFF",
+      "rotation": 0,
+      "x": 66,
+      "font-size": 2.5,
+      "y": 43.75,
+      "content": "Dotrzyj"
+    },
+    {
+      "color": "FFFFFFFF",
+      "rotation": 0,
+      "x": 65,
+      "font-size": 2.5,
+      "y": 58.5,
+      "content": "do środka"
+    }
+  ],
   "finish": {
-    "color": "FF787878",
-    "vertices": []
+    "color": "FF3BAA3D",
+    "vertices": [
+      {
+        "x": 65,
+        "y": 55
+      },
+      {
+        "x": 75,
+        "y": 55
+      },
+      {
+        "x": 75,
+        "y": 45
+      },
+      {
+        "x": 65,
+        "y": 45
+      }
+    ]
   }
 }
