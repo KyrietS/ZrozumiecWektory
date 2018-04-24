@@ -6,11 +6,13 @@ public class Script
   color warningColor = #c1a100;
   color failColor    = #f44842;
   
-  public void runGameplayScript( String levelID )
+  public void runGameplayScript( String levelID, Gameplay gameplay )
   {
     switch( levelID )
     {
       case "level07": level07Script(); break;
+      case "level12": level12Script( gameplay ); break;
+      case "level13": level13Script( gameplay ); break;
     }
   }
   
@@ -22,6 +24,8 @@ public class Script
       case "level03": return level03WinScript();
       case "level07": return level07WinScript( gameplay );
       case "level10": return level10WinScript();
+      case "level12": return level12WinScript();
+      case "level13": return level13WinScript();
       default:        return defaultWinScript( gameplay );
     }
   }
@@ -30,6 +34,52 @@ public class Script
   {
     if( player.isFrozen )
       player.velocity = new PVector(0, -m2p(40) );
+  }
+  
+  private float temp12;
+  private void level12Script( Gameplay gameplay )
+  {
+    
+    if( player.isFrozen == false )
+    {
+      float k = 0.2;
+      player.realVector.x = player.realVector.x - k*player.realVector.x/frameRate;
+      player.velocity.y = player.velocity.y - k*player.velocity.y/frameRate;
+    }
+    else
+    {
+      player.velocity = new PVector(0, -m2p(40) );
+    }
+    
+    //println( gameplay.getTime() );
+    //print( "" + p2m( m2p(84) - player.pos.y ) + " --- " + temp12 + "\n" );
+    if( gameplay.getTime() == 0 )
+      temp12 = 3;
+    else if( p2m( m2p(84) - player.pos.y ) > temp12 )
+      temp12 = p2m( m2p(84) - player.pos.y );
+    
+  }
+  
+  private float temp13;
+  private void level13Script( Gameplay gameplay )
+  {
+    if( player.isFrozen == false )
+    {
+      float k = 0.003;
+      player.realVector.x = player.realVector.x - k*(player.realVector.x*player.realVector.x)/frameRate;
+      if( player.velocity.y > 0 )
+        k *= -1;
+      player.velocity.y = player.velocity.y + k*(player.velocity.y*player.velocity.y)/frameRate;
+    }
+    else
+    {
+      player.velocity = new PVector(0, -m2p(100) );
+    }
+    
+    if( gameplay.getTime() == 0 )
+      temp13 = 3;
+    else if( p2m( m2p(84) - player.pos.y ) > temp13 )
+      temp13 = p2m( m2p(84) - player.pos.y );
   }
   
   private boolean defaultWinScript(Gameplay gameplay )
@@ -110,6 +160,38 @@ public class Script
       fill( failColor );
       text("Wykonałeś aż " + player.spaceHitCounter + " " + word1 + ".\nTo o " + (player.spaceHitCounter-1) + " " + word2 + " za dużo :)\n\nSpróbuj jeszcze raz", m2p(5), m2p(50) );
       return false;
+    }
+  }
+  
+  private boolean level12WinScript()
+  {
+    if( temp12 >= 60 )
+    {
+      fill( successColor );
+      text("Gratulcje!\n\nTwoja wysokość wyniosła: " + (float)round( temp12 * 100 )/100 + " m", m2p(5), m2p(50) );
+      return true;  
+    }
+    else
+    {
+      fill( failColor );
+      text("Piłeczka nie wzniosła się na wymaganą wysokość.\n\nTwoja wysokość wyniosła: " + (float)round( temp12 * 100 )/100 + " m", m2p(5), m2p(50) );
+      return false;  
+    }
+  }
+  
+    private boolean level13WinScript()
+  {
+    if( temp13 >= 60 )
+    {
+      fill( successColor );
+      text("Gratulcje!\n\nTwoja wysokość wyniosła: " + (float)round( temp13 * 100 )/100 + " m", m2p(5), m2p(50) );
+      return true;  
+    }
+    else
+    {
+      fill( failColor );
+      text("Piłeczka nie wzniosła się na wymaganą wysokość.\n\nTwoja wysokość wyniosła: " + (float)round( temp13 * 100 )/100 + " m", m2p(5), m2p(50) );
+      return false;  
     }
   }
 }

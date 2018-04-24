@@ -108,7 +108,7 @@ class Gameplay implements Scene
       }
       
       level.show();
-      script.runGameplayScript( levelID );
+      script.runGameplayScript( levelID, this );
       player.show();
       
       if( statsActive ) 
