@@ -3,22 +3,46 @@
     "horizontal-vector-min": 0,
     "time-limit": 0,
     "horizontal-vector-type": "velocity",
-    "horizontal-vector-max": 100,
+    "horizontal-vector-max": 20,
     "vertical-vector-type": "velocity",
     "vertical-vector-min": 0,
-    "name": "14. Nazwa poziomu",
-    "description": "Opis poziomu",
+    "name": "14. Rzeka",
+    "description": "Nadaj piłeczce prędkość początkową tak, aby dotarła\nona do mety.\nUznajemy, że piłeczka znajduje się w rzece,\ngdy jej środek znajduje się w rzece.\n\nMożesz tylko raz wcisnąć spację.",
     "start-pos": {
-      "x": 50,
+      "x": 3.009999990463257,
       "y": 50
     },
-    "vertical-vector-max": 50,
-    "spaces-limit": 0
+    "vertical-vector-max": 20,
+    "spaces-limit": 1
   },
   "walls": [],
-  "texts": [],
+  "texts": [{
+    "color": "FF000000",
+    "rotation": 0,
+    "x": 57,
+    "font-size": 2.5,
+    "y": 8,
+    "content": "Dane:\n  (Xp, Yp)  współrzędne środka piłeczki\n  (Xm, Ym)  współrzędne środka mety\n  Xm - Xp = 97 m\n  R = 3 m (promień piłeczki)\n  Vr = 20 m/s (prędkość rzeki)\n  S = 20 m (szerokość rzeki)"
+  }],
   "finish": {
-    "color": "FF787878",
-    "vertices": []
+    "color": "FF3BAA3D",
+    "vertices": [
+      {
+        "x": 100,
+        "y": 48
+      },
+      {
+        "x": 99,
+        "y": 48
+      },
+      {
+        "x": 99,
+        "y": 52
+      },
+      {
+        "x": 100,
+        "y": 52
+      }
+    ]
   }
 }
