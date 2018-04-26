@@ -13,6 +13,7 @@ public class Script
       case "level07": level07Script(); break;
       case "level12": level12Script( gameplay ); break;
       case "level13": level13Script( gameplay ); break;
+      case "level14": level14Script(); break;
     }
   }
   
@@ -30,11 +31,15 @@ public class Script
     }
   }
   
+// ----------------------------------------------------------------
+  
   private void level07Script()
   {
     if( player.isFrozen )
       player.velocity = new PVector(0, -m2p(40) );
   }
+  
+// ----------------------------------------------------------------
   
   private float temp12;
   private void level12Script( Gameplay gameplay )
@@ -60,6 +65,8 @@ public class Script
     
   }
   
+// ----------------------------------------------------------------
+  
   private float temp13;
   private void level13Script( Gameplay gameplay )
   {
@@ -82,6 +89,40 @@ public class Script
       temp13 = p2m( m2p(84) - player.pos.y );
   }
   
+// ----------------------------------------------------------------
+
+private float temp14a = m2p( 80 );
+private float temp14b = m2p( 100 );
+private float temp14c = m2p( 56 );
+private float temp14d = m2p( 35 );
+  private void level14Script()
+  {
+    fill( #89b6ff );
+    rect( m2p(35), 0, m2p(20), m2p(100) );
+    if( player.pos.x > m2p(35) && player.pos.x < m2p(55) )
+      player.pos.y -= m2p(30)/frameRate;
+
+   
+    if( temp14a < 0 ) temp14a = m2p( 100 );
+    if( temp14b < 0 ) temp14b = m2p( 100 );
+    if( temp14c < 0 ) temp14c = m2p( 100 );
+    if( temp14d < 0 ) temp14d = m2p( 100 );
+    fill( #c4daff );
+    stroke( #FFFFFF );
+    rect( m2p(37), temp14a, m2p(0.3), m2p(3) );
+    rect( m2p(40), temp14b, m2p(0.3), m2p(2.5) );
+    rect( m2p(48), temp14c, m2p(0.3), m2p(5) );
+    rect( m2p(53), temp14d, m2p(0.3), m2p(3) );
+    stroke( #000000 );
+    
+    temp14a -= m2p(30)/frameRate;
+    temp14b -= m2p(30)/frameRate;
+    temp14c -= m2p(30)/frameRate;
+    temp14d -= m2p(30)/frameRate;
+  }
+
+// ----------------------------------------------------------------
+  
   private boolean defaultWinScript(Gameplay gameplay )
   {
     if( level.settings.timeLimit == 0 || gameplay.getTime() <= level.settings.timeLimit )
@@ -98,6 +139,8 @@ public class Script
     }
     
   }
+  
+// ----------------------------------------------------------------
   
   private boolean level02WinScript( Gameplay gameplay )
   {
@@ -116,12 +159,18 @@ public class Script
     else
       return defaultWinScript( gameplay );
   }
+  
+// ----------------------------------------------------------------
+  
   private boolean level03WinScript()
   {
     fill(successColor);
     text("Podstawy działania gry już znasz.\nNdszedł czas, by Zrozumieć Wektory!", m2p(5), m2p(50) );
     return true;
   }
+  
+// ----------------------------------------------------------------
+  
   private boolean level07WinScript( Gameplay gameplay )
   {
     if( gameplay.getTime() > 7000 )
@@ -137,6 +186,8 @@ public class Script
       return false;
     }
   }
+  
+// ----------------------------------------------------------------
   
   private boolean level10WinScript()
   {
@@ -163,6 +214,8 @@ public class Script
     }
   }
   
+// ----------------------------------------------------------------
+  
   private boolean level12WinScript()
   {
     if( temp12 >= 60 )
@@ -179,7 +232,9 @@ public class Script
     }
   }
   
-    private boolean level13WinScript()
+// ----------------------------------------------------------------
+  
+  private boolean level13WinScript()
   {
     if( temp13 >= 60 )
     {
