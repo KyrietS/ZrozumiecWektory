@@ -3,22 +3,67 @@
     "horizontal-vector-min": 0,
     "time-limit": 0,
     "horizontal-vector-type": "velocity",
-    "horizontal-vector-max": 100,
-    "vertical-vector-type": "velocity",
+    "horizontal-vector-max": 50,
+    "vertical-vector-type": "displacement",
     "vertical-vector-min": 0,
-    "name": "15. Nazwa poziomu",
-    "description": "Opis poziomu",
+    "name": "15. Ruch po okręgu",
+    "description": "W tym poziomie Twoim zadaniem jest nadanie\nodpowiedniej prędkości początkowej tak, aby piłeczka\nzatoczyła idealny okrąg.",
     "start-pos": {
       "x": 50,
-      "y": 50
+      "y": 80
     },
-    "vertical-vector-max": 50,
-    "spaces-limit": 0
+    "vertical-vector-max": 100,
+    "spaces-limit": 1
   },
-  "walls": [],
-  "texts": [],
+  "walls": [{
+    "color": "FF646464",
+    "vertices": [
+      {
+        "x": 46,
+        "y": 74
+      },
+      {
+        "x": 46.5,
+        "y": 74
+      },
+      {
+        "x": 46.5,
+        "y": 85.5
+      },
+      {
+        "x": 46,
+        "y": 85.5
+      }
+    ],
+    "id": 1
+  }],
+  "texts": [{
+    "color": "FF000000",
+    "rotation": 0,
+    "x": 57,
+    "font-size": 2.5,
+    "y": 8,
+    "content": "Dane:\n  (Xp, Yp)  współrzędne środka piłeczki\n  (Xm, Ym)  współrzędne środka mety\n  Xm - Xp = 97 m\n  R = 3 m (promień piłeczki)\n  Vr = 20 m/s (prędkość rzeki)\n  S = 20 m (szerokość rzeki)"
+  }],
   "finish": {
-    "color": "FF787878",
-    "vertices": []
+    "color": "FF3BAA3D",
+    "vertices": [
+      {
+        "x": 45,
+        "y": 78
+      },
+      {
+        "x": 44,
+        "y": 78
+      },
+      {
+        "x": 44,
+        "y": 82
+      },
+      {
+        "x": 45,
+        "y": 82
+      }
+    ]
   }
 }
