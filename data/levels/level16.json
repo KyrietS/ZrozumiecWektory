@@ -2,23 +2,68 @@
   "settings": {
     "horizontal-vector-min": 0,
     "time-limit": 0,
-    "horizontal-vector-type": "velocity",
+    "horizontal-vector-type": "acceleration",
     "horizontal-vector-max": 100,
-    "vertical-vector-type": "velocity",
+    "vertical-vector-type": "acceleration",
     "vertical-vector-min": 0,
-    "name": "16. Nazwa poziomu",
-    "description": "Opis poziomu",
+    "name": "16. Niestandardowy rzut",
+    "description": "Prędkość początkowa piłeczki w górę wynosi: 40 m/s.\n\nUstal przyspieszenie w pionie i w poziomie i traf w cel.",
     "start-pos": {
-      "x": 50,
-      "y": 50
+      "x": 3.01,
+      "y": 80.99
     },
-    "vertical-vector-max": 50,
-    "spaces-limit": 0
+    "vertical-vector-max": 100,
+    "spaces-limit": 1
   },
-  "walls": [],
-  "texts": [],
+  "walls": [{
+    "color": "FF646464",
+    "vertices": [
+      {
+        "x": 0,
+        "y": 84
+      },
+      {
+        "x": 100,
+        "y": 84
+      },
+      {
+        "x": 100,
+        "y": 100
+      },
+      {
+        "x": 0,
+        "y": 100
+      }
+    ],
+    "id": 1
+  }],
+  "texts": [{
+    "color": "FF000000",
+    "rotation": 0,
+    "x": 52,
+    "font-size": 2.5,
+    "y": 8,
+    "content": "Dane:\n  (Xp, Yp)  współrzędne środka piłeczki\n  (Xm, Ym)  współrzędne środka mety\n  Xm - Xp = 90 m\n  R = 3 m (promień piłeczki)\n  H = 80 m  (wysokość planszy)\n  Vp = 40 m/s (prędkość początkowa y)"
+  }],
   "finish": {
-    "color": "FF787878",
-    "vertices": []
+    "color": "FF3BAA3D",
+    "vertices": [
+      {
+        "x": 96,
+        "y": 84
+      },
+      {
+        "x": 96,
+        "y": 83
+      },
+      {
+        "x": 90,
+        "y": 83
+      },
+      {
+        "x": 90,
+        "y": 84
+      }
+    ]
   }
 }
