@@ -127,6 +127,7 @@ private float temp14d = m2p( 35 );
 
   private void level15Script( Gameplay gameplay )
   {
+    textSize( m2p(2.5) );
     fill(#646464);
     rect( 0, 0, m2p(100), m2p(100) );
     fill(#e8e8e8);
@@ -149,7 +150,6 @@ private float temp14d = m2p( 35 );
       float y = m2p(50);
       float a = m2p(20);
       float alpha = atan( (y - player.pos.y)/(player.pos.x - x) );
-      print( alpha*180/PI + " | " );
       if( player.pos.x < x )
         alpha += PI;
       //float aX = a*(x - player.pos.x)/r;
