@@ -15,6 +15,7 @@ public class Script
       case "level13": level13Script( gameplay ); break;
       case "level14": level14Script(); break;
       case "level15": level15Script( gameplay ); break;
+      case "level16": level16Script(); break;
     }
   }
   
@@ -174,6 +175,14 @@ private float temp14d = m2p( 35 );
       player.velocity.x = player.targetVector.x;
     }
     
+  }
+
+// ----------------------------------------------------------------
+
+  private void level16Script()
+  {
+    if( player.isFrozen )
+      player.velocity = new PVector(0, -m2p(40) );
   }
 
 // ----------------------------------------------------------------
