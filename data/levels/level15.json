@@ -37,14 +37,7 @@
     ],
     "id": 1
   }],
-  "texts": [{
-    "color": "FF000000",
-    "rotation": 0,
-    "x": 57,
-    "font-size": 2.5,
-    "y": 8,
-    "content": "Dane:\n  (Xp, Yp)  współrzędne środka piłeczki\n  (Xm, Ym)  współrzędne środka mety\n  Xm - Xp = 97 m\n  R = 3 m (promień piłeczki)\n  Vr = 20 m/s (prędkość rzeki)\n  S = 20 m (szerokość rzeki)"
-  }],
+  "texts": [],
   "finish": {
     "color": "FF3BAA3D",
     "vertices": [
