@@ -163,16 +163,14 @@ boolean _pulseActivated = false;
       textFont( bloggerSansBold );
       textSize( m2p( 5 ) );
       fill( 0 );
-      text( "Podsumowanie:", m2p(5), m2p(10) );
+      text( "Podsumowanie:", m2p(5), m2p(15) );
       textFont( bloggerSans );
       textSize( m2p( 4 ) );
       String summary = new String();
       summary += "Nazwa poziomu: \n  " + level.settings.name.replace("\n", "") + "\n";
-      summary += "Całkowita droga: " + "\n";
       summary += "Czas ruchu: " + (float)getTime()/1000 + " s\n";
-      summary += "Prędkość średnia: " + "\n";
       summary += "Wciśniętych spacji: " + player.spaceHitCounter;
-      text( summary, m2p(5), m2p(16) );
+      text( summary, m2p(5), m2p(20) );
       
       boolean isWin = script.runWinScript( levelID, this );
       if( isWin )
