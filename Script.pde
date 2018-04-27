@@ -14,6 +14,7 @@ public class Script
       case "level12": level12Script( gameplay ); break;
       case "level13": level13Script( gameplay ); break;
       case "level14": level14Script(); break;
+      case "level15": level15Script( gameplay ); break;
     }
   }
   
@@ -27,6 +28,7 @@ public class Script
       case "level10": return level10WinScript();
       case "level12": return level12WinScript();
       case "level13": return level13WinScript();
+      case "level15": return level15WinScript( gameplay );
       default:        return defaultWinScript( gameplay );
     }
   }
@@ -119,6 +121,59 @@ private float temp14d = m2p( 35 );
     temp14b -= m2p(30)/frameRate;
     temp14c -= m2p(30)/frameRate;
     temp14d -= m2p(30)/frameRate;
+  }
+
+// ----------------------------------------------------------------
+
+  private void level15Script( Gameplay gameplay )
+  {
+    fill(#646464);
+    rect( 0, 0, m2p(100), m2p(100) );
+    fill(#e8e8e8);
+    ellipse( m2p(50), m2p(50), m2p(70), m2p(70) );
+    fill(#646464);
+    ellipse( m2p(50), m2p(50), m2p(50), m2p(50) );
+    fill(#3BAA3D);
+    rect( m2p(44), m2p(78), m2p(1), m2p(4) );
+    fill(#646464);
+    noStroke();
+    rect( m2p(46), m2p(74), m2p(0.5), m2p(11.5) );
+    stroke( 1 );
+    fill( #FFFFFF );
+    text( "Znajdujesz się w odległości 30 m od środka koła\nPrzyspieszenie dośrodkowe wynosi: 20 m/s²", m2p( 1 ), m2p( 7 ) );
+    
+    if( player.isFrozen == false )
+    {
+      float r = m2p(30);
+      float x = m2p(50);
+      float y = m2p(50);
+      float a = m2p(20);
+      float alpha = atan( (y - player.pos.y)/(player.pos.x - x) );
+      print( alpha*180/PI + " | " );
+      if( player.pos.x < x )
+        alpha += PI;
+      //float aX = a*(x - player.pos.x)/r;
+      //float aY = a*(y - player.pos.y)/r;
+      float aX = -a * cos( alpha );
+      float aY = a * sin( alpha );
+      level.settings.horizontalVectorType = VectorType.ACCELERATION;
+      level.settings.verticalVectorType = VectorType.ACCELERATION;
+      player.realVector = new PVector( aX, aY );
+      float playerR = sqrt( (player.pos.x - x)*(player.pos.x - x) + (player.pos.y - y)*(player.pos.y - y) );
+      if( playerR + player.radius > m2p( 35 ) || playerR - player.radius < m2p(25) && false )
+      {
+        gameplay.currentFrame = Frame.COLLISION;
+        gameplay.stopTimer();
+        player.isFrozen = true;
+      }
+          
+      
+    }
+    else
+    {
+      player.velocity.x = player.targetVector.x;
+    }
+    
   }
 
 // ----------------------------------------------------------------
@@ -248,5 +303,19 @@ private float temp14d = m2p( 35 );
       text("Piłeczka nie wzniosła się na wymaganą wysokość.\n\nTwoja wysokość wyniosła: " + (float)round( temp13 * 100 )/100 + " m", m2p(5), m2p(50) );
       return false;  
     }
+  }
+  
+  private boolean level15WinScript( Gameplay gameplay )
+  {
+    fill( successColor );
+    if( gameplay.getTime() < 4000 )
+    {
+      text("Gratulcje!\n\nNie da się już szybciej :-)", m2p(5), m2p(50) );
+    }
+    else
+    {
+      text("Gratulcje!\n\nCzy da się ten poziom przejść szybciej?", m2p(5), m2p(50) );
+    }
+    return true;
   }
 }
