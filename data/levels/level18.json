@@ -3,8 +3,8 @@
     "horizontal-vector-min": 0,
     "time-limit": 0,
     "horizontal-vector-type": "velocity",
-    "horizontal-vector-max": 20,
-    "vertical-vector-type": "velocity",
+    "horizontal-vector-max": 50,
+    "vertical-vector-type": "displacement",
     "vertical-vector-min": 0,
     "name": "18. Rzeczny potwór",
     "description": "Nadaj piłeczce prędkość początkową tak, aby dotarła\nona do mety.\nUznajemy, że piłeczka znajduje się w rzece,\ngdy jej środek znajduje się w rzece.\n\nMożesz tylko raz wcisnąć spację.",
@@ -12,7 +12,7 @@
       "x": 3.009999990463257,
       "y": 50
     },
-    "vertical-vector-max": 20,
+    "vertical-vector-max": 40,
     "spaces-limit": 1
   },
   "walls": [],
