@@ -119,11 +119,18 @@ class AboutScene implements Scene
     rect( 0, 0, m2p(100), m2p(100) );
     fill( 0 );
     textFont( bloggerSans );
-    textSize( m2p( 4 ) );
-    text("„Zrozumieć Wektory” jest\nprojektem zrealizowanym\nw ramach kursu:\n„Fizyka dla informatyków — czyli od prostoty do złożoności”", m2p( 3 ), m2p( 15 ) );
+    textSize( m2p( 6.2 ) );
+    text("Zrozumieć Wektory", m2p(2.5), m2p( 15 ) );
+    textSize( m2p( 3 ) );
+    text("Projekt powstał w ramach kursu:\n„Fizyka dla informatyków — czyli od prostoty do złożoności”\n\n" + 
+         "Skład zespołu:\n  Sebastian Fojcik\n  Bartosz Stajnowski\n  Piotr Andrzejewski\n  Mateusz Trzeciak", m2p( 3 ), m2p( 27 ) );
+    //text("„Fizyka dla informatyków — czyli od prostoty do złożoności”", m2p( 2.7 ), m2p( 33 ) );
+    textSize( m2p(5) );
+    //text("Wydział Podstawowych Problemów Techniki", m2p( 5 ), m2p( 68 ) );
     
-    image( wpptLogo, m2p(50), m2p(5), m2p(20), m2p(20) );
-    image( kiLogo, m2p(75), m2p(5), m2p(20), m2p(20) );
+    image( wpptLogo, m2p(55), m2p(2), m2p(20), m2p(20) );
+    image( kiLogo, m2p(77), m2p(2), m2p(20), m2p(20) );
+    image( pwrLogo, m2p(40), m2p(60), m2p(20), m2p(29.04) );
     backButton.show();
   }
 }
