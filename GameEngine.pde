@@ -8,6 +8,7 @@ PFont bloggerSansBold;
 PFont bloggerSansLightItalic;
 PImage kiLogo;
 PImage wpptLogo;
+PImage pwrLogo;
 
 class GameEngine
 {  
@@ -44,6 +45,7 @@ class GameEngine
     bloggerSansLightItalic = createFont("data/fonts/BloggerSans-LightItalic.ttf", 80);
     kiLogo = loadImage("data/images/ki-wppt-logo.png");
     wpptLogo = loadImage("data/images/wppt-logo.png");
+    pwrLogo = loadImage("data/images/pwr-logo.png");
     
     textFont( bloggerSans );
   }
