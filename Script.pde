@@ -17,6 +17,7 @@ public class Script
       case "level15": level15Script( gameplay ); break;
       case "level16": level16Script(); break;
       case "level17": level17Script(); break;
+      case "level18": level18Script(); break;
     }
   }
   
@@ -197,6 +198,50 @@ private float temp14d = m2p( 35 );
       player.realVector.x -= Ax/frameRate;
       player.realVector.y += Ay/frameRate;
     }
+  }
+
+// ----------------------------------------------------------------
+
+private float temp18a = m2p( 80 );
+private float temp18b = m2p( 100 );
+private float temp18c = m2p( 56 );
+private float temp18d = m2p( 35 );
+private float temp18e = m2p( 75 );
+  private void level18Script()
+  {
+    noStroke();
+    fill( #89b6ff );
+    rect( m2p(75), 0, m2p(15), m2p(100) );
+    
+    beginShape();
+    vertex( m2p(70), 0 );
+    vertex( m2p(0.71), m2p(100) );
+    vertex( m2p(28.99), m2p(100 ) );
+    vertex( m2p(98.28), 0 );
+    endShape( CLOSE );
+    stroke(0);
+    
+    if( player.pos.x > m2p(75) && player.pos.x < m2p(90) )
+      player.pos.y -= m2p(30)/frameRate;
+
+   
+    if( temp18a < 0 ) temp18a = m2p( 100 );
+    if( temp18b < 0 ) temp18b = m2p( 100 );
+    if( temp18c < 0 ) temp18c = m2p( 100 );
+    if( temp18d < 0 ) temp18d = m2p( 100 );
+    if( temp18e < 0 ) temp18e = m2p( 70 );
+    fill( #c4daff );
+    stroke( #FFFFFF );
+    rect( m2p(76), temp18a, m2p(0.3), m2p(3) );
+    rect( m2p(80), temp18b, m2p(0.3), m2p(2.5) );
+    rect( m2p(84), temp18c, m2p(0.3), m2p(5) );
+    rect( m2p(89), temp18d, m2p(0.3), m2p(3) );
+    stroke( #000000 );
+    
+    temp18a -= m2p(30)/frameRate;
+    temp18b -= m2p(30)/frameRate;
+    temp18c -= m2p(30)/frameRate;
+    temp18d -= m2p(30)/frameRate;
   }
 
 // ----------------------------------------------------------------
