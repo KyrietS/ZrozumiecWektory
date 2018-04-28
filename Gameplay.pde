@@ -372,7 +372,7 @@ boolean _pulseActivated = false;
     textSize( helpFontSize );
     text( "Zmiana wektorów: [W][A][S][D] lub [←][↑][→][↓]" + 
         "\nZatwierdzenie zmiany: [SPACJA]" + 
-        "\nZwiększenie przecyzji: przytrzymaj [SHIFT]" +
+        "\nZwiększenie precyzji: przytrzymaj [SHIFT]" +
         "\nRestart poziomu: [R]" + "\nPominięcie poziomu: kliknij [POMIŃ]" + 
         "\nWyjście z gry: [ESC]", m2p(57), m2p(37.5) );
   }
