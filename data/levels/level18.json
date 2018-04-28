@@ -7,7 +7,7 @@
     "vertical-vector-type": "displacement",
     "vertical-vector-min": 0,
     "name": "18. Rzeczny potwór",
-    "description": "Nadaj piłeczce prędkość początkową tak, aby dotarła\nona do mety.\nUznajemy, że piłeczka znajduje się w rzece,\ngdy jej środek znajduje się w rzece.\n\nMożesz tylko raz wcisnąć spację.",
+    "description": "Ostatni poziom w grze.\n\nSpróbuj uzależnić prędkość od wychylenia względem\nmety. Zbadaj i przyjrzyj się otrzymanej funkcji.\n\nJest naprawdę ciekawa :)",
     "start-pos": {
       "x": 3.009999990463257,
       "y": 50
