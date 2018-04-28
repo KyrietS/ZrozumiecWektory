@@ -412,7 +412,7 @@ private float temp14d = m2p( 35 );
   private boolean level18WinScript()
   {
     fill( successColor );
-    text("Gratulacje!\n\nSzukanym wzorem jest: V = 675/s,   gdzie:\n  V - prędkość\n  s - droga", m2p(5), m2p(50) );
+    text("Gratulacje!\n\nSzukanym wzorem jest: V = 675/x,   gdzie:\n  V - prędkość\n  x - wychylenie od pozycji początkowej", m2p(5), m2p(50) );
     return true; 
   }
 }
