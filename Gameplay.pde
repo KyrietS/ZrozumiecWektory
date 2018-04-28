@@ -140,6 +140,9 @@ class Gameplay implements Scene
 boolean _pulseActivated = false;
   private void showCollision()
   {
+    if( ActiveKey.R )
+        engine.startLevel( levelID );
+        
     collisionTextBox.show();
     if( _pulseActivated == false )
     {
