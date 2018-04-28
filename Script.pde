@@ -32,6 +32,7 @@ public class Script
       case "level12": return level12WinScript();
       case "level13": return level13WinScript();
       case "level15": return level15WinScript( gameplay );
+      case "level18": return level18WinScript();
       default:        return defaultWinScript( gameplay );
     }
   }
@@ -406,5 +407,12 @@ private float temp14d = m2p( 35 );
       text("Gratulcje!\n\nCzy da się ten poziom przejść szybciej?", m2p(5), m2p(50) );
     }
     return true;
+  }
+  
+  private boolean level18WinScript()
+  {
+    fill( successColor );
+    text("Gratulacje!\n\nSzukanym wzorem jest: V = 675/s,   gdzie:\n  V - prędkość\n  s - droga", m2p(5), m2p(50) );
+    return true; 
   }
 }
