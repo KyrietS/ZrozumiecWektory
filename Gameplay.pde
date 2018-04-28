@@ -171,6 +171,9 @@ boolean _pulseActivated = false;
       winFrameOpacity += 255/(2.2*frameRate);
     else
     {
+      if( ActiveKey.R )
+        engine.startLevel( levelID );
+      
       textFont( bloggerSansBold );
       textSize( m2p( 5 ) );
       fill( 0 );
