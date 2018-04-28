@@ -163,7 +163,7 @@ private float temp14d = m2p( 35 );
       level.settings.verticalVectorType = VectorType.ACCELERATION;
       player.realVector = new PVector( aX, aY );
       float playerR = sqrt( (player.pos.x - x)*(player.pos.x - x) + (player.pos.y - y)*(player.pos.y - y) );
-      if( playerR + player.radius > m2p( 35 ) || playerR - player.radius < m2p(25) && false )
+      if( playerR + player.radius > m2p( 35 ) || playerR - player.radius < m2p(25) )
       {
         gameplay.currentFrame = Frame.COLLISION;
         gameplay.stopTimer();
