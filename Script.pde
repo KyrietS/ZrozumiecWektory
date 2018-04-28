@@ -32,6 +32,7 @@ public class Script
       case "level12": return level12WinScript();
       case "level13": return level13WinScript();
       case "level15": return level15WinScript( gameplay );
+      case "level18": return level18WinScript();
       default:        return defaultWinScript( gameplay );
     }
   }
@@ -163,7 +164,7 @@ private float temp14d = m2p( 35 );
       level.settings.verticalVectorType = VectorType.ACCELERATION;
       player.realVector = new PVector( aX, aY );
       float playerR = sqrt( (player.pos.x - x)*(player.pos.x - x) + (player.pos.y - y)*(player.pos.y - y) );
-      if( playerR + player.radius > m2p( 35 ) || playerR - player.radius < m2p(25) && false )
+      if( playerR + player.radius > m2p( 35 ) || playerR - player.radius < m2p(25) )
       {
         gameplay.currentFrame = Frame.COLLISION;
         gameplay.stopTimer();
@@ -202,26 +203,29 @@ private float temp14d = m2p( 35 );
 
 // ----------------------------------------------------------------
 
-  private float temp18[] = {m2p(80), m2p(100), m2p(56), m2p(35), m2p(75), m2p(50), m2p(20), m2p(90), m2p(66), m2p(22) };
+  private float temp18[] = {/*I Rzeka*/m2p(80), m2p(100), m2p(56), m2p(35),/*II Rzeka*/ m2p(52), m2p(16), m2p(17), m2p(59), m2p(39), m2p(2) ,m2p(37),m2p(35),m2p(30),m2p(80)};
   private void level18Script()
   {
     noStroke();
     fill( #89b6ff );
-    rect( m2p(30), 0, m2p(30), m2p(100) );
+    float x1 ,x2, y1, y2;
+    x1 = 3.2050807569;
+    y1 = 100;
+    x2 = 33.2050807569;
+    y2 = 100;
+    quad( m2p(30), 0, m2p(60), m2p(0) ,m2p(x2),m2p(y2),m2p(x1),m2p(y1));
     rect( m2p(75), 0, m2p(15), m2p(100) );
     
-    if( player.pos.x > m2p(30) && player.pos.x < m2p(60) )
-      player.pos.y += m2p(30)/frameRate;
-      
+     float fi = -3.7320508076;
+    if(p2m(player.pos.y)>(fi*p2m(player.pos.x) + (y1-fi*x1))&&p2m(player.pos.y)<(fi*p2m(player.pos.x) + (y2-fi*x2)))
+    {
+      player.pos.y += m2p(30)*sin(radians(75))/frameRate;
+      player.pos.x -= m2p(30)*cos(radians(75))/frameRate;
+
+    }
     if( player.pos.x > m2p(75) && player.pos.x < m2p(90) )
       player.pos.y -= m2p(15)/frameRate;
-
-
-    for( int i = 0; i < temp18.length; i++ )
-    {
-      if( temp18[ i ] < 0 )
-        temp18[ i ] = m2p(100);
-    }
+   
     fill( #c4daff );
     stroke( #FFFFFF );
     
@@ -235,23 +239,53 @@ private float temp14d = m2p( 35 );
         temp18[ i ] = m2p( 100 );
       temp18[ i ] -= m2p( 15 )/frameRate;
     }
+    float length1,length2,length3,length4,length5;
+    length1 =6;
+    length2 = 7;
+    length3 = 8;
+    length4 = 7;
+    length5=10;
+    quad(temp18[4],temp18[5],
+    temp18[4]+m2p(0.3)*cos(radians(15)),temp18[5]+m2p(0.3)*sin(radians(15)),
+    temp18[4]+m2p(0.3)*cos(radians(15))-m2p(length1)*cos(radians(75)),temp18[5]+m2p(0.3)*sin(radians(15))+m2p(length1)*sin(radians(75)),
+    temp18[4]-m2p(length1)*cos(radians(75)),temp18[5]+m2p(length1)*sin(radians(75)));
+    quad(temp18[6],temp18[7],
+    temp18[6]+m2p(0.3)*cos(radians(15)),temp18[7]+m2p(0.3)*sin(radians(15)),
+    temp18[6]+m2p(0.3)*cos(radians(15))-m2p(length2)*cos(radians(75)),temp18[7]+m2p(0.3)*sin(radians(15))+m2p(length2)*sin(radians(75)),
+    temp18[6]-m2p(length2)*cos(radians(75)),temp18[7]+m2p(length2)*sin(radians(75)));
+    quad(temp18[8],temp18[9],
+    temp18[8]+m2p(0.3)*cos(radians(15)),temp18[9]+m2p(0.3)*sin(radians(15)),
+    temp18[8]+m2p(0.3)*cos(radians(15))-m2p(length3)*cos(radians(75)),temp18[9]+m2p(0.3)*sin(radians(15))+m2p(length3)*sin(radians(75)),
+    temp18[8]-m2p(length3)*cos(radians(75)),temp18[9]+m2p(length3)*sin(radians(75)));
+    quad(temp18[10],temp18[11],
+    temp18[10]+m2p(0.3)*cos(radians(15)),temp18[11]+m2p(0.3)*sin(radians(15)),
+    temp18[10]+m2p(0.3)*cos(radians(15))-m2p(length4)*cos(radians(75)),temp18[11]+m2p(0.3)*sin(radians(15))+m2p(length4)*sin(radians(75)),
+    temp18[10]-m2p(length4)*cos(radians(75)),temp18[11]+m2p(length4)*sin(radians(75)));
+    quad(temp18[12],temp18[13],
+    temp18[12]+m2p(0.3)*cos(radians(15)),temp18[13]+m2p(0.3)*sin(radians(15)),
+    temp18[12]+m2p(0.3)*cos(radians(15))-m2p(length5)*cos(radians(75)),temp18[13]+m2p(0.3)*sin(radians(15))+m2p(length5)*sin(radians(75)),
+    temp18[12]-m2p(length5)*cos(radians(75)),temp18[13]+m2p(length5)*sin(radians(75)));
     
-    rect( m2p(35), temp18[ 4 ], m2p(0.3), m2p(5) );
-    rect( m2p(38), temp18[ 5 ], m2p(0.3), m2p(3) );
-    rect( m2p(42), temp18[ 6 ], m2p(0.3), m2p(5) );
-    rect( m2p(46), temp18[ 7 ], m2p(0.3), m2p(7) );
-    rect( m2p(50), temp18[ 8 ], m2p(0.3), m2p(2) );
-    rect( m2p(57), temp18[ 9 ], m2p(0.3), m2p(6) );
-    for( int i = 4; i <= 9; i++ )
+    for( int i = 4; i <= 13; i++ )
     {
-      if( temp18[ i ] > m2p(100) )
+      if( temp18[ i ] > m2p(100)&&i%2==1 ){
         temp18[ i ] = 0;
-      temp18[ i ] += m2p( 30 )/frameRate;
+        temp18[i-1]=temp18[i-1]+m2p(26.79491924311227064);
+      }
+      if(i%2==1)
+      {
+      temp18[ i ] += m2p(30)*sin(radians(75))/frameRate;
+      }
+      else
+      {
+      temp18[i]-=m2p(30)*cos(radians(75))/frameRate;
+      }
     }
     
     stroke( #000000 );
     
     // ------ NAPISY ------- //
+    
     fill( 0 );
     textFont( bloggerSans );
     textSize( m2p(2) );
@@ -259,8 +293,12 @@ private float temp14d = m2p( 35 );
     text( "↑ Vr'' = 15 m/s", m2p(76), m2p(8) );
     textFont( bloggerSansBold );
     textSize( m2p(2) );
-    text( " ------------- 30 m -------------", 0, m2p(97) );
-    text( " ------------- 30 m -------------", m2p(30), m2p(97) );
+    text( " ------------- 30 m -------------", m2p(4), m2p(97) );
+    char znakStopnia = 176;
+    text( "75"+znakStopnia,m2p(36),m2p(94));
+    noFill();
+    arc(m2p(36),m2p(94),m2p(10),m2p(10),PI+HALF_PI+radians(15),TWO_PI);
+    text( " ---------- 26.8 m ----------", m2p(34), m2p(97) );
     text( " ----- 15 m ----", m2p(60), m2p(97) );
     text( " ----- 15 m ----", m2p(75), m2p(97) );
   }
@@ -406,5 +444,12 @@ private float temp14d = m2p( 35 );
       text("Gratulcje!\n\nCzy da się ten poziom przejść szybciej?", m2p(5), m2p(50) );
     }
     return true;
+  }
+  
+  private boolean level18WinScript()
+  {
+    fill( successColor );
+    text("Gratulacje!\n\nSzukanym wzorem jest: V = 675/x,   gdzie:\n  V - prędkość\n  x - wychylenie od pozycji początkowej", m2p(5), m2p(50) );
+    return true; 
   }
 }
