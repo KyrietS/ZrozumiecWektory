@@ -113,7 +113,14 @@ class Gameplay implements Scene
       player.show();
       
       if( helpActive ) 
+      {
+        helpButton.col = #3884ff;
         showHelp();
+      }
+      else
+      {
+        helpButton.col = #c1d9ff;
+      }
         
       showInfoBar();
     }
