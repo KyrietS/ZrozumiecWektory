@@ -117,7 +117,7 @@ class Gameplay implements Scene
         helpButton.col = #3884ff;
         showHelp();
       }
-      else
+      else if( currentFrame != Frame.WIN )
       {
         helpButton.col = #c1d9ff;
       }
