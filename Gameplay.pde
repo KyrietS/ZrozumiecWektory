@@ -236,6 +236,8 @@ boolean _pulseActivated = false;
         helpButton.col = #478eff;
       }
     }
+    if( ActiveKey.R )
+      engine.startLevel( levelID );
   }
   
 // -----------------------------------------------------------------
