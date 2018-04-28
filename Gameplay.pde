@@ -4,7 +4,8 @@ class Gameplay implements Scene
   
   // --------------------- PRZYCISKI -------------------------------------------------------------------- //
   private Button menuButton = new Button( "home","  MENU", m2p(0.5), m2p(0.4), m2p(6.5), m2p(3.2), #c1d9ff);
-  private Button statsButton = new Button( "stats","  STATYSTYKI", m2p(88), m2p(0.4), m2p(10.5), m2p(3.2), #c1d9ff);
+  private Button helpButton = new Button( "help","  POMOC", m2p(91), m2p(0.4), m2p(8), m2p(3.2), #c1d9ff);
+  private Button skipButton = new Button( "skip", "  POMIŃ", m2p(83), m2p(0.4), m2p(7), m2p(3.2), #c1d9ff );
   private Button startButton = new Button( "start", " Rozpocznij", m2p(40), m2p(80), m2p(21.5), m2p(8), #FFFFFF );
   private Button backButton = new Button( "levels", "   Powrót", m2p(5), m2p(93), m2p(12), m2p(4.5), #FFFFFF ); 
   private Button restartButton = new Button( "restart", " RESTART", m2p(7.8), m2p(0.4), m2p(7.5), m2p(3.2), #c1d9ff);
@@ -14,7 +15,7 @@ class Gameplay implements Scene
   // ---------------------------------------------------------------------------------------------------- //
   
   private Frame currentFrame = Frame.INTRO;          // Jakie informacje mają być wyświetlane na ekranie.
-  private boolean statsActive = false;               // Czy otwarte jest okienko ze statystykami.
+  private boolean helpActive = false;               // Czy otwarte jest okienko ze statystykami.
   private boolean timerActive = false;               // Czy licznik odlicza czas, czy stoi.
   private float startTime = 0;                       // Czas początkowy odliczania.
   private float stopTime = 0;                        // Czas końcowy odliczania.
@@ -111,8 +112,8 @@ class Gameplay implements Scene
       script.runGameplayScript( levelID, this );
       player.show();
       
-      if( statsActive ) 
-        showStats();
+      if( helpActive ) 
+        showHelp();
         
       showInfoBar();
     }
@@ -120,7 +121,7 @@ class Gameplay implements Scene
     {
       switch( e.getMessage() )
       {
-        case "stats": statsActive = !statsActive; break;
+        case "help": helpActive = !helpActive; break;
         default: throw e;
       }
     }
@@ -147,7 +148,10 @@ boolean _pulseActivated = false;
   
   private void showWin()
   {
-    statsButton.isActive = false;
+    helpButton.isActive = false;
+    skipButton.isActive = false;
+    helpButton.col = #478eff;
+    skipButton.col = #478eff;
     if( _pulseActivated == false )
     {
       player.setPulse( #29A500, 500 );
@@ -276,12 +280,17 @@ boolean _pulseActivated = false;
 
     // ---- PRZYCISKI ---- //
     menuButton.show();
-    statsButton.show();
-    try{ restartButton.show(); }
+    helpButton.show();
+    try{ restartButton.show(); skipButton.show(); }
     catch( ButtonEvent e )
     {
       if( e.buttonID == "restart" )
         engine.startLevel( levelID );
+      if( e.buttonID == "skip" )
+      {
+        unlockNextLevel();
+        throw new ButtonEvent("levels");
+      }
     }
 
   }
@@ -298,10 +307,67 @@ boolean _pulseActivated = false;
     }
   }
   
-  void showStats()
+  void showHelp()
   {
-    fill( #218cff );
-    rect( m2p(80), m2p(4), m2p(20), m2p(50) );
+    float helpFontSize = m2p( 2 );
+    fill( color(#218cff, 245) );
+    rect( m2p(55), m2p(4), m2p(45), m2p(50) );
+    fill( 0 );
+    textFont( bloggerSansBold );
+    textSize( helpFontSize );
+    text( "Obowiązujące wektory:", m2p( 56 ), m2p( 7 ) );
+    textFont( bloggerSans );
+    textSize( helpFontSize );
+    String verticalVectorType = "";
+    String horizontalVectorType = "";
+    String verticalUnit = "";
+    String horizontalUnit = "";
+    switch( player.settings.verticalVectorType )
+    {
+      case DISPLACEMENT:  verticalVectorType = "wektor przemieszczenia"; verticalUnit = "m"; break;
+      case VELOCITY: verticalVectorType = "wektor prędkości"; verticalUnit = "m/s"; break;
+      case ACCELERATION: verticalVectorType = "wektor przyspieszenia"; verticalUnit = "m/s²"; break;
+    }
+    switch( player.settings.horizontalVectorType )
+    {
+      case DISPLACEMENT:  horizontalVectorType = "wektor przemieszczenia"; horizontalUnit = "m"; break;
+      case VELOCITY: horizontalVectorType = "wektor prędkości"; horizontalUnit = "m/s"; break;
+      case ACCELERATION: horizontalVectorType = "wektor przyspieszenia"; horizontalUnit = "m/s²"; break;
+    }
+    if( player.settings.verticalVectorMax == 0 )
+      horizontalVectorType = "brak";
+    if( player.settings.horizontalVectorMax == 0 )
+      verticalVectorType = "brak";
+    
+    text("W pionie: " + verticalVectorType + "\nW poziomie: " + horizontalVectorType, m2p(57), m2p(10) );
+    
+    String timeLimit = "brak";
+    String spacesLimit = "brak";
+    if( level.settings.timeLimit > 0 )
+      timeLimit = Integer.toString( level.settings.timeLimit ) + " ms";
+    if( level.settings.spacesLimit > 0 )
+      spacesLimit = Integer.toString( level.settings.spacesLimit );
+    textFont( bloggerSansBold );
+    textSize( helpFontSize );
+    text( "Obowiązujące limity:", m2p( 56 ), m2p( 16 ) );
+    textFont( bloggerSans );
+    textSize( helpFontSize );
+    text( "Wektor pionowy (max): " + p2m( level.settings.verticalVectorMax ) + " " + verticalUnit + 
+        "\nWektor poziomy (max): " + p2m( level.settings.horizontalVectorMax ) + " " + horizontalUnit + 
+        "\nWektor pionowy (min): " + p2m( level.settings.verticalVectorMin ) + " " + verticalUnit +
+        "\nWektor poziomy (min): " + p2m( level.settings.horizontalVectorMin ) + " " + horizontalUnit +
+        "\nLimit czasu: " + timeLimit +
+        "\nLimit naciśnięć spacji: " + spacesLimit, m2p(57), m2p(18.5) );
+    textFont( bloggerSansBold );
+    textSize( helpFontSize );
+    text( "Sterowanie:", m2p(56), m2p(35) );
+    textFont( bloggerSans );
+    textSize( helpFontSize );
+    text( "Zmiana wektorów: [W][A][S][D] lub [←][↑][→][↓]" + 
+        "\nZatwierdzenie zmiany: [SPACJA]" + 
+        "\nZwiększenie przecyzji: przytrzymaj [SHIFT]" +
+        "\nRestart poziomu: [R]" + "\nPominięcie poziomu: kliknij [POMIŃ]" + 
+        "\nWyjście z gry: [ESC]", m2p(57), m2p(37.5) );
   }
 }
 
