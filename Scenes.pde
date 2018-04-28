@@ -5,20 +5,33 @@ interface Scene
 
 class HomeScene implements Scene
 {
-  Button playButton;
   Button levelsButton;
+  Button changeSkinButton;
+  Button aboutButton;
+  Button exitButton;
+  
   HomeScene()
   {
-    playButton = new Button("play", "Zagraj", m2p(40), m2p(40), m2p(20), m2p(10), #26ad96 );
-    levelsButton = new Button("levels", "Wybierz poziom", m2p(40), m2p(55), m2p(40), m2p(10), #26ad96);
+    levelsButton = new Button("levels", "        Graj", m2p(32.5), m2p(40), m2p(36), m2p(10), #26ad96);
+    changeSkinButton = new Button("change-skin", " Wybierz postać", m2p(32.5), m2p(50), m2p(36), m2p(10), #26ad96);
+    aboutButton = new Button("about", "   O projekcie", m2p(32.5), m2p(60), m2p(36), m2p(10), #26ad96);
+    exitButton = new Button("exit", "      Wyjście", m2p(32.5), m2p(70), m2p(36), m2p(10), #26ad96);
   }
   
   void update()
   {
     fill(#dbffe6 );
     rect( 0, 0, m2p(100), m2p(100) );
-    playButton.show();
+    
+    textFont( bloggerSansLightItalic );
+    textSize( m2p(12) );
+    fill( 0 );
+    text("Zrozumieć Wektory", m2p(4), m2p( 20 ) );
+    
     levelsButton.show();
+    changeSkinButton.show();
+    aboutButton.show();
+    exitButton.show();
   }
 }
 
@@ -94,5 +107,23 @@ class LevelsScene implements Scene
     textFont( bloggerSansBold );
     textSize( m2p( 6 ) );
     text( "Wybierz poziom", m2p(5), m2p(7.5) );
+  }
+}
+
+class AboutScene implements Scene
+{
+  private Button backButton = new Button( "home", "Powrót do MENU", m2p(5), m2p(91), m2p(16.8), m2p(4.5), #FFFFFF );
+  public void update()
+  {
+    fill(255 );
+    rect( 0, 0, m2p(100), m2p(100) );
+    fill( 0 );
+    textFont( bloggerSans );
+    textSize( m2p( 4 ) );
+    text("„Zrozumieć Wektory” jest\nprojektem zrealizowanym\nw ramach kursu:\n„Fizyka dla informatyków — czyli od prostoty do złożoności”", m2p( 3 ), m2p( 15 ) );
+    
+    image( wpptLogo, m2p(50), m2p(5), m2p(20), m2p(20) );
+    image( kiLogo, m2p(75), m2p(5), m2p(20), m2p(20) );
+    backButton.show();
   }
 }

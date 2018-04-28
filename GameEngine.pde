@@ -5,6 +5,9 @@ Player player;
 
 PFont bloggerSans;
 PFont bloggerSansBold;
+PFont bloggerSansLightItalic;
+PImage kiLogo;
+PImage wpptLogo;
 
 class GameEngine
 {  
@@ -25,6 +28,8 @@ class GameEngine
         case "play": scene = new Gameplay("level01"); break;
         case "levels": scene = new LevelsScene(); break;
         case "home": scene = new HomeScene(); break;
+        case "about": scene = new AboutScene(); break;
+        case "exit": exit(); break;
       }
     }
   }
@@ -36,6 +41,10 @@ class GameEngine
     
     bloggerSans = createFont("data/fonts/BloggerSans.ttf", 12);
     bloggerSansBold = createFont("data/fonts/BloggerSans-Bold.ttf", 12);
+    bloggerSansLightItalic = createFont("data/fonts/BloggerSans-LightItalic.ttf", 80);
+    kiLogo = loadImage("data/images/ki-wppt-logo.png");
+    wpptLogo = loadImage("data/images/wppt-logo.png");
+    
     textFont( bloggerSans );
   }
 
