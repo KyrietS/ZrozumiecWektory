@@ -117,7 +117,7 @@ class Gameplay implements Scene
         helpButton.col = #3884ff;
         showHelp();
       }
-      else if( currentFrame != Frame.WIN )
+      else if( currentFrame != Frame.WIN && startTime == 0 )
       {
         helpButton.col = #c1d9ff;
       }
@@ -231,6 +231,9 @@ boolean _pulseActivated = false;
       {
         timerActive = true;
         startTime = millis();
+        helpActive = false;
+        helpButton.isActive = false;
+        helpButton.col = #478eff;
       }
     }
   }
