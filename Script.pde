@@ -202,46 +202,67 @@ private float temp14d = m2p( 35 );
 
 // ----------------------------------------------------------------
 
-private float temp18a = m2p( 80 );
-private float temp18b = m2p( 100 );
-private float temp18c = m2p( 56 );
-private float temp18d = m2p( 35 );
-private float temp18e = m2p( 75 );
+  private float temp18[] = {m2p(80), m2p(100), m2p(56), m2p(35), m2p(75), m2p(50), m2p(20), m2p(90), m2p(66), m2p(22) };
   private void level18Script()
   {
     noStroke();
     fill( #89b6ff );
+    rect( m2p(30), 0, m2p(30), m2p(100) );
     rect( m2p(75), 0, m2p(15), m2p(100) );
     
-    beginShape();
-    vertex( m2p(70), 0 );
-    vertex( m2p(0.71), m2p(100) );
-    vertex( m2p(28.99), m2p(100 ) );
-    vertex( m2p(98.28), 0 );
-    endShape( CLOSE );
-    stroke(0);
-    
+    if( player.pos.x > m2p(30) && player.pos.x < m2p(60) )
+      player.pos.y += m2p(30)/frameRate;
+      
     if( player.pos.x > m2p(75) && player.pos.x < m2p(90) )
-      player.pos.y -= m2p(30)/frameRate;
+      player.pos.y -= m2p(15)/frameRate;
 
-   
-    if( temp18a < 0 ) temp18a = m2p( 100 );
-    if( temp18b < 0 ) temp18b = m2p( 100 );
-    if( temp18c < 0 ) temp18c = m2p( 100 );
-    if( temp18d < 0 ) temp18d = m2p( 100 );
-    if( temp18e < 0 ) temp18e = m2p( 70 );
+
+    for( int i = 0; i < temp18.length; i++ )
+    {
+      if( temp18[ i ] < 0 )
+        temp18[ i ] = m2p(100);
+    }
     fill( #c4daff );
     stroke( #FFFFFF );
-    rect( m2p(76), temp18a, m2p(0.3), m2p(3) );
-    rect( m2p(80), temp18b, m2p(0.3), m2p(2.5) );
-    rect( m2p(84), temp18c, m2p(0.3), m2p(5) );
-    rect( m2p(89), temp18d, m2p(0.3), m2p(3) );
+    
+    rect( m2p(76), temp18[ 0 ], m2p(0.3), m2p(3) );
+    rect( m2p(80), temp18[ 1 ], m2p(0.3), m2p(2.5) );
+    rect( m2p(84), temp18[ 2 ], m2p(0.3), m2p(5) );
+    rect( m2p(89), temp18[ 3 ], m2p(0.3), m2p(3) );
+    for( int i = 0; i <= 3; i++ )
+    {
+      if( temp18[ i ] < 0 )
+        temp18[ i ] = m2p( 100 );
+      temp18[ i ] -= m2p( 15 )/frameRate;
+    }
+    
+    rect( m2p(35), temp18[ 4 ], m2p(0.3), m2p(5) );
+    rect( m2p(38), temp18[ 5 ], m2p(0.3), m2p(3) );
+    rect( m2p(42), temp18[ 6 ], m2p(0.3), m2p(5) );
+    rect( m2p(46), temp18[ 7 ], m2p(0.3), m2p(7) );
+    rect( m2p(50), temp18[ 8 ], m2p(0.3), m2p(2) );
+    rect( m2p(57), temp18[ 9 ], m2p(0.3), m2p(6) );
+    for( int i = 4; i <= 9; i++ )
+    {
+      if( temp18[ i ] > m2p(100) )
+        temp18[ i ] = 0;
+      temp18[ i ] += m2p( 30 )/frameRate;
+    }
+    
     stroke( #000000 );
     
-    temp18a -= m2p(30)/frameRate;
-    temp18b -= m2p(30)/frameRate;
-    temp18c -= m2p(30)/frameRate;
-    temp18d -= m2p(30)/frameRate;
+    // ------ NAPISY ------- //
+    fill( 0 );
+    textFont( bloggerSans );
+    textSize( m2p(2) );
+    text( "↓ Vr' = 30 m/s", m2p(31), m2p(8) );
+    text( "↑ Vr'' = 15 m/s", m2p(76), m2p(8) );
+    textFont( bloggerSansBold );
+    textSize( m2p(2) );
+    text( " ------------- 30 m -------------", 0, m2p(97) );
+    text( " ------------- 30 m -------------", m2p(30), m2p(97) );
+    text( " ----- 15 m ----", m2p(60), m2p(97) );
+    text( " ----- 15 m ----", m2p(75), m2p(97) );
   }
 
 // ----------------------------------------------------------------
