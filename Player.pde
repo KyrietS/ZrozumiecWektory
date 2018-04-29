@@ -6,7 +6,7 @@ class Player
 // ------------------- USTAWIENIA PLAYERA ------------------- //
   private PVector pos;                                        // Pozycja gracza na mapie (w pikselach).
   private float radius = 3;                                   // Promień kulki gracza (w pikselach). TYMCZASOWO wpisane ręcznie
-  private color fillColor = #FFF600;                          // Kolor wypełnienia kulki.
+  private color fillColor;                                    // Kolor wypełnienia kulki.
   private PVector targetVector = new PVector(0, 0);           // Współrzędne wektora docelowego (w piskelach).
   private PVector realVector = new PVector(0, 0);             // Współrzędne wektora rzeczywistego (w pikselach).
   public PVector velocity = new PVector(0, 0);                // Współrzędne wektora prędkości wypadkowej (w pikselach).
@@ -26,6 +26,7 @@ class Player
     vectorFont = createFont("data/fonts/BloggerSans-Bold.ttf", 12);
     radius = m2p(radius);
     pulseInterval = 0;
+    fillColor = engine.settings.getBallColor();
   }
 // ---------------------------------------
 // Wyświetlanie gracza na ekranie.
