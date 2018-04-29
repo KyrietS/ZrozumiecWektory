@@ -1,4 +1,18 @@
-// Tytuł projektu + autorzy
+/**********************************************************/
+/*          Z R O Z U M I E Ć   W E K T O R Y             */
+/* Projekt na kurs "Fizyka dla informatyków".             */
+/* Realizowany przez studentów  informatyki,              */
+/* na Wydziale Podstawowych Problemów Techniki,           */
+/* na Politechnice Wrocławskiej.                          */
+/* Skład zespołu: Sebastian Fojcik, Bartosz Stajnowski,   */
+/* Piotr Andrzejewski, Mateusz Trzeciak.                  */
+/* Dozwolone jest wprowadzanie własnych zmian.            */
+/* Program należy zawsze rozpowszechniać wraz z kodem     */
+/* źródłowym, z poszanowaniem autorów utworu pierwotnego. */
+/*                                                        */
+/* Projekt powstał dzięki narzędziom udostępnionym przez  */
+/* Processing: https://processing.org                     */
+/**********************************************************/
 
 class Level
 {
@@ -85,9 +99,9 @@ class Level
     public int timeLimit = 60;                                       // Limit czasu w przejście poziomu (0 = bez limitu, w milisekudnach).
     public PVector startPos = new PVector(0, 0);                     // Początkowa pozycja gracza.
   }
-// -----------------------------------------------------------
-// Wczytywanie poziomu (ścian, tekstów i ustawień) z pliku    
-// ----------------------------------------------------------- 
+  // -----------------------------------------------------------
+  // Wczytywanie poziomu (ścian, tekstów i ustawień) z pliku    
+  // ----------------------------------------------------------- 
   private void loadLevel( String levelPath )
   {
     JSONObject level;
@@ -107,9 +121,9 @@ class Level
     loadTexts( level.getJSONArray("texts") );
     
   }
-// ------------------------------------------
-// Wczytywanie ustawień poziomu.
-// ------------------------------------------
+  // ------------------------------------------
+  // Wczytywanie ustawień poziomu.
+  // ------------------------------------------
   private void loadSettings( JSONObject jSettings )
   {
     this.settings = new Settings();
@@ -141,9 +155,9 @@ class Level
     }
   }
   
-// ------------------------------------------
-// Wczytywanie ścian.
-// ------------------------------------------
+  // ------------------------------------------
+  // Wczytywanie ścian.
+  // ------------------------------------------
   private void loadWalls( JSONArray jWalls )
   {
     for( int i = 0; i < jWalls.size(); i++ )
@@ -166,9 +180,9 @@ class Level
     }
   }
   
-// ------------------------------------------
-// Wczytywanie mety.
-// ------------------------------------------
+  // ------------------------------------------
+  // Wczytywanie mety.
+  // ------------------------------------------
   private void loadFinish( JSONObject jFinish )
   {
     finish.col = unhex(jFinish.getString("color"));

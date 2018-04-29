@@ -1,3 +1,19 @@
+/**********************************************************/
+/*          Z R O Z U M I E Ć   W E K T O R Y             */
+/* Projekt na kurs "Fizyka dla informatyków".             */
+/* Realizowany przez studentów  informatyki,              */
+/* na Wydziale Podstawowych Problemów Techniki,           */
+/* na Politechnice Wrocławskiej.                          */
+/* Skład zespołu: Sebastian Fojcik, Bartosz Stajnowski,   */
+/* Piotr Andrzejewski, Mateusz Trzeciak.                  */
+/* Dozwolone jest wprowadzanie własnych zmian.            */
+/* Program należy zawsze rozpowszechniać wraz z kodem     */
+/* źródłowym, z poszanowaniem autorów utworu pierwotnego. */
+/*                                                        */
+/* Projekt powstał dzięki narzędziom udostępnionym przez  */
+/* Processing: https://processing.org                     */
+/**********************************************************/
+
 class Gameplay implements Scene
 {
   String levelID;
@@ -137,7 +153,7 @@ class Gameplay implements Scene
 // -----------------------------------------------------------------
 // Wyświetlanie informacji o wystąpieniu kolizji
 // -----------------------------------------------------------------
-boolean _pulseActivated = false;
+  boolean _pulseActivated = false;
   private void showCollision()
   {
     if( ActiveKey.R )

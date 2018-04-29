@@ -1,8 +1,33 @@
+/**********************************************************/
+/*          Z R O Z U M I E Ć   W E K T O R Y             */
+/* Projekt na kurs "Fizyka dla informatyków".             */
+/* Realizowany przez studentów  informatyki,              */
+/* na Wydziale Podstawowych Problemów Techniki,           */
+/* na Politechnice Wrocławskiej.                          */
+/* Skład zespołu: Sebastian Fojcik, Bartosz Stajnowski,   */
+/* Piotr Andrzejewski, Mateusz Trzeciak.                  */
+/* Dozwolone jest wprowadzanie własnych zmian.            */
+/* Program należy zawsze rozpowszechniać wraz z kodem     */
+/* źródłowym, z poszanowaniem autorów utworu pierwotnego. */
+/*                                                        */
+/* Projekt powstał dzięki narzędziom udostępnionym przez  */
+/* Processing: https://processing.org                     */
+/**********************************************************/
+
+// -------------------------------------------------------//
+// Wszystkie sceny, między którymi gra się przełącza.
+// Uwaga: Szczególna scena 'Gameplay' z uwagi na duży
+// rozmiar została wydzielona do osobnego pliku.
+// -------------------------------------------------------//
+
 interface Scene
 {
   void update();
 }
 
+// ------------------------------------------------------
+// Menu główne gry
+// ------------------------------------------------------
 class HomeScene implements Scene
 {
   Button levelsButton = new Button("levels", "        Graj", m2p(32.5), m2p(35), m2p(36), m2p(10), #e88140);
@@ -41,6 +66,9 @@ class HomeScene implements Scene
   
 }
 
+// ------------------------------------------------------
+// Wybierałka kolorów dla kulki
+// ------------------------------------------------------
 class SkinsScene implements Scene
 {
   private Button backButton = new Button( "home", "Powrót do MENU", m2p(5), m2p(91), m2p(16.8), m2p(4.5), #FFFFFF );
@@ -77,6 +105,9 @@ class SkinsScene implements Scene
     backButton.show();
   }
   
+  // ------------------------------------------------------
+  // Reprezentacja pojedynczej kulki w wybierałce kolorów.
+  // ------------------------------------------------------
   class Skin
   {
     color col;
@@ -120,6 +151,9 @@ class SkinsScene implements Scene
   }
 }
 
+// ------------------------------------------------------
+// Wybierałka poziomów.
+// ------------------------------------------------------
 class LevelsScene implements Scene
 {
   private Button[] levels = new Button[ 18 ];
@@ -195,6 +229,9 @@ class LevelsScene implements Scene
   }
 }
 
+// ------------------------------------------------------
+// Informacje o projekcie i autorzy.
+// ------------------------------------------------------
 class AboutScene implements Scene
 {
   private Button backButton = new Button( "home", "Powrót do MENU", m2p(5), m2p(91), m2p(16.8), m2p(4.5), #FFFFFF );
