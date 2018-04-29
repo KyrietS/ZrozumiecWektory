@@ -28,7 +28,7 @@ public class Script
       case "level02": return level02WinScript( gameplay );
       case "level03": return level03WinScript();
       case "level07": return level07WinScript( gameplay );
-      case "level10": return level10WinScript();
+      case "level10": return level10WinScript( gameplay );
       case "level12": return level12WinScript();
       case "level13": return level13WinScript();
       case "level15": return level15WinScript( gameplay );
@@ -388,13 +388,17 @@ private float temp14d = m2p( 35 );
   
 // ----------------------------------------------------------------
   
-  private boolean level10WinScript()
+  private boolean level10WinScript( Gameplay gameplay )
   {
     if( player.spaceHitCounter == 1 )
     {
       fill( successColor );
-      text("Gratulacje!\nDokładnie tak należało rozwiązać to zadanie.\n\nPS. Czas takiego ruchu wynosi oczywiście 0 sekund, ale to,"
-        + "\nco jest napisane wyżej, to czas renderowania pojedynczej\nklatki gry, w której nastąpił \"przeskok\".", m2p(5), m2p(50) );
+      text("Gratulacje!\nDokładnie tak należało rozwiązać to zadanie.", m2p(5), m2p(50) );
+      if( gameplay.getTime() != 0 )
+      {
+        text("PS. Czas takiego ruchu wynosi oczywiście 0 ms, ale to,"
+        + "\nco jest napisane wyżej, to czas renderowania pojedynczej\nklatki gry, w której nastąpił \"przeskok\".", m2p(5), m2p(63) );
+      }
       return true;
     }
     else
