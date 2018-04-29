@@ -25,6 +25,10 @@ class HomeScene implements Scene
     rect( 0, m2p(8.8), m2p(100), m2p(15) );
     fill( 255 );
     text("Zrozumieć Wektory", m2p(4), m2p( 20 ) );
+    textFont( bloggerSans );
+    textSize( m2p(1.7) );
+    fill( 0 );
+    text("wersja: 1.0.0", m2p(2), m2p(99) );
     
     levelsButton.show();
     changeSkinButton.show();
