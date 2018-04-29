@@ -149,15 +149,12 @@ private float temp14d = m2p( 35 );
     
     if( player.isFrozen == false )
     {
-      float r = m2p(30);
       float x = m2p(50);
       float y = m2p(50);
       float a = m2p(20);
       float alpha = atan( (y - player.pos.y)/(player.pos.x - x) );
       if( player.pos.x < x )
         alpha += PI;
-      //float aX = a*(x - player.pos.x)/r;
-      //float aY = a*(y - player.pos.y)/r;
       float aX = -a * cos( alpha );
       float aY = a * sin( alpha );
       level.settings.horizontalVectorType = VectorType.ACCELERATION;
