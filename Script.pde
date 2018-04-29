@@ -190,8 +190,25 @@ private float temp14d = m2p( 35 );
 
 // ----------------------------------------------------------------
 
+  private float temp17[] = {m2p(10), m2p(35), m2p(56), m2p(67) ,m2p(74), m2p(90)};
   private void level17Script()
   {
+    for( int i = 0; i < temp17.length; i++ )
+    {
+      if( temp17[ i ] < 0 )
+        temp17[ i ] = m2p(100);
+      temp17[i] -= m2p(40)/frameRate;
+    }
+    
+    stroke( #a8a8a8 );
+    line( temp17[0], m2p(20), temp17[0] + m2p(3), m2p(20) );
+    line( temp17[1], m2p(80), temp17[1] + m2p(6), m2p(80) );
+    line( temp17[2], m2p(64), temp17[2] + m2p(4), m2p(64) );
+    line( temp17[3], m2p(75), temp17[3] + m2p(4), m2p(75) );
+    line( temp17[4], m2p(55), temp17[4] + m2p(3), m2p(55) );
+    line( temp17[5], m2p(40), temp17[5] + m2p(4), m2p(40) );
+    stroke(0);
+    
     if( player.isFrozen == false )
     {
       float Ay = m2p(10);
