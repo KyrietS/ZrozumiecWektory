@@ -466,7 +466,7 @@ private float temp14d = m2p( 35 );
   private boolean level18WinScript()
   {
     fill( successColor );
-    text("Gratulacje!\n\nSzukanym wzorem jest: V = 675/x,   gdzie:\n  V - prędkość\n  x - wychylenie od pozycji początkowej", m2p(5), m2p(50) );
+    text("Gratulacje!\nWłaśnie ukończyłeś ostatni poziom przewidziany w tej\ngrze.\n\nMamy nadzieję, że się dobrze bawiłeś, Drogi Graczu!", m2p(5), m2p(50) );
     return true; 
   }
 }
