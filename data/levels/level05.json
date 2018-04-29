@@ -83,14 +83,24 @@
       "id": 3
     }
   ],
-  "texts": [{
-    "color": "FFFFFFFF",
-    "rotation": 0,
-    "x": 73.5,
-    "font-size": 4,
-    "y": 72.625,
-    "content": "Dotrzyj do mety"
-  }],
+  "texts": [
+    {
+      "color": "FFFFFFFF",
+      "rotation": 0,
+      "x": 73.5,
+      "font-size": 4,
+      "y": 72.625,
+      "content": "Dotrzyj do mety"
+    },
+    {
+      "color": "FFFFFFFF",
+      "rotation": 0,
+      "x": 17.5,
+      "font-size": 2,
+      "y": 12.75,
+      "content": "*Podwójne wciśnięcie spacji restuje wektory\n**Jeśli jesteś matematykiem/fizykiem, to możesz pominąć ten poziom. Jest mocno zręcznościowy."
+    }
+  ],
   "finish": {
     "color": "FF3BAA3D",
     "vertices": [
