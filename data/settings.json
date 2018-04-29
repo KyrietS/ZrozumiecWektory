@@ -1,5 +1,5 @@
 {
   "hero-picture": "FFFFF600",
-  "developer-mode": true,
-  "level-unlocked": 2
+  "developer-mode": false,
+  "level-unlocked": 1
 }
