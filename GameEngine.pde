@@ -27,6 +27,7 @@ class GameEngine
       switch( e.getMessage() )
       {
         case "play": scene = new Gameplay("level01"); break;
+        case "skins": scene = new SkinsScene(); break;
         case "levels": scene = new LevelsScene(); break;
         case "home": scene = new HomeScene(); break;
         case "about": scene = new AboutScene(); break;
@@ -59,7 +60,7 @@ class GameEngine
   {
     private int levelUnlocked = 99;
     private boolean developerMode = false;
-    private String heroPicture = "default";
+    private color ballColor = #FFF600;
     
     private String settingsPath;
     
@@ -71,7 +72,7 @@ class GameEngine
     
     public int getLevelUnlocked(){ return levelUnlocked; }
     public boolean getDeveloperMode(){ return developerMode; }
-    public String getHeroPicture(){   return heroPicture;   }
+    public color getBallColor(){   return ballColor;   }
     
     public void setLevelUnlocked( int n )
     {
@@ -83,9 +84,9 @@ class GameEngine
       developerMode = b;
       saveToFile();
     }
-    public void setHeroPicture( String s )
+    public void setBallColor( color s )
     {
-      heroPicture = s;
+      ballColor = s;
       saveToFile();
     }
     
@@ -94,7 +95,7 @@ class GameEngine
       JSONObject settings = new JSONObject();
       settings.setInt("level-unlocked", levelUnlocked);
       settings.setBoolean("developer-mode", developerMode);
-      settings.setString("hero-picture", heroPicture);
+      settings.setString("hero-picture", hex( ballColor ) );
       saveJSONObject( settings, settingsPath );
     }    
     
@@ -105,7 +106,7 @@ class GameEngine
         JSONObject settings = loadJSONObject( settingsPath );
         levelUnlocked = settings.getInt("level-unlocked");
         developerMode = settings.getBoolean("developer-mode");
-        heroPicture   = settings.getString("hero-picture");
+        ballColor   = color( unhex( settings.getString("hero-picture") ) );
       }
       catch( Exception e )
       {
