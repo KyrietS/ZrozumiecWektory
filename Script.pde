@@ -1,5 +1,24 @@
+/**********************************************************/
+/*          Z R O Z U M I E Ć   W E K T O R Y             */
+/* Projekt na kurs "Fizyka dla informatyków".             */
+/* Realizowany przez studentów  informatyki,              */
+/* na Wydziale Podstawowych Problemów Techniki,           */
+/* na Politechnice Wrocławskiej.                          */
+/* Skład zespołu: Sebastian Fojcik, Bartosz Stajnowski,   */
+/* Piotr Andrzejewski, Mateusz Trzeciak.                  */
+/* Dozwolone jest wprowadzanie własnych zmian.            */
+/* Program należy zawsze rozpowszechniać wraz z kodem     */
+/* źródłowym, z poszanowaniem autorów utworu pierwotnego. */
+/*                                                        */
+/* Projekt powstał dzięki narzędziom udostępnionym przez  */
+/* Processing: https://processing.org                     */
+/**********************************************************/
 
-
+// ----------------------------------------------------------
+// Zbiór skryptów dla wybranych poziomów, czyli szczególnych
+// własności i zachowań, które nie zostały przewidziane przy
+// projektowaniu silnika gry.
+// ----------------------------------------------------------
 public class Script
 {
   color successColor = #3f88ff;
@@ -37,6 +56,13 @@ public class Script
     }
   }
   
+// ------------------------------------------------------
+// ------------------------------------------------------
+//        S K R Y P T Y    R O Z G R Y W K I
+// ------------------------------------------------------
+// ------------------------------------------------------
+
+
 // ----------------------------------------------------------------
   
   private void level07Script()
@@ -317,7 +343,12 @@ private float temp14d = m2p( 35 );
     text( " ----- 15 m ----", m2p(75), m2p(97) );
   }
 
-// ----------------------------------------------------------------
+
+// ------------------------------------------------------
+// ------------------------------------------------------
+//     S K R Y P T Y    O K N A   W Y G R A N E J
+// ------------------------------------------------------
+// ------------------------------------------------------
   
   private boolean defaultWinScript(Gameplay gameplay )
   {

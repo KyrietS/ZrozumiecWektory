@@ -1,7 +1,30 @@
-// Tytuł projektu + autorzy
+/**********************************************************/
+/*          Z R O Z U M I E Ć   W E K T O R Y             */
+/* Projekt na kurs "Fizyka dla informatyków".             */
+/* Realizowany przez studentów  informatyki,              */
+/* na Wydziale Podstawowych Problemów Techniki,           */
+/* na Politechnice Wrocławskiej.                          */
+/* Skład zespołu: Sebastian Fojcik, Bartosz Stajnowski,   */
+/* Piotr Andrzejewski, Mateusz Trzeciak.                  */
+/* Dozwolone jest wprowadzanie własnych zmian.            */
+/* Program należy zawsze rozpowszechniać wraz z kodem     */
+/* źródłowym, z poszanowaniem autorów utworu pierwotnego. */
+/*                                                        */
+/* Projekt powstał dzięki narzędziom udostępnionym przez  */
+/* Processing: https://processing.org                     */
+/**********************************************************/
+
+// ------------------------------------------------------------- //
+// Zbiór metod i algorytmów do sprawdzania kolizji pomiędzy 
+// figurami oraz tego, czy punkt zawiera się wewnątrz wielokąta.
+// --------------------------------------------------------------//
 
 static class CollisionSystem
 {
+  // --------------------------------------------------------------------
+  // Sprawdza czy zaszłą kolizja pomiędzy kołem na pozycji 'pos' i 
+  // promieniu 'radius', a figurą 'vertices' (lista wierzchołków)
+  // --------------------------------------------------------------------
   public static boolean isCollision( ArrayList<PVector> vertices, PVector pos, float radius )
   {
     if( vertices.size() == 0 )
@@ -17,7 +40,10 @@ static class CollisionSystem
     }
     return false;
   }
-  // --- PRIVATE ---
+  
+  // --------------------------------------------------------------------
+  // Odległość punktu 'p' od prostej wyznaczonej przez punkty 'a' i 'b'
+  // --------------------------------------------------------------------
   private static float distance( PVector a, PVector b, PVector p )
   {
         float d2 = PVector.dist(a, b)*PVector.dist(a,b);
@@ -28,11 +54,18 @@ static class CollisionSystem
     return p.dist( projection );
   }
   
-    // Temporary variables for checkContaining() and isCrossing().
+  // -------------------------------------------------------------------------------
+  // Zmienne pomocnicze, z których korzysta kilka funkcji jednocześnie.
+  // Z przyczyn technicznych nie mogą one być przesyłane do funkcji jako parametry.
+  // -------------------------------------------------------------------------------
+
   private static int k;
   private static PVector r = new PVector();
   private static PVector tmp = new PVector();
 
+  // -----------------------------------------------------------------------------
+  // Sprawdza czy punkt 'point' leży wewnątrz figury 'shape' (lista wierzchołków)
+  // -----------------------------------------------------------------------------
   private static boolean checkContaining( ArrayList< PVector > shape, PVector point )
   {
     int  nIntersections = 0;  //number of intersections
@@ -67,7 +100,9 @@ static class CollisionSystem
     }
   }
   
-  // Support function for isContaining.
+  // -----------------------------------------
+  // Funkcja pomocnicza dla checkContaining()
+  // -----------------------------------------
   private static boolean isCrossing( PVector a, PVector b, ArrayList< PVector > shape, PVector point )
   {
     if ( (isOnEdge( point, r, a ) == false) && (isOnEdge( point, r, b ) == false) )
@@ -110,7 +145,9 @@ static class CollisionSystem
     return false;
   }
   
-    // Checks if z point lie on |xy| line segment
+  // ---------------------------------------------
+  // Sprawdza, czy punkt 'z' leży na odcinku |XY|
+  // ---------------------------------------------
   private static boolean isOnEdge( PVector x, PVector y, PVector z )
   {
 
@@ -129,13 +166,17 @@ static class CollisionSystem
     }
   }
   
-  // Determinant of the matrix
+  // ---------------------------------------
+  // Liczy wyznacznik macierzy 3 x 2
+  // ---------------------------------------
   private static float det( PVector x, PVector y, PVector z )
   {
     return (x.x*y.y + y.x*z.y + z.x*x.y - z.x*y.y - x.x*z.y - y.x*x.y);
   }
   
-  // ------------ SUPPORT FUNCTIONS ------------
+  // ---------------------------------------
+  // Funkcja znaku 'signum'
+  // ---------------------------------------
   private static int sign( double a )
   {
     if ( a == 0 )
@@ -144,5 +185,4 @@ static class CollisionSystem
       return -1;
     return 1;
   }
-  // -------------------------------------------
 }
