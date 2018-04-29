@@ -90,3 +90,46 @@ class Button
       return false;
   }
 }
+
+class ImageLink
+{
+  PImage img;
+  float x, y, _width, _height;
+  String url;
+  ImageLink( String url, String imagePath, float x, float y, float _width, float _height )
+  {
+    this.url = url;
+    img = loadImage( imagePath );
+    this.x = x;
+    this.y = y;
+    this._width = _width;
+    this._height = _height;
+  }
+  
+  void show()
+  {
+    image( img, x, y, _width, _height ); 
+    if( mouseHover() )
+    {
+      noFill();
+      stroke( 0 );
+      strokeWeight( 1 );
+      cursor = HAND;
+      rect( x, y, _width, _height );
+      if( mousePressed && buttonPressed == false )
+      {
+        link( url );
+        buttonPressed = true;
+      }
+    }
+    
+  }
+  
+  private boolean mouseHover()
+  {
+    if( (mouseX - (width-height)/2 >= x && mouseX - (width-height)/2 <= x + _width) && (mouseY >= y && mouseY <= y + _height) )
+      return true;
+    else
+      return false;
+  }
+}
