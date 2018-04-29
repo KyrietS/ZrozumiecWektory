@@ -7,7 +7,7 @@
     "vertical-vector-type": "velocity",
     "vertical-vector-min": 0,
     "name": "17. Obrócony Kartezjusz",
-    "description": "W naszej symulacji, w dół działa przyspieszenie 10 m/s².\nŻeby nie było nudno, w poziomie, w lewo wieje wiatr\ni przyspiesza w tym kierunku naszą piłeczkę o 15 m/s².\n\nNadaj prędkości początkowe w poziomie i w pionie i\ntraf w metę",
+    "description": "W naszej symulacji, w dół działa przyspieszenie 10 m/s².\nŻeby nie było nudno, w poziomie, w lewo wieje wiatr\ni przyspiesza w tym kierunku naszą piłeczkę o 15 m/s².\nNadaj prędkości początkowe w poziomie i w pionie i\ntraf w metę\n\n*Wyznacz funkcję Vx od Vy, a następnie znajdź jej\nekstrema i asymptoty. Znajdź największy kąt, pod którym\nmożna rzucić piłeczkę, aby trafiła ona w metę.\nZrób to zadanie na 2 sposoby:\na) badając wyznaczoną wcześniej funkcję\nb) sporządzając rysunek i wyciągając wnioski\n(wskazówka do b: rozpatrz obrócony układ współrzędnych)",
     "start-pos": {
       "x": 3.01,
       "y": 80.99
