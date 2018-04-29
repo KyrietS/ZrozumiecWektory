@@ -9,7 +9,7 @@
     "name": "4. Nie zgaduj, proszę",
     "description": "W tej grze nauczymy Cię przewidywać przyszłość.\nUżywając matematyki i kinematyki dokładnie planuj\nkażdy ruch.\n\nMy, informatycy, liczymy, bo musimy. W tej grze nic\nnie musisz. Nie wygłupiaj się jednak i nie zgaduj.\n\nTo NIE JEST gra zręcznościowa.",
     "start-pos": {
-      "x": 3,
+      "x": 3.01,
       "y": 73.26795196533203
     },
     "vertical-vector-max": 20,

@@ -9,7 +9,7 @@
     "name": "18. Rzeczny potwór",
     "description": "Ostatni poziom w grze.\n\nSpróbuj uogólnić rozwiązanie i uzależnić prędkość\nod wychylenia względem mety.",
     "start-pos": {
-      "x": 3.009999990463257,
+      "x": 3.01,
       "y": 50
     },
     "vertical-vector-max": 40,
