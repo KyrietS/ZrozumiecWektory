@@ -5,19 +5,13 @@ interface Scene
 
 class HomeScene implements Scene
 {
-  Button levelsButton;
-  Button changeSkinButton;
-  Button aboutButton;
-  Button exitButton;
+  Button levelsButton = new Button("levels", "        Graj", m2p(32.5), m2p(35), m2p(36), m2p(10), #e88140);
+  Button changeSkinButton = new Button("skins", "   Zmień kolor", m2p(32.5), m2p(45), m2p(36), m2p(10), #e88140);
+  Button aboutButton = new Button("about", "    O projekcie", m2p(32.5), m2p(55), m2p(36), m2p(10), #e88140);
+  Button exitButton = new Button("exit", "      Wyjście", m2p(32.5), m2p(65), m2p(36), m2p(10), #e88140);
   
-  HomeScene()
-  {
-    // #26ad96
-    levelsButton = new Button("levels", "        Graj", m2p(32.5), m2p(35), m2p(36), m2p(10), #e88140);
-    changeSkinButton = new Button("skins", "   Zmień kolor", m2p(32.5), m2p(45), m2p(36), m2p(10), #e88140);
-    aboutButton = new Button("about", "    O projekcie", m2p(32.5), m2p(55), m2p(36), m2p(10), #e88140);
-    exitButton = new Button("exit", "      Wyjście", m2p(32.5), m2p(65), m2p(36), m2p(10), #e88140);
-  }
+  ImageLink wpptImage = new ImageLink( "http://wppt.pwr.edu.pl/", "data/images/wppt-logo.png", m2p(39), m2p(85), m2p(10), m2p(10) );
+  ImageLink kiImage = new ImageLink( "http://ki.pwr.edu.pl/", "data/images/ki-wppt-logo.png", m2p(51), m2p(85), m2p(10), m2p(10) );
   
   void update()
   {
@@ -36,8 +30,9 @@ class HomeScene implements Scene
     changeSkinButton.show();
     aboutButton.show();
     exitButton.show();
-    image( wpptLogo, m2p(39), m2p(85), m2p(10), m2p(10) );
-    image( kiLogo, m2p(51), m2p(85), m2p(10), m2p(10) );
+    
+    wpptImage.show();
+    kiImage.show();
   }
   
 }
@@ -199,6 +194,9 @@ class LevelsScene implements Scene
 class AboutScene implements Scene
 {
   private Button backButton = new Button( "home", "Powrót do MENU", m2p(5), m2p(91), m2p(16.8), m2p(4.5), #FFFFFF );
+  private ImageLink pwrImage = new ImageLink( "http://pwr.edu.pl/", "data/images/pwr-logo.png", m2p(3), m2p(3), m2p(20), m2p(29.04) );
+  private ImageLink wpptImage = new ImageLink( "http://wppt.pwr.edu.pl/", "data/images/wppt-logo.png", m2p(48), m2p(75), m2p(20), m2p(20) );
+  private ImageLink kiImage = new ImageLink( "http://ki.pwr.edu.pl/", "data/images/ki-wppt-logo.png", m2p(74), m2p(75), m2p(20), m2p(20) );
   public void update()
   {
     fill(255 );
@@ -213,9 +211,10 @@ class AboutScene implements Scene
     text("Skład zespołu:\n  Sebastian Fojcik\n  Bartosz Stajnowski\n  Piotr Andrzejewski\n  Mateusz Trzeciak", m2p(3), m2p(50) );
     textSize( m2p(5) );
     
-    image( pwrLogo, m2p(3), m2p(3), m2p(20), m2p(29.04) );
-    image( wpptLogo, m2p(48), m2p(75), m2p(20), m2p(20) );
-    image( kiLogo, m2p(74), m2p(75), m2p(20), m2p(20) );
+    pwrImage.show();
+    wpptImage.show();
+    kiImage.show();
+    
     backButton.show();
   }
 }

@@ -6,9 +6,8 @@ Player player;
 PFont bloggerSans;
 PFont bloggerSansBold;
 PFont bloggerSansLightItalic;
-PImage kiLogo;
-PImage wpptLogo;
-PImage pwrLogo;
+
+int cursor = ARROW;
 
 class GameEngine
 {  
@@ -18,6 +17,7 @@ class GameEngine
   
   public void update()
   {
+    cursor = ARROW;
     try
     {
       scene.update();
@@ -34,6 +34,7 @@ class GameEngine
         case "exit": exit(); break;
       }
     }
+    cursor( cursor );
   }
 
   GameEngine()
@@ -44,9 +45,6 @@ class GameEngine
     bloggerSans = createFont("data/fonts/BloggerSans.ttf", 12);
     bloggerSansBold = createFont("data/fonts/BloggerSans-Bold.ttf", 12);
     bloggerSansLightItalic = createFont("data/fonts/BloggerSans-LightItalic.ttf", 80);
-    kiLogo = loadImage("data/images/ki-wppt-logo.png");
-    wpptLogo = loadImage("data/images/wppt-logo.png");
-    pwrLogo = loadImage("data/images/pwr-logo.png");
     
     textFont( bloggerSans );
   }
