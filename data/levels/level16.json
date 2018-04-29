@@ -7,7 +7,7 @@
     "vertical-vector-type": "acceleration",
     "vertical-vector-min": 0,
     "name": "16. Niestandardowy rzut",
-    "description": "Prędkość początkowa piłeczki w górę wynosi: 40 m/s.\n\nUstal przyspieszenie w pionie i w poziomie i traf w cel.",
+    "description": "Prędkość początkowa piłeczki w górę wynosi: 40 m/s.\n\nUstal *przyspieszenie* w pionie i w poziomie i traf w cel.",
     "start-pos": {
       "x": 3.01,
       "y": 80.99
