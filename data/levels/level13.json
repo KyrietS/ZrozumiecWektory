@@ -7,7 +7,7 @@
     "vertical-vector-type": "acceleration",
     "vertical-vector-min": 0,
     "name": "13. Klasyk 2.0",
-    "description": "Rzut ukośny z oporem kwadratowym.\n\nOpóźnienie w oporze kwadratowym wynosi:\n  b = -0.003*v² m/s²\nDobrze znak? Może na odwrót?\n  v - prędkość piłeczki\n\n*Warunek: piłeczka musi się wznieść na ponad 60 m.\n(początkowo piłeczka jest na wysokości 3 m,\nbo tyle wynosi jej promień)",
+    "description": "Rzut ukośny z oporem kwadratowym.\n\nOpóźnienie w oporze kwadratowym wynosi:\n  b = -0.003*v² m/s²\nDobrze znak? Może na odwrót?\n  v - prędkość piłeczki\n\n*Warunek: piłeczka musi się wznieść na ponad 60 m.\n(początkowo piłeczka jest na wysokości 3 m, bo tyle\n wynosi jej promień)",
     "start-pos": {
       "x": 3.01,
       "y": 80.99
