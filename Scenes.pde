@@ -109,7 +109,7 @@ class SkinsScene implements Scene
   
   private boolean mouseHover( float x, float y )
   {
-    if( sqrt( (mouseX- (width-height)/2 - x)*(mouseX- (width-height)/2 - x) + (mouseY - y)*(mouseY - y) ) <= m2p(6) )
+    if( sqrt( (mouseX- (width-height)/2 - x)*(mouseX- (width-height)/2 - x) + (mouseY - y)*(mouseY - y) ) <= m2p(4) )
       return true;
     else
       return false;
