@@ -247,10 +247,14 @@ class AboutScene implements Scene
     textSize( m2p( 8 ) );
     text("Zrozumieć Wektory", m2p(31), m2p( 15 ) );
     textSize( m2p( 3 ) );
-    text("Projekt powstał w ramach kursu:", m2p(43), m2p(35) );
-    text("„Fizyka dla informatyków — czyli od prostoty do złożoności”\n\n", m2p( 27 ), m2p( 40 ) );
-    text("Skład zespołu:\n  Sebastian Fojcik\n  Bartosz Stajnowski\n  Piotr Andrzejewski\n  Mateusz Trzeciak", m2p(3), m2p(50) );
-    textSize( m2p(5) );
+    text("Projekt powstał w ramach kursu:", m2p(27), m2p(24) ); //43
+    text("„Fizyka dla informatyków — czyli od prostoty do złożoności”\nrealizowanego przez studentów informatyki\nna Wydziale Podstawowych Problemów Techniki,\n"
+        +"na Politechnice Wrocławskiej.\n\nProjekt powstał dzięki narzędziom udostępnionym przez\nProcessing: www.processing.org", m2p( 27 ), m2p( 29 ) );
+    text("Sebastian Fojcik\nBartosz Stajnowski\nPiotr Andrzejewski\nMateusz Trzeciak", m2p(27), m2p(63.5) );
+    
+    textFont( bloggerSansBold );
+    textSize( m2p(3) );
+    text("Skład zespołu:", m2p(27), m2p(59) );
     
     pwrImage.show();
     wpptImage.show();
