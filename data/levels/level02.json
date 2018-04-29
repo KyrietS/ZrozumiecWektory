@@ -7,7 +7,7 @@
     "vertical-vector-type": "velocity",
     "vertical-vector-min": 0,
     "name": "2. Samouczek — precyzyjny ruch",
-    "description": "Podobnie jak w poprzednim poziomie,\nTwoim zadaniem jest dotrzeć do mety.\n\nTym razem jednak, zetknięcie z metąma nastąpić\npo około 1 sekundzie od rozpoczęcia ruchu.\n(Maksymalny błąd może wynieść 100 ms).\n\nWskazówka: wektor prędkości o wartości 5 m/s ma\ndługość dokładnie 5 m.",
+    "description": "Podobnie jak w poprzednim poziomie,\nTwoim zadaniem jest dotrzeć do mety.\n\nTym razem jednak, zetknięcie z metą ma nastąpić\npo około 1 sekundzie od rozpoczęcia ruchu.\n(Maksymalny błąd może wynieść 100 ms).\n\nWskazówka: wektor prędkości o wartości 5 m/s ma\ndługość dokładnie 5 m.",
     "start-pos": {
       "x": 5,
       "y": 50
