@@ -77,6 +77,14 @@
       "font-size": 4,
       "y": 61.875,
       "content": "Spróbuj dotrzeć do mety bez zatrzymania się"
+    },
+	{
+      "color": "FFFFFFFF",
+      "rotation": 0,
+      "x": 3,
+      "font-size": 2,
+      "y": 6.5,
+      "content": "Wciśnij \"RESTART\" lub przycisk [R], aby powtórzyć poziom"
     }
   ],
   "finish": {
