@@ -7,7 +7,7 @@
     "vertical-vector-type": "acceleration",
     "vertical-vector-min": 0,
     "name": "12. Klasyk",
-    "description": "Klasyk, czyli rzut ukośny z oporem liniowym.\n\nOpóźnienie w oporze liniowym wynosi:\n  b = -0.2*v m/s²\nDobrze znak? Może na odwrót?\n  v - prędkość piłeczki\n\n*Warunek: piłeczka musi się wznieść na ponad 60 m.\n(początkowo piłeczka jest na wysokości 3 m, bo tyle\n wynosi jej promień)",
+    "description": "Klasyk, czyli rzut ukośny z oporem liniowym.\n\nSiła oporu :  F = -0.2*v              (Przyjmij masę 1 kg)\nDobrze znak? Może na odwrót?\n  v - prędkość piłeczki\n\n*Warunek: piłeczka musi się wznieść na ponad 60 m.\n(początkowo piłeczka jest na wysokości 3 m, bo tyle\n wynosi jej promień)",
     "start-pos": {
       "x": 3.01,
       "y": 80.99
@@ -43,7 +43,7 @@
     "x": 52,
     "font-size": 2.5,
     "y": 8,
-    "content": "Dane:\n  (Xp, Yp)  współrzędne środka piłeczki\n  (Xm, Ym)  współrzędne środka mety\n  Xm - Xp = 90 m\n  R = 3 m (promień piłeczki)\n  H = 80 m  (wysokość planszy)\n  Vp = 40 m/s (prędkość początkowa y)\n  b = -0.2*v m/s² (opór)"
+    "content": "Dane:\n  (Xp, Yp)  współrzędne środka piłeczki\n  (Xm, Ym)  współrzędne środka mety\n  Xm - Xp = 90 m\n  R = 3 m (promień piłeczki)\n  H = 80 m  (wysokość planszy)\n  Vp = 40 m/s (prędkość początkowa y)\n  F = -0.2*v N (opór, masa 1 kg)"
   }],
   "finish": {
     "color": "FF3BAA3D",
