@@ -392,7 +392,7 @@ private float temp14d = m2p( 35 );
   private boolean level03WinScript()
   {
     fill(successColor);
-    text("Podstawy działania gry już znasz.\nNdszedł czas, by Zrozumieć Wektory!", m2p(5), m2p(50) );
+    text("Podstawy działania gry już znasz.\nNadszedł czas, by Zrozumieć Wektory!", m2p(5), m2p(50) );
     return true;
   }
   
