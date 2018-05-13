@@ -338,8 +338,8 @@ private float temp14d = m2p( 35 );
     text( "75"+znakStopnia,m2p(36),m2p(94));
     noFill();
     arc(m2p(36),m2p(94),m2p(10),m2p(10),PI+HALF_PI+radians(15),TWO_PI);
-    text( " ---------- 26.8 m ----------", m2p(34), m2p(97) );
-    text( " ----- 15 m ----", m2p(60), m2p(97) );
+    text( " ------------------ 41.8 m -------------------", m2p(34), m2p(97) );
+    text( " ----- 15 m ----", m2p(59), m2p(6) );
     text( " ----- 15 m ----", m2p(75), m2p(97) );
   }
 
