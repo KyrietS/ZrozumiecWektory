@@ -452,7 +452,7 @@ private float temp14d = m2p( 35 );
     if( temp12 >= 60 )
     {
       fill( successColor );
-      text("Gratulcje!\n\nTwoja wysokość wyniosła: " + (float)round( temp12 * 100 )/100 + " m", m2p(5), m2p(50) );
+      text("Gratulacje!\n\nTwoja wysokość wyniosła: " + (float)round( temp12 * 100 )/100 + " m", m2p(5), m2p(50) );
       return true;  
     }
     else
@@ -470,7 +470,7 @@ private float temp14d = m2p( 35 );
     if( temp13 >= 60 )
     {
       fill( successColor );
-      text("Gratulcje!\n\nTwoja wysokość wyniosła: " + (float)round( temp13 * 100 )/100 + " m", m2p(5), m2p(50) );
+      text("Gratulacje!\n\nTwoja wysokość wyniosła: " + (float)round( temp13 * 100 )/100 + " m", m2p(5), m2p(50) );
       return true;  
     }
     else
@@ -486,11 +486,11 @@ private float temp14d = m2p( 35 );
     fill( successColor );
     if( gameplay.getTime() < 4000 )
     {
-      text("Gratulcje!\n\nNie da się już szybciej :-)", m2p(5), m2p(50) );
+      text("Gratulacje!\n\nNie da się już szybciej :-)", m2p(5), m2p(50) );
     }
     else
     {
-      text("Gratulcje!\n\nCzy da się ten poziom przejść szybciej?", m2p(5), m2p(50) );
+      text("Gratulacje!\n\nCzy da się ten poziom przejść szybciej?", m2p(5), m2p(50) );
     }
     return true;
   }
