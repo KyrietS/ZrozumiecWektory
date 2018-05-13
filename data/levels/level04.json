@@ -1,12 +1,12 @@
 {
   "settings": {
     "horizontal-vector-min": 0,
-    "time-limit": 2600,
+    "time-limit": 2650,
     "horizontal-vector-type": "velocity",
     "horizontal-vector-max": 50,
     "vertical-vector-type": "velocity",
     "vertical-vector-min": 0,
-    "name": "4. Nie zgaduj, proszę",
+    "name": "4. Czas na rachunki",
     "description": "W tej grze nauczymy Cię przewidywać przyszłość.\nUżywając matematyki i kinematyki dokładnie planuj\nkażdy ruch.\n\nMy, informatycy, liczymy, bo musimy. W tej grze nic nie\nmusisz. Zachęcamy Cię jednak, drogi Graczu, abyś najpierw\nwykonywał obliczenia, a później obserwował ich rezultat.\n\n*Prawie* wszystkie poziomy z tej gry można dokładnie\nprzeliczyć stosując podstawowe wzory.\nCzasami niezbędny będzie kalkulator, a i nawet całka\nsię może zdarzyć. Bądź gotowy na wszystko!",
     "start-pos": {
       "x": 3.01,
